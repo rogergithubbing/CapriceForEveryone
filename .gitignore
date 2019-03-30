@@ -4,5 +4,6 @@
 *.tvsconfig
 Executables/*
 temp/*
+CPCEngineLib.stat
 *.stat
 !Executables/glew32.dll
