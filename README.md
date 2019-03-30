@@ -1,6 +1,8 @@
 # CapriceForEveryone
 CapriceForEveryone - an Amstrad CPC emulator based on Caprice Forever
 
+The sources were originally created and supplied by Frédéric Coste, based on  Ulrich Doewich's emulator.
+
 To be able to compile and run the emulator, you will have to use RAD Studio; You can obtain an evaluation copy of it at https://www.embarcadero.com/es/products/rad-studio/start-for-free.
 
 Just open the CapriceForEveryone.groupproj file in RAD Studio, then right click on the Caprice.exe project and click "Activate", and then you can run the project.
