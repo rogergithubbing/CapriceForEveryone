@@ -3,5 +3,6 @@
 *.~*
 *.tvsconfig
 Executables/*
+temp/*
 *.stat
 !Executables/glew32.dll
