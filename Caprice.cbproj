@@ -1,0 +1,948 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{447212F5-76CE-49B5-97E0-F3A689233BD9}</ProjectGuid>
+        <ProjectType>CppVCLApplication</ProjectType>
+        <MainSource>Caprice.cpp</MainSource>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <FrameworkType>VCL</FrameworkType>
+        <ProjectVersion>18.5</ProjectVersion>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Application</AppType>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win64)'!=''">
+        <Cfg_1_Win64>true</Cfg_1_Win64>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win64)'!=''">
+        <Cfg_2_Win64>true</Cfg_2_Win64>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+        <DCC_DebugInformation>0</DCC_DebugInformation>
+        <ILINK_LinkwithMidas>false</ILINK_LinkwithMidas>
+        <ILINK_GenerateDRC>true</ILINK_GenerateDRC>
+        <ILINK_LinkwithIntebaseTogo>false</ILINK_LinkwithIntebaseTogo>
+        <ILINK_LinkwithSQL>false</ILINK_LinkwithSQL>
+        <ILINK_LinkwithRegEx>false</ILINK_LinkwithRegEx>
+        <ILINK_LinkwithIndy>false</ILINK_LinkwithIndy>
+        <ILINK_LinkwithSQLite>false</ILINK_LinkwithSQLite>
+        <ILINK_LinkwithZLib>false</ILINK_LinkwithZLib>
+        <SanitizedProjectName>Caprice</SanitizedProjectName>
+        <IntermediateOutputDir>temp\</IntermediateOutputDir>
+        <TASM_OutputDir>temp\</TASM_OutputDir>
+        <BCC_DataAlignment>DWord</BCC_DataAlignment>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <_TCHARMapping>wchar_t</_TCHARMapping>
+        <VerInfo_MajorVer>17</VerInfo_MajorVer>
+        <VerInfo_Keys>CompanyName=Frédéric COSTE;FileDescription=Amstrad CPC emulator;FileVersion=17.0.0.0;InternalName=Caprice GUI;LegalCopyright=;LegalTrademarks=;OriginalFilename=Caprice.exe;ProductName=Caprice Forever;ProductVersion=17.0;Comments=Preliminary</VerInfo_Keys>
+        <DCC_Namespace>Vcl;System;$(DCC_Namespace)</DCC_Namespace>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <VerInfo_Locale>1036</VerInfo_Locale>
+        <IncludePath>Sources\Engine\AutoStart\;Sources\Windows\LibPNG\;Sources\Common\Pasmo\;Sources\Common\Z80ASM\;Sources\Common\STD\;Sources\Common\Z80DASM\;Sources\Windows\Cheat\;Sources\Engine\Printer\;Sources\Common\RLE\;Sources\Windows\ZLib\;Sources\Common\CRC_CCITT\;Sources\Common\CRC32\;Sources\Windows\Inputs\;Sources\Windows\DirectInput\;Sources\Common\ASCII\;Sources\Windows\Time\;Sources\Windows\Drawing\;Sources\Windows\Audio\;Sources\Common\FDC\;Sources\Windows\Emulator\;Sources\Windows\IPF\;Sources\Windows\Dialogs\;Sources\Windows\Settings\;Sources\Windows\Forms_XE3\;$(IncludePath)</IncludePath>
+        <TASM_AdditionalSwitches> /w2 temp\</TASM_AdditionalSwitches>
+        <DCC_AdditionalSwitches> -M</DCC_AdditionalSwitches>
+        <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+        <BRCC_IncludePath>Sources\Common\ASCII;Sources\Common\FDC;Sources\Common\CRC32;Sources\Windows\IPF;Sources\Windows\Time;Sources\Windows\Audio;Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BDS)\include;$(BDS)\include\vcl;$(BRCC_IncludePath)</BRCC_IncludePath>
+        <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+        <ILINK_LibraryPath>Sources\Engine\AutoStart\;Sources\Windows\LibPNG\;Sources\Common\Pasmo\;Sources\Common\Z80ASM\;Sources\Common\STD\;Sources\Common\Z80DASM\;Sources\Windows\Cheat\;Sources\Engine\Printer\;Sources\Common\RLE\;Sources\Windows\ZLib\;Sources\Common\CRC_CCITT\;Sources\Common\CRC32\;Sources\Windows\Inputs\;Sources\Windows\DirectInput\;Sources\Common\ASCII\;Sources\Windows\Time\;Sources\Windows\Drawing\;Sources\Windows\Audio\;Sources\Common\FDC\;Sources\Windows\Emulator\;Sources\Windows\IPF\;Sources\Windows\Dialogs\;Sources\Windows\Settings\;Sources\Windows\Forms_XE3\;Sources\Common\ASCII;Sources\Common\FDC;Sources\Common\CRC32;Sources\Windows\IPF;Sources\Windows\Time;Sources\Windows\Audio;Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;Sources\Windows\Direct3D\;$(BDS)\lib;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_AppType>Windows</ILINK_AppType>
+        <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+        <ILINK_IntermediateOutputPath>temp</ILINK_IntermediateOutputPath>
+        <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
+        <AllPackageLibs>rtl.lib;vcl.lib;vclx.lib;tee.lib;vcltouch.lib;xmlrtl.lib;vclimg.lib</AllPackageLibs>
+        <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+        <FinalOutputDir>Executables\</FinalOutputDir>
+        <TASM_IncludePath>Sources\Common\ASCII;Sources\Common\FDC;Sources\Common\CRC32;Sources\Windows\IPF;Sources\Windows\Time;Sources\Windows\Audio;Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BDS)\include;$(BDS)\include\vcl;$(TASM_IncludePath)</TASM_IncludePath>
+        <DCC_UnitSearchPath>.\;$(BDS)\lib;$(BDS)\lib\obj;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_ObjOutput>temp\</DCC_ObjOutput>
+        <DCC_DcuOutput>temp\</DCC_DcuOutput>
+        <BCC_OutputDir>temp\</BCC_OutputDir>
+        <BCC_PCHCache>true</BCC_PCHCache>
+        <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+        <BRCC_OutputDir>temp\</BRCC_OutputDir>
+        <PackageImports>vcl;vclx;vcldbx;teeui;teedb;tee;$(PackageImports)</PackageImports>
+        <BCC_IncludePath>Sources\Common\ASCII;Sources\Common\FDC;Sources\Common\CRC32;Sources\Windows\IPF;Sources\Windows\Time;Sources\Windows\Audio;Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BDS)\include;$(BCC_IncludePath)</BCC_IncludePath>
+        <DCC_IncludePath>.\;$(BDS)\lib;$(BDS)\lib\obj;$(DCC_IncludePath)</DCC_IncludePath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <ILINK_LibraryPath>C:\_Data\_dev\_CapriceForEveryone\Project\Executables;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+        <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
+        <Manifest_File>None</Manifest_File>
+        <BCC_DataAlignment>DWord</BCC_DataAlignment>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
+        <TASM_Defines>_USE_OPENGL _USE_OPENAL _USE_DIRECTINPUT8 NO_ENGINE_PERF _TESTU _PATCH_ENABLE _DEBUG;$(TASM_Defines)</TASM_Defines>
+        <BCC_Defines>_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;_PATCH_ENABLE;_USE_DIRECTX;USE_FILE32API;$(BCC_Defines)</BCC_Defines>
+        <BRCC_Defines>_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;_TESTU;_PATCH_ENABLE;_DEBUG;$(BRCC_Defines)</BRCC_Defines>
+        <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
+        <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <BRCC_Defines>_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;_TESTU;_PATCH_ENABLE;_DEBUG;$(BRCC_Defines)</BRCC_Defines>
+        <BCC_Defines>_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;_TESTU;_PATCH_ENABLE;$(BCC_Defines)</BCC_Defines>
+        <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
+        <TASM_Defines>_USE_OPENGL _USE_OPENAL _USE_DIRECTINPUT8 NO_ENGINE_PERF _TESTU _PATCH_ENABLE _DEBUG;$(TASM_Defines)</TASM_Defines>
+        <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
+        <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <BCC_MonitorInlinePtrAccess>true</BCC_MonitorInlinePtrAccess>
+        <BCC_MonitorGlobalAndStackData>true</BCC_MonitorGlobalAndStackData>
+        <BCC_MonitorThis>true</BCC_MonitorThis>
+        <VerInfo_Debug>true</VerInfo_Debug>
+        <BCC_Defines>_DEBUG;_TESTU;$(BCC_Defines)</BCC_Defines>
+        <DCC_AdditionalSwitches> -M -V</DCC_AdditionalSwitches>
+        <DCC_Define>DEBUG;$(DCC_Define);$(DCC_Define)</DCC_Define>
+        <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+        <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <IntermediateOutputDir>temp\</IntermediateOutputDir>
+        <ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <Manifest_File>None</Manifest_File>
+        <VerInfo_Keys>CompanyName=Frédéric COSTE;FileDescription=Amstrad CPC emulator;FileVersion=19.0.0.0;InternalName=Caprice GUI;LegalCopyright=;LegalTrademarks=;OriginalFilename=Caprice.exe;ProductName=Caprice Forever;ProductVersion=19.0;Comments=Preliminary;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_MajorVer>19</VerInfo_MajorVer>
+        <ILINK_LibraryPath>$(BDS)\lib\win32\debug\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <BCC_MonitorInlinePtrAccess>true</BCC_MonitorInlinePtrAccess>
+        <BCC_MonitorThis>true</BCC_MonitorThis>
+        <BCC_MonitorGlobalAndStackData>true</BCC_MonitorGlobalAndStackData>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <BCC_Defines>$(BCC_Defines);$(BCC_Defines)</BCC_Defines>
+        <LinkPackageStatics>rtl.lib;vcl.lib;vclx.lib;tee.lib;vcltouch.lib;xmlrtl.lib;vclimg.lib</LinkPackageStatics>
+        <BT_BuildType>Debug</BT_BuildType>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
+        <BCC_Defines>$(BCC_Defines);$(BCC_Defines)</BCC_Defines>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <ILINK_FullDebugInfo>false</ILINK_FullDebugInfo>
+        <BCC_DisableOptimizations>false</BCC_DisableOptimizations>
+        <BCC_DebugLineNumbers>false</BCC_DebugLineNumbers>
+        <BCC_SourceDebuggingOn>false</BCC_SourceDebuggingOn>
+        <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+        <BCC_OptimizationLevel>Level2</BCC_OptimizationLevel>
+        <DCC_AdditionalSwitches> -M -$O+</DCC_AdditionalSwitches>
+        <IntermediateOutputDir>temp\</IntermediateOutputDir>
+        <TASM_Debugging>None</TASM_Debugging>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <VerInfo_MajorVer>19</VerInfo_MajorVer>
+        <VerInfo_Keys>CompanyName=Frédéric COSTE;FileDescription=Amstrad CPC emulator;FileVersion=19.0.0.0;InternalName=Caprice GUI;LegalCopyright=;LegalTrademarks=;OriginalFilename=Caprice.exe;ProductName=Caprice Forever;ProductVersion=19.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
+        <Manifest_File>None</Manifest_File>
+        <BCC_DisableOptimizations>false</BCC_DisableOptimizations>
+        <BCC_SourceDebuggingOn>false</BCC_SourceDebuggingOn>
+        <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+        <BCC_DebugLineNumbers>false</BCC_DebugLineNumbers>
+        <ILINK_FullDebugInfo>false</ILINK_FullDebugInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <BCC_Defines>NDEBUG;$(BCC_Defines);$(BCC_Defines)</BCC_Defines>
+        <LinkPackageStatics>rtl.lib;vcl.lib;vclx.lib;tee.lib;vcltouch.lib;xmlrtl.lib;vclimg.lib</LinkPackageStatics>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
+        <BCC_Defines>NDEBUG;$(BCC_Defines);$(BCC_Defines)</BCC_Defines>
+    </PropertyGroup>
+    <ItemGroup>
+        <CppCompile Include="Caprice.cpp">
+            <BuildOrder>-1</BuildOrder>
+            <BuildOrder>0</BuildOrder>
+        </CppCompile>
+        <ResourceCompile Include="Caprice.rc">
+            <BuildOrder>44</BuildOrder>
+            <BuildOrder>0</BuildOrder>
+        </ResourceCompile>
+        <ResFiles Include="Caprice.res">
+            <BuildOrder>-1</BuildOrder>
+            <BuildOrder>1</BuildOrder>
+        </ResFiles>
+        <LibFiles Include="Executables\CPCEngineLib.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>126</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <None Include="glew32.dll"/>
+        <None Include="ModelSupport_Caprice\default.txaPackage"/>
+        <None Include="ModelSupport_Caprice\default.txvpck"/>
+        <RcItem Include="Resources\SOUND_FDC_MOTOR_6128.wav">
+            <ContainerId>ResourceItem</ContainerId>
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>SOUND_FDC_MOTOR_6128</ResourceId>
+        </RcItem>
+        <CppCompile Include="Sources\Common\ASCII\ASCII.c">
+            <BuildOrder>69</BuildOrder>
+            <BuildOrder>35</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Common\CRC32\Native_CRC32.c">
+            <BuildOrder>66</BuildOrder>
+            <BuildOrder>37</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Common\CRC_CCITT\CRC_CCITT.c">
+            <BuildOrder>60</BuildOrder>
+            <BuildOrder>36</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Common\FDC\FDC.c">
+            <BuildOrder>68</BuildOrder>
+            <BuildOrder>34</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Common\FDC\MFM.c">
+            <BuildOrder>40</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Common\Pasmo\asm.cpp">
+            <BuildOrder>28</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Common\Pasmo\asmfile.cpp">
+            <BuildOrder>29</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Common\Pasmo\pasmo.cpp">
+            <BuildOrder>32</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Common\Pasmo\pasmotypes.cpp">
+            <BuildOrder>31</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Common\Pasmo\token.cpp">
+            <BuildOrder>30</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Common\RLE\Native_RLE.c">
+            <BuildOrder>39</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Audio\TAudioContext.cpp">
+            <BuildOrder>73</BuildOrder>
+            <DependentOn>Sources\Windows\Audio\TAudioContext.h</DependentOn>
+            <BuildOrder>47</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatAction.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatAction.h</DependentOn>
+            <BuildOrder>71</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionDiff.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatActionDiff.h</DependentOn>
+            <BuildOrder>77</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionDriveA.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatActionDriveA.h</DependentOn>
+            <BuildOrder>90</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionDriveB.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatActionDriveB.h</DependentOn>
+            <BuildOrder>83</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionEnd.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatActionEnd.h</DependentOn>
+            <BuildOrder>82</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionEqual.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatActionEqual.h</DependentOn>
+            <BuildOrder>81</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionExit.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatActionExit.h</DependentOn>
+            <BuildOrder>76</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionFlipSides.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatActionFlipSides.h</DependentOn>
+            <BuildOrder>78</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionKeyDown.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatActionKeyDown.h</DependentOn>
+            <BuildOrder>72</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionKeyUp.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatActionKeyUp.h</DependentOn>
+            <BuildOrder>73</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionPause.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatActionPause.h</DependentOn>
+            <BuildOrder>80</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionPoke.cpp">
+            <BuildOrder>75</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionScreenDiff.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatActionScreenDiff.h</DependentOn>
+            <BuildOrder>84</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionSwapDrives.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatActionSwapDrives.h</DependentOn>
+            <BuildOrder>79</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Cheat\TCheatActionWait.cpp">
+            <DependentOn>Sources\Windows\Cheat\TCheatActionWait.h</DependentOn>
+            <BuildOrder>74</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Dialogs\TDialogButton.cpp">
+            <BuildOrder>70</BuildOrder>
+            <DependentOn>Sources\Windows\Dialogs\TDialogButton.h</DependentOn>
+            <BuildOrder>48</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Dialogs\TDialogComponent.cpp">
+            <BuildOrder>66</BuildOrder>
+            <DependentOn>Sources\Windows\Dialogs\TDialogComponent.h</DependentOn>
+            <BuildOrder>42</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Dialogs\TDialogDiskCatalog.cpp">
+            <BuildOrder>67</BuildOrder>
+            <DependentOn>Sources\Windows\Dialogs\TDialogDiskCatalog.h</DependentOn>
+            <BuildOrder>65</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Dialogs\TDialogForm.cpp">
+            <BuildOrder>8</BuildOrder>
+            <DependentOn>Sources\Windows\Dialogs\TDialogForm.h</DependentOn>
+            <BuildOrder>70</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Dialogs\TDialogInfo.cpp">
+            <BuildOrder>68</BuildOrder>
+            <DependentOn>Sources\Windows\Dialogs\TDialogInfo.h</DependentOn>
+            <BuildOrder>44</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Dialogs\TDialogInfoLabel.cpp">
+            <BuildOrder>8</BuildOrder>
+            <DependentOn>Sources\Windows\Dialogs\TDialogInfoLabel.h</DependentOn>
+            <BuildOrder>69</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Dialogs\TDialogLabel.cpp">
+            <BuildOrder>67</BuildOrder>
+            <DependentOn>Sources\Windows\Dialogs\TDialogLabel.h</DependentOn>
+            <BuildOrder>45</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Dialogs\TDialogListBox.cpp">
+            <BuildOrder>7</BuildOrder>
+            <DependentOn>Sources\Windows\Dialogs\TDialogListBox.h</DependentOn>
+            <BuildOrder>61</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Dialogs\TDialogOpenCDT.cpp">
+            <BuildOrder>59</BuildOrder>
+            <DependentOn>Sources\Windows\Dialogs\TDialogOpenCDT.h</DependentOn>
+            <BuildOrder>46</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Dialogs\TDialogOpenDSK.cpp">
+            <BuildOrder>7</BuildOrder>
+            <DependentOn>Sources\Windows\Dialogs\TDialogOpenDSK.h</DependentOn>
+            <BuildOrder>68</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Dialogs\TDialogOpenSNA.cpp">
+            <BuildOrder>64</BuildOrder>
+            <DependentOn>Sources\Windows\Dialogs\TDialogOpenSNA.h</DependentOn>
+            <BuildOrder>52</BuildOrder>
+        </CppCompile>
+        <LibFiles Include="Sources\Windows\Direct3D\d3d9.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>70</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <LibFiles Include="Sources\Windows\Direct3D\d3dx9.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>71</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <CppCompile Include="Sources\Windows\DirectInput\c_dinput.cpp">
+            <BuildOrder>50</BuildOrder>
+            <BuildOrder>43</BuildOrder>
+        </CppCompile>
+        <LibFiles Include="Sources\Windows\DirectInput\dinput8.lib">
+            <BuildOrder>65</BuildOrder>
+            <BuildOrder>19</BuildOrder>
+        </LibFiles>
+        <CppCompile Include="Sources\Windows\Drawing\TDrawingContext.cpp">
+            <BuildOrder>9</BuildOrder>
+            <DependentOn>Sources\Windows\Drawing\TDrawingContext.h</DependentOn>
+            <BuildOrder>64</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Emulator\TEmulator.cpp">
+            <BuildOrder>9</BuildOrder>
+            <DependentOn>Sources\Windows\Emulator\TEmulator.h</DependentOn>
+            <BuildOrder>49</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Emulator\TEmulatorMessage.cpp">
+            <BuildOrder>43</BuildOrder>
+            <DependentOn>Sources\Windows\Emulator\TEmulatorMessage.h</DependentOn>
+            <BuildOrder>38</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormAbout.cpp">
+            <BuildOrder>98</BuildOrder>
+            <Form>FormAbout</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormAbout.h</DependentOn>
+            <BuildOrder>92</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormAudioSettings.cpp">
+            <BuildOrder>60</BuildOrder>
+            <Form>FormAudioSettings</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormAudioSettings.h</DependentOn>
+            <BuildOrder>116</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormCheatScripts.cpp">
+            <Form>FormCheatScripts</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormCheatScripts.h</DependentOn>
+            <BuildOrder>131</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormCustomSpeed.cpp">
+            <BuildOrder>57</BuildOrder>
+            <Form>FormCustomSpeed</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormCustomSpeed.h</DependentOn>
+            <BuildOrder>115</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugBASICColors.cpp">
+            <BuildOrder>65</BuildOrder>
+            <Form>FormDebugBASICColors</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugBASICColors.h</DependentOn>
+            <BuildOrder>105</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugCDTViewer.cpp">
+            <BuildOrder>69</BuildOrder>
+            <Form>FormDebugCDTViewer</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugCDTViewer.h</DependentOn>
+            <BuildOrder>109</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugCRTC.cpp">
+            <BuildOrder>95</BuildOrder>
+            <Form>FormDebugCRTC</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugCRTC.h</DependentOn>
+            <BuildOrder>92</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugDSKViewer.cpp">
+            <Form>FormDebugDSKViewer</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugDSKViewer.h</DependentOn>
+            <BuildOrder>128</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugEditValue.cpp">
+            <BuildOrder>52</BuildOrder>
+            <Form>FormDebugEditValue</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugEditValue.h</DependentOn>
+            <BuildOrder>102</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugFDC.cpp">
+            <BuildOrder>98</BuildOrder>
+            <Form>FormDebugFDC</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugFDC.h</DependentOn>
+            <BuildOrder>94</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugGameController.cpp">
+            <BuildOrder>96</BuildOrder>
+            <Form>FormDebugGameController</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugGameController.h</DependentOn>
+            <BuildOrder>91</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugGateArray.cpp">
+            <BuildOrder>64</BuildOrder>
+            <Form>FormDebugGateArray</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugGateArray.h</DependentOn>
+            <BuildOrder>104</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugger.cpp">
+            <BuildOrder>63</BuildOrder>
+            <Form>FormDebugger</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugger.h</DependentOn>
+            <BuildOrder>118</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugGraphicsEditor.cpp">
+            <Form>FormDebugGraphicsEditor</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugGraphicsEditor.h</DependentOn>
+            <BuildOrder>125</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugGraphicsExplorer.cpp">
+            <Form>FormDebugGraphicsExplorer</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugGraphicsExplorer.h</DependentOn>
+            <BuildOrder>124</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugMEA8000.cpp">
+            <BuildOrder>61</BuildOrder>
+            <Form>FormDebugMEA8000</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugMEA8000.h</DependentOn>
+            <BuildOrder>112</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugMemoryEditor.cpp">
+            <BuildOrder>63</BuildOrder>
+            <Form>FormDebugMemoryEditor</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugMemoryEditor.h</DependentOn>
+            <BuildOrder>107</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugPSG.cpp">
+            <BuildOrder>68</BuildOrder>
+            <Form>FormDebugPSG</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugPSG.h</DependentOn>
+            <BuildOrder>108</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugTapeAudioWorkshop.cpp">
+            <BuildOrder>67</BuildOrder>
+            <Form>FormDebugTapeAudioWorkshop</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugTapeAudioWorkshop.h</DependentOn>
+            <BuildOrder>111</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugTextCapture.cpp">
+            <BuildOrder>66</BuildOrder>
+            <Form>FormDebugTextCapture</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugTextCapture.h</DependentOn>
+            <BuildOrder>110</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDebugZ80Editor.cpp">
+            <BuildOrder>62</BuildOrder>
+            <Form>FormDebugZ80Editor</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDebugZ80Editor.h</DependentOn>
+            <BuildOrder>106</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDiskCatalog.cpp">
+            <BuildOrder>97</BuildOrder>
+            <Form>FormDiskCatalog</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDiskCatalog.h</DependentOn>
+            <BuildOrder>93</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDisplaySettings.cpp">
+            <BuildOrder>61</BuildOrder>
+            <Form>FormDisplaySettings</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDisplaySettings.h</DependentOn>
+            <BuildOrder>117</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormDragDropDrives.cpp">
+            <Form>FormDragDropDrives</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormDragDropDrives.h</DependentOn>
+            <BuildOrder>127</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormEditKeycode.cpp">
+            <BuildOrder>8</BuildOrder>
+            <Form>FormEditKeycode</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormEditKeycode.h</DependentOn>
+            <BuildOrder>120</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormEmulatorSettings.cpp">
+            <BuildOrder>96</BuildOrder>
+            <Form>FormEmulatorSettings</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormEmulatorSettings.h</DependentOn>
+            <BuildOrder>93</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormGameControllerSettings.cpp">
+            <BuildOrder>99</BuildOrder>
+            <Form>FormGameControllerSettings</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormGameControllerSettings.h</DependentOn>
+            <BuildOrder>91</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormHints.cpp">
+            <BuildOrder>97</BuildOrder>
+            <Form>FormHints</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormHints.h</DependentOn>
+            <BuildOrder>94</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormKeyboardMapping.cpp">
+            <BuildOrder>9</BuildOrder>
+            <Form>FormKeyboardMapping</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormKeyboardMapping.h</DependentOn>
+            <BuildOrder>119</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormMain.cpp">
+            <BuildOrder>45</BuildOrder>
+            <Form>FormMain</Form>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormMain.h</DependentOn>
+            <BuildOrder>103</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormPrinter.cpp">
+            <Form>FormPrinter</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormPrinter.h</DependentOn>
+            <BuildOrder>122</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Forms_XE3\TFormZIPCatalog.cpp">
+            <Form>FormZIPCatalog</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>Sources\Windows\Forms_XE3\TFormZIPCatalog.h</DependentOn>
+            <BuildOrder>123</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Inputs\Keyboard.c">
+            <BuildOrder>55</BuildOrder>
+            <DependentOn>Sources\Windows\Inputs\Keyboard.h</DependentOn>
+            <BuildOrder>53</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Inputs\TInputAction.cpp">
+            <DependentOn>Sources\Windows\Inputs\TInputAction.h</DependentOn>
+            <BuildOrder>58</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Inputs\TInputActionAnalog.cpp">
+            <BuildOrder>65</BuildOrder>
+            <DependentOn>Sources\Windows\Inputs\TInputActionAnalog.h</DependentOn>
+            <BuildOrder>59</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Inputs\TInputActionButton.cpp">
+            <BuildOrder>58</BuildOrder>
+            <DependentOn>Sources\Windows\Inputs\TInputActionButton.h</DependentOn>
+            <BuildOrder>56</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Inputs\TInputActionPOV.cpp">
+            <BuildOrder>56</BuildOrder>
+            <DependentOn>Sources\Windows\Inputs\TInputActionPOV.h</DependentOn>
+            <BuildOrder>54</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Inputs\TInputContext.cpp">
+            <DependentOn>Sources\Windows\Inputs\TInputContext.h</DependentOn>
+            <BuildOrder>57</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Inputs\TInputDevice.cpp">
+            <BuildOrder>62</BuildOrder>
+            <DependentOn>Sources\Windows\Inputs\TInputDevice.h</DependentOn>
+            <BuildOrder>61</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Inputs\TInputDeviceActions.cpp">
+            <BuildOrder>55</BuildOrder>
+            <DependentOn>Sources\Windows\Inputs\TInputDeviceActions.h</DependentOn>
+            <BuildOrder>54</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Inputs\TInputKey.cpp">
+            <BuildOrder>66</BuildOrder>
+            <DependentOn>Sources\Windows\Inputs\TInputKey.h</DependentOn>
+            <BuildOrder>60</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\IPF\TIPFContainer.cpp">
+            <BuildOrder>61</BuildOrder>
+            <DependentOn>Sources\Windows\IPF\TIPFContainer.h</DependentOn>
+            <BuildOrder>51</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\IPF\TIPFTrack.cpp">
+            <BuildOrder>67</BuildOrder>
+            <DependentOn>Sources\Windows\IPF\TIPFTrack.h</DependentOn>
+            <BuildOrder>50</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\IPF\TRAWContainer.cpp">
+            <DependentOn>Sources\Windows\IPF\TRAWContainer.h</DependentOn>
+            <BuildOrder>65</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\IPF\TRAWTrack.cpp">
+            <DependentOn>Sources\Windows\IPF\TRAWTrack.h</DependentOn>
+            <BuildOrder>66</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\png.c">
+            <BuildOrder>1</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\pngerror.c">
+            <BuildOrder>2</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\pngget.c">
+            <BuildOrder>3</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\pngmem.c">
+            <BuildOrder>4</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\pngread.c">
+            <BuildOrder>5</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\pngrio.c">
+            <BuildOrder>6</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\pngrtran.c">
+            <BuildOrder>8</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\pngrutil.c">
+            <BuildOrder>9</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\pngset.c">
+            <BuildOrder>10</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\pngtrans.c">
+            <BuildOrder>11</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\pngwio.c">
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\pngwrite.c">
+            <BuildOrder>13</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\pngwtran.c">
+            <BuildOrder>14</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\LibPNG\pngwutil.c">
+            <BuildOrder>15</BuildOrder>
+        </CppCompile>
+        <LibFiles Include="Sources\Windows\OpenAL\openal32.lib">
+            <BuildOrder>64</BuildOrder>
+            <BuildOrder>18</BuildOrder>
+        </LibFiles>
+        <LibFiles Include="Sources\Windows\OpenGL\glew32.lib">
+            <BuildOrder>63</BuildOrder>
+            <BuildOrder>21</BuildOrder>
+        </LibFiles>
+        <CppCompile Include="Sources\Windows\Settings\TSettings.cpp">
+            <BuildOrder>67</BuildOrder>
+            <DependentOn>Sources\Windows\Settings\TSettings.h</DependentOn>
+            <BuildOrder>63</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\Time\TBaseTimer.cpp">
+            <BuildOrder>64</BuildOrder>
+            <DependentOn>Sources\Windows\Time\TBaseTimer.h</DependentOn>
+            <BuildOrder>62</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\ZLib\adler32.c">
+            <BuildOrder>17</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\ZLib\crc32.c">
+            <BuildOrder>18</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\ZLib\deflate.c">
+            <BuildOrder>26</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\ZLib\inffast.c">
+            <BuildOrder>19</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\ZLib\inflate.c">
+            <BuildOrder>20</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\ZLib\inftrees.c">
+            <BuildOrder>21</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\ZLib\ioapi.c">
+            <BuildOrder>22</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\ZLib\iowin32.c">
+            <BuildOrder>23</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\ZLib\trees.c">
+            <BuildOrder>27</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\ZLib\TZIPContainer.cpp">
+            <DependentOn>Sources\Windows\ZLib\TZIPContainer.h</DependentOn>
+            <BuildOrder>25</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\ZLib\unzip.c">
+            <BuildOrder>16</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Sources\Windows\ZLib\zutil.c">
+            <BuildOrder>24</BuildOrder>
+        </CppCompile>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormZIPCatalog.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormHints.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormKeyboardMapping.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormMain.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormPrinter.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugMEA8000.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugMemoryEditor.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugPSG.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugTapeAudioWorkshop.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugGateArray.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugger.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugGraphicsEditor.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugGraphicsExplorer.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDragDropDrives.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormEditKeycode.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormEmulatorSettings.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormGameControllerSettings.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugTextCapture.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugZ80Editor.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDiskCatalog.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDisplaySettings.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormAbout.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormAudioSettings.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormCheatScripts.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugDSKViewer.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugEditValue.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugFDC.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugGameController.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormCustomSpeed.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugBASICColors.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugCDTViewer.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugCRTC.dfm"/>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets"/>
+    <ProjectExtensions>
+        <Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
+        <Borland.ProjectType>CppVCLApplication</Borland.ProjectType>
+        <BorlandProject>
+            <CPlusPlusBuilder.Personality>
+                <VersionInfo>
+                    <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+                    <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+                    <VersionInfo Name="MajorVer">0</VersionInfo>
+                    <VersionInfo Name="MinorVer">28</VersionInfo>
+                    <VersionInfo Name="Release">0</VersionInfo>
+                    <VersionInfo Name="Build">0</VersionInfo>
+                    <VersionInfo Name="Debug">False</VersionInfo>
+                    <VersionInfo Name="PreRelease">False</VersionInfo>
+                    <VersionInfo Name="Special">False</VersionInfo>
+                    <VersionInfo Name="Private">False</VersionInfo>
+                    <VersionInfo Name="DLL">False</VersionInfo>
+                    <VersionInfo Name="Locale">1036</VersionInfo>
+                    <VersionInfo Name="CodePage">1252</VersionInfo>
+                </VersionInfo>
+                <ExcludedPackages>
+                    <ExcludedPackages Name="$(BCB)\Bin\bcbsmp50.bpl">Composants exemple Borland C++</ExcludedPackages>
+                    <ExcludedPackages Name="$(BCB)\Bin\dclqrt50.bpl">Composants QuickReport</ExcludedPackages>
+                    <ExcludedPackages Name="C:\Windows\system32\ibsmp50.bpl">Composant Alerter InterBase Borland C++</ExcludedPackages>
+                </ExcludedPackages>
+                <HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Count">20</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item0">Sources\Common\ASCII;Sources\Common\FDC;Sources\Common\CRC32;Sources\Windows\IPF;Sources\Windows\Time;Sources\Windows\Audio;Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item1">Sources\Common\FDC;Sources\Common\CRC32;Sources\Windows\IPF;Sources\Windows\Time;Sources\Windows\Audio;Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item2">Sources\Windows\Time;Sources\Windows\Audio;Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item3">Sources\Windows\Audio;Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item4">Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item5">Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item6">Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item7">Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item8">Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item9">Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item10">Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item11">Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;Sources\Windows\OpenGL;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item12">Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item13">Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item14">Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item15">Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item16">Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item17">Sources\Engine;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item18">Sources;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item19">Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                </HistoryLists_hlIncludePath>
+                <HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Count">17</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item0">Sources\Common\ASCII;Sources\Common\FDC;Sources\Common\CRC32;Sources\Windows\IPF;Sources\Windows\Time;Sources\Windows\Audio;Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item1">Sources\Common\FDC;Sources\Common\CRC32;Sources\Windows\IPF;Sources\Windows\Time;Sources\Windows\Audio;Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item2">Sources\Windows\Time;Sources\Windows\Audio;Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item3">Sources\Windows\Audio;Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item4">Sources\Windows\Inputs;Sources\Windows\Keyboard;Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item5">Sources\Windows\DirectInput;Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item6">Sources\Windows\Drawing;Sources\Windows\Dialogs;Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item7">Sources\Common\CRC_CCITT;Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item8">Sources\Engine\AutoStart;Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item9">Sources\Windows\Settings;Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item10">Sources\Common\MathLib;Sources\Windows\Sound;Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item11">Sources\Engine\DiskLoad;Sources\Engine\DiskEject;Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item12">Sources\Windows\Trace;Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item13">Sources\Engine\CPCSetColor;Sources\Engine\CPCReset;Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item14">Sources\Engine\CPCExecute;Sources\Engine\CPCStop;Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item15">Sources\Engine\CPCStart;Sources\Common\Tables;Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item16">Sources\Windows\Emulator;Sources\Windows\Forms;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                </HistoryLists_hlLibraryPath>
+                <HistoryLists_hlDebugSourcePath>
+                    <HistoryLists_hlDebugSourcePath Name="Count">1</HistoryLists_hlDebugSourcePath>
+                    <HistoryLists_hlDebugSourcePath Name="Item0">$(BCB)\source\vcl</HistoryLists_hlDebugSourcePath>
+                </HistoryLists_hlDebugSourcePath>
+                <HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Count">30</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item0">_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;_TESTU;_PATCH_ENABLE;_DEBUG</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item1">_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;_TESTU;_PATCH_ENABLE</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item2">_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;_TESTU;_DEBUG;_PATCH_ENABLE</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item3">_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;_TESTU;_DEBUG</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item4">_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;_TESTU</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item5">_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;NO_TESTU</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item6">_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;NO_TESTU;_DEBUG</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item7">_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;NO_TESTU;NO_DEBUG</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item8">_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;_TESTU;NO_DEBUG</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item9">_USE_OPENGL;_USE_OPENAL;DONT_USE_DIRECTINPUT8;NO_ENGINE_PERF;_TESTU;_DEBUG</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item10">_USE_OPENGL;_USE_OPENAL;DONT_USE_DIRECTINPUT8;NO_ENGINE_PERF;NO_TESTU;_DEBUG</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item11">_USE_OPENGL;_USE_OPENAL;DONT_USE_DIRECTINPUT8;NO_ENGINE_PERF;NO_TESTU</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item12">_USE_OPENGL;DONT_USE_OPENAL;DONT_USE_DIRECTINPUT8;NO_ENGINE_PERF;NO_TESTU</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item13">_USE_OPENGL;_USE_OPENAL;DONT_USE_DIRECTINPUT8;NO_ENGINE_PERF;_TESTU</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item14">_USE_OPENGL;_USE_OPENAL;DONT_USE_DIRECTINPUT8;NO_ENGINE_PERF;_DEBUG;_TESTU</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item15">_USE_OPENGL;_USE_OPENAL;DONT_USE_DIRECTINPUT8;NO_ENGINE_PERF;NO_DEBUG;NO_TESTU</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item16">_USE_OPENGL;_USE_OPENAL;DONT_USE_DIRECTINPUT8;NO_ENGINE_PERF;NO_DEBUG;_TESTU</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item17">NO_TRACE;_USE_OPENGL;_USE_OPENAL;DONT_USE_DIRECTINPUT8;NO_ENGINE_PERF;_DEBUG;_TESTU</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item18">_TRACE;_USE_OPENGL;_USE_OPENAL;DONT_USE_DIRECTINPUT8;NO_ENGINE_PERF;_DEBUG;_TESTU</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item19">NO_TRACE;_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT8;NO_ENGINE_PERF;_DEBUG;_TESTU</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item20">NO_TRACE;_USE_OPENGL;_USE_OPENAL;_USE_DIRECTINPUT;NO_ENGINE_PERF;_DEBUG;_TESTU</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item21">NO_TRACE;_USE_OPENGL;_USE_OPENAL;NO_ENGINE_PERF;_DEBUG;_TESTU</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item22">NO_TRACE;_USE_OPENGL;_USE_OPENAL;NO_ENGINE_PERF;_DEBUG</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item23">NO_TRACE;_USE_OPENGL;_USE_OPENAL;NO_ENGINE_PERF</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item24">_DEBUG;NO_TRACE;_USE_OPENGL;_USE_OPENAL;NO_ENGINE_PERF</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item25">_DEBUG;_TRACE;_USE_OPENGL;_USE_OPENAL;NO_ENGINE_PERF</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item26">_DEBUG;_USE_OPENGL;_USE_OPENAL;NO_ENGINE_PERF</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item27">_DEBUG;_TESTU;_USE_OPENGL;_USE_OPENAL;_PATCH_ENABLE;NO_ENGINE_PERF</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item28">_DEBUG;_TESTU;_USE_OPENGL;_USE_GLEW;_USE_OPENAL;_PATCH_ENABLE;NO_ENGINE_PERF</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item29">_DEBUG;_TESTU;_USE_OPENGL;DONT_USE_GLEW;_USE_OPENAL;_PATCH_ENABLE;NO_ENGINE_PERF</HistoryLists_hlConditionals>
+                </HistoryLists_hlConditionals>
+                <HistoryLists_hlIntOutputDir>
+                    <HistoryLists_hlIntOutputDir Name="Count">1</HistoryLists_hlIntOutputDir>
+                    <HistoryLists_hlIntOutputDir Name="Item0">temp</HistoryLists_hlIntOutputDir>
+                </HistoryLists_hlIntOutputDir>
+                <HistoryLists_hlFinalOutputDir>
+                    <HistoryLists_hlFinalOutputDir Name="Count">3</HistoryLists_hlFinalOutputDir>
+                    <HistoryLists_hlFinalOutputDir Name="Item0">Executables\</HistoryLists_hlFinalOutputDir>
+                    <HistoryLists_hlFinalOutputDir Name="Item1">bin\</HistoryLists_hlFinalOutputDir>
+                    <HistoryLists_hlFinalOutputDir Name="Item2">bin</HistoryLists_hlFinalOutputDir>
+                </HistoryLists_hlFinalOutputDir>
+                <Debugging>
+                    <Debugging Name="DebugSourceDirs">$(BCB)\source\vcl</Debugging>
+                </Debugging>
+                <Parameters>
+                    <Parameters Name="RunParams"/>
+                    <Parameters Name="HostApplication"/>
+                    <Parameters Name="RemoteHost"/>
+                    <Parameters Name="RemotePath"/>
+                    <Parameters Name="RemoteDebug">0</Parameters>
+                </Parameters>
+                <Compiler>
+                    <Compiler Name="ShowInfoMsgs">0</Compiler>
+                    <Compiler Name="LinkDebugVcl">1</Compiler>
+                    <Compiler Name="LinkCGLIB">0</Compiler>
+                </Compiler>
+                <ProjectProperties>
+                    <ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
+                    <ProjectProperties Name="ManagePaths">True</ProjectProperties>
+                    <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
+                    <ProjectProperties Name="IndexFiles">False</ProjectProperties>
+                </ProjectProperties>
+                <Source>
+                    <Source Name="MainSource">Caprice.cpp</Source>
+                </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k200.bpl">Package Serveurs Office 2000 Embarcadero C++Builder</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp200.bpl">Package Serveurs Office XP Embarcadero C++Builder</Excluded_Packages>
+                </Excluded_Packages>
+            </CPlusPlusBuilder.Personality>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+            <ModelSupport>True</ModelSupport>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+    <Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')"/>
+</Project>

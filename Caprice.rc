@@ -1,0 +1,3 @@
+ROMAmsdos RCDATA "Resources\\Amstrad ROMs\\ROMAMSDOS.bin"
+ROMCPC6128_UK RCDATA "Resources\\Amstrad ROMs\\ROMCPC6128_UK.bin"
+ROMSiliconDisk13 RCDATA "Resources\\Amstrad ROMs\\ROMSILICONDISK13.bin"

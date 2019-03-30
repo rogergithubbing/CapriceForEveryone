@@ -1,0 +1,7 @@
+*.local
+*.dsk
+*.~*
+*.tvsconfig
+Executables/*
+*.stat
+!Executables/glew32.dll

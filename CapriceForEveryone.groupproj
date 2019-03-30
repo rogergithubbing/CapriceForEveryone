@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F87C72E1-6932-4AB1-8A7D-F3CFB337948E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CPCEngineLib.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Caprice.cbproj">
+            <Dependencies>CPCEngineLib.cbproj</Dependencies>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CPCEngineLib">
+        <MSBuild Projects="CPCEngineLib.cbproj"/>
+    </Target>
+    <Target Name="CPCEngineLib:Clean">
+        <MSBuild Projects="CPCEngineLib.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CPCEngineLib:Make">
+        <MSBuild Projects="CPCEngineLib.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Caprice" DependsOnTargets="CPCEngineLib">
+        <MSBuild Projects="Caprice.cbproj"/>
+    </Target>
+    <Target Name="Caprice:Clean" DependsOnTargets="CPCEngineLib:Clean">
+        <MSBuild Projects="Caprice.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Caprice:Make" DependsOnTargets="CPCEngineLib:Make">
+        <MSBuild Projects="Caprice.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CPCEngineLib;Caprice"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CPCEngineLib:Clean;Caprice:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CPCEngineLib:Make;Caprice:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
