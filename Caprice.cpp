@@ -4,38 +4,39 @@
 #include <tchar.h>
 
 //---------------------------------------------------------------------------
+USEFORM("Sources\Windows\Forms_XE3\TFormDebugGraphicsExplorer.cpp", FormGraphicsExplorer);
+USEFORM("Sources\Windows\Forms_XE3\TFormPrinter.cpp", FormPrinter);
 USEFORM("Sources\Windows\Forms_XE3\TFormZIPCatalog.cpp", FormZIPCatalog);
+USEFORM("Sources\Windows\Forms_XE3\TFormGameControllerSettings.cpp", FormGameControllerSettings);
+USEFORM("Sources\Windows\Forms_XE3\TFormHints.cpp", FormHints);
 USEFORM("Sources\Windows\Forms_XE3\TFormKeyboardMapping.cpp", FormKeyboardMapping);
 USEFORM("Sources\Windows\Forms_XE3\TFormMain.cpp", FormMain);
-USEFORM("Sources\Windows\Forms_XE3\TFormPrinter.cpp", FormPrinter);
-USEFORM("Sources\Windows\Forms_XE3\TFormHints.cpp", FormHints);
+USEFORM("Sources\Windows\Forms_XE3\TFormDebugGraphicsExplorer.cpp", FormDebugGraphicsExplorer);
+USEFORM("Sources\Windows\Forms_XE3\TFormDebugMEA8000.cpp", FormDebugMEA8000);
 USEFORM("Sources\Windows\Forms_XE3\TFormDebugMemoryEditor.cpp", FormDebugMemoryEditor);
 USEFORM("Sources\Windows\Forms_XE3\TFormDebugPSG.cpp", FormDebugPSG);
-USEFORM("Sources\Windows\Forms_XE3\TFormDebugTapeAudioWorkshop.cpp", FormDebugTapeAudioWorkshop);
-USEFORM("Sources\Windows\Forms_XE3\TFormDebugMEA8000.cpp", FormDebugMEA8000);
+USEFORM("Sources\Windows\Forms_XE3\TFormDebugGameController.cpp", FormDebugGameController);
+USEFORM("Sources\Windows\Forms_XE3\TFormDebugGateArray.cpp", FormDebugGateArray);
 USEFORM("Sources\Windows\Forms_XE3\TFormDebugger.cpp", FormDebugger);
 USEFORM("Sources\Windows\Forms_XE3\TFormDebugGraphicsEditor.cpp", FormDebugGraphicsEditor);
-USEFORM("Sources\Windows\Forms_XE3\TFormDebugGraphicsExplorer.cpp", FormGraphicsExplorer);
-USEFORM("Sources\Windows\Forms_XE3\TFormDebugTextCapture.cpp", FormDebugTextCapture);
+USEFORM("Sources\Windows\Forms_XE3\TFormDisplaySettings.cpp", FormDisplaySettings);
+USEFORM("Sources\Windows\Forms_XE3\TFormDragDropDrives.cpp", FormDragDropDrives);
 USEFORM("Sources\Windows\Forms_XE3\TFormEditKeycode.cpp", FormEditKeycode);
 USEFORM("Sources\Windows\Forms_XE3\TFormEmulatorSettings.cpp", FormEmulatorSettings);
-USEFORM("Sources\Windows\Forms_XE3\TFormGameControllerSettings.cpp", FormGameControllerSettings);
-USEFORM("Sources\Windows\Forms_XE3\TFormDragDropDrives.cpp", FormDragDropDrives);
+USEFORM("Sources\Windows\Forms_XE3\TFormDebugTapeAudioWorkshop.cpp", FormDebugTapeAudioWorkshop);
+USEFORM("Sources\Windows\Forms_XE3\TFormDebugTextCapture.cpp", FormDebugTextCapture);
 USEFORM("Sources\Windows\Forms_XE3\TFormDebugZ80Editor.cpp", FormDebugZ80Editor);
 USEFORM("Sources\Windows\Forms_XE3\TFormDiskCatalog.cpp", FormDiskCatalog);
-USEFORM("Sources\Windows\Forms_XE3\TFormDisplaySettings.cpp", FormDisplaySettings);
-USEFORM("Sources\Windows\Forms_XE3\TFormDebugGateArray.cpp", FormDebugGateArray);
+USEFORM("Sources\Windows\Forms_XE3\TFormDebugFDC.cpp", FormDebugFDC);
 USEFORM("Sources\Windows\Forms_XE3\TFormAbout.cpp", FormAbout);
+USEFORM("Sources\Windows\Forms_XE3\TFormDebugCDTViewer.cpp", FormDebugCDTViewer);
+USEFORM("Sources\Windows\Forms_XE3\TFormDebugCRTC.cpp", FormDebugCRTC);
+USEFORM("Sources\Windows\Forms_XE3\TFormDebugDSKViewer.cpp", FormDebugDSKViewer);
+USEFORM("Sources\Windows\Forms_XE3\TFormDebugEditValue.cpp", FormDebugEditValue);
 USEFORM("Sources\Windows\Forms_XE3\TFormAudioSettings.cpp", FormAudioSettings);
 USEFORM("Sources\Windows\Forms_XE3\TFormCheatScripts.cpp", FormCheatScripts);
 USEFORM("Sources\Windows\Forms_XE3\TFormCustomSpeed.cpp", FormCustomSpeed);
-USEFORM("Sources\Windows\Forms_XE3\TFormDebugEditValue.cpp", FormDebugEditValue);
-USEFORM("Sources\Windows\Forms_XE3\TFormDebugFDC.cpp", FormDebugFDC);
-USEFORM("Sources\Windows\Forms_XE3\TFormDebugGameController.cpp", FormDebugGameController);
-USEFORM("Sources\Windows\Forms_XE3\TFormDebugDSKViewer.cpp", FormDebugDSKViewer);
 USEFORM("Sources\Windows\Forms_XE3\TFormDebugBASICColors.cpp", FormDebugBASICColors);
-USEFORM("Sources\Windows\Forms_XE3\TFormDebugCDTViewer.cpp", FormDebugCDTViewer);
-USEFORM("Sources\Windows\Forms_XE3\TFormDebugCRTC.cpp", FormDebugCRTC);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -74,7 +75,6 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->CreateForm(__classid(TFormPrinter), &FormPrinter);
 		Application->CreateForm(__classid(TFormCheatScripts), &FormCheatScripts);
 		Application->CreateForm(__classid(TFormGameControllerSettings), &FormGameControllerSettings);
-
 		Application->Run();
 	}
 	catch (Exception &exception)
