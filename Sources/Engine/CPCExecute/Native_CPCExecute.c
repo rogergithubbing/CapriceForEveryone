@@ -424,7 +424,7 @@ static INLINE tVoid MemSetLong(tULong* destP,
 // TestU
 //
 #ifdef _TESTU
-static tUShort PerformTestU(tNativeCPC* NativeCPC);
+//static tUShort PerformTestU(tNativeCPC* NativeCPC);
 #endif /* _TESTU */
 
 
@@ -17968,5776 +17968,5779 @@ static INLINE tVoid MemSetLong(tULong* destP,
 // Unitary Tests
 //
 //==============================================================================
-#ifdef _TESTU
-
-// Prototypes of TestU fonctions
-static tUShort TestU_MemSetByte_1(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_MemSetLong_1(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_MemMoveByte_1(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_Compiler_1(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_Compiler_2(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_Compiler_3(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_Compiler_4(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_ADC(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_ADC_MIX(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_ADC16(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_ADD(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_ADD16(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_AND(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_BIT(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_CALL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_CCF(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_CP(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_CPD(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_DEC(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_DEC_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_DEC_MIX(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_EX_SP(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_EXX(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_INC(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_INC_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_INC_MIX(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_JP(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_JR(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_LD16_MEM(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_LDMEM_16(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_OR(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_POP(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_PUSH(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RES(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RES_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RES_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RET(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RL_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RLA(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RLC(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RLC_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RLC_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RLCA(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RLD(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RR(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RR_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RRA(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RRC(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RRC_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RRC_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RRCA(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RRD(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_RST(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SBC(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SBC16(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SET(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SET_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SET_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SLA(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SLA_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SLA_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SLL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SLL_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SLL_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SRA(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SRA_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SRA_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SRL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SRL_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SRL_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_SUB(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_XOR(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_math_fabs(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_math_cos(tNativeCPC* NativeCPC, tUChar NoTest);
-static tUShort TestU_PlayCity_YMZFreq(tNativeCPC* NativeCPC, tUChar NoTest);
-
-
-static tUShort PerformTestU(tNativeCPC* NativeCPC)
-/***********************************************************************
- *
- *  PerformTestU
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort Result = errNone;
-
-  if (Result == errNone) Result = TestU_MemSetByte_1(NativeCPC, 1);
-  if (Result == errNone) Result = TestU_MemSetLong_1(NativeCPC, 2);
-  if (Result == errNone) Result = TestU_MemMoveByte_1(NativeCPC, 3);
-  if (Result == errNone) Result = TestU_Compiler_1(NativeCPC, 4);
-  if (Result == errNone) Result = TestU_Compiler_2(NativeCPC, 5);
-  if (Result == errNone) Result = TestU_Compiler_3(NativeCPC, 6);
-  if (Result == errNone) Result = TestU_Compiler_4(NativeCPC, 7);
-
-  /* Z80 Instructions */
-  if (Result == errNone) Result = TestU_ADC(NativeCPC, 20);
-  if (Result == errNone) Result = TestU_ADC_MIX(NativeCPC, 21);
-  if (Result == errNone) Result = TestU_ADC16(NativeCPC, 22);
-  if (Result == errNone) Result = TestU_ADD(NativeCPC, 23);
-  if (Result == errNone) Result = TestU_ADD16(NativeCPC, 24);
-  if (Result == errNone) Result = TestU_AND(NativeCPC, 25);
-  if (Result == errNone) Result = TestU_BIT(NativeCPC, 26);
-  if (Result == errNone) Result = TestU_CALL(NativeCPC, 27);
-  if (Result == errNone) Result = TestU_CCF(NativeCPC, 28);
-  if (Result == errNone) Result = TestU_CP(NativeCPC, 29);
-  if (Result == errNone) Result = TestU_CPD(NativeCPC, 30);
-  if (Result == errNone) Result = TestU_DEC(NativeCPC, 31);
-  if (Result == errNone) Result = TestU_DEC_MHL(NativeCPC, 32);
-  if (Result == errNone) Result = TestU_DEC_MIX(NativeCPC, 33);
-  if (Result == errNone) Result = TestU_EX_SP(NativeCPC, 34);
-  if (Result == errNone) Result = TestU_EXX(NativeCPC, 35);
-  if (Result == errNone) Result = TestU_INC(NativeCPC, 36);
-  if (Result == errNone) Result = TestU_INC_MHL(NativeCPC, 37);
-  if (Result == errNone) Result = TestU_INC_MIX(NativeCPC, 38);
-  if (Result == errNone) Result = TestU_JP(NativeCPC, 39);
-  if (Result == errNone) Result = TestU_JR(NativeCPC, 40);
-  if (Result == errNone) Result = TestU_LD16_MEM(NativeCPC, 41);
-  if (Result == errNone) Result = TestU_LDMEM_16(NativeCPC, 42);
-  if (Result == errNone) Result = TestU_OR(NativeCPC, 43);
-  if (Result == errNone) Result = TestU_POP(NativeCPC, 44);
-  if (Result == errNone) Result = TestU_PUSH(NativeCPC, 45);
-  if (Result == errNone) Result = TestU_RES(NativeCPC, 46);
-  if (Result == errNone) Result = TestU_RES_MHL(NativeCPC, 47);
-  if (Result == errNone) Result = TestU_RES_REG_ADDR(NativeCPC, 48);
-  if (Result == errNone) Result = TestU_RET(NativeCPC, 49);
-  if (Result == errNone) Result = TestU_RL(NativeCPC, 50);
-  if (Result == errNone) Result = TestU_RL_MHL(NativeCPC, 51);
-  if (Result == errNone) Result = TestU_RLA(NativeCPC, 52);
-  if (Result == errNone) Result = TestU_RLC(NativeCPC, 53);
-  if (Result == errNone) Result = TestU_RLC_MHL(NativeCPC, 54);
-  if (Result == errNone) Result = TestU_RLC_REG_ADDR(NativeCPC, 55);
-  if (Result == errNone) Result = TestU_RLCA(NativeCPC, 56);
-  if (Result == errNone) Result = TestU_RLD(NativeCPC, 57);
-  if (Result == errNone) Result = TestU_RR(NativeCPC, 58);
-  if (Result == errNone) Result = TestU_RR_MHL(NativeCPC, 59);
-  if (Result == errNone) Result = TestU_RRA(NativeCPC, 60);
-  if (Result == errNone) Result = TestU_RRC(NativeCPC, 61);
-  if (Result == errNone) Result = TestU_RRC_MHL(NativeCPC, 62);
-  if (Result == errNone) Result = TestU_RRC_REG_ADDR(NativeCPC, 63);
-  if (Result == errNone) Result = TestU_RRCA(NativeCPC, 64);
-  if (Result == errNone) Result = TestU_RRD(NativeCPC, 65);
-  if (Result == errNone) Result = TestU_RST(NativeCPC, 66);
-  if (Result == errNone) Result = TestU_SBC(NativeCPC, 67);
-  if (Result == errNone) Result = TestU_SBC16(NativeCPC, 68);
-  if (Result == errNone) Result = TestU_SET(NativeCPC, 69);
-  if (Result == errNone) Result = TestU_SET_MHL(NativeCPC, 70);
-  if (Result == errNone) Result = TestU_SET_REG_ADDR(NativeCPC, 71);
-  if (Result == errNone) Result = TestU_SLA(NativeCPC, 72);
-  if (Result == errNone) Result = TestU_SLA_MHL(NativeCPC, 73);
-  if (Result == errNone) Result = TestU_SLA_REG_ADDR(NativeCPC, 74);
-  if (Result == errNone) Result = TestU_SLL(NativeCPC, 75);
-  if (Result == errNone) Result = TestU_SLL_MHL(NativeCPC, 76);
-  if (Result == errNone) Result = TestU_SLL_REG_ADDR(NativeCPC, 77);
-  if (Result == errNone) Result = TestU_SRA(NativeCPC, 78);
-  if (Result == errNone) Result = TestU_SRA_MHL(NativeCPC, 79);
-  if (Result == errNone) Result = TestU_SRA_REG_ADDR(NativeCPC, 80);
-  if (Result == errNone) Result = TestU_SRL(NativeCPC, 81);
-  if (Result == errNone) Result = TestU_SRL_MHL(NativeCPC, 82);
-  if (Result == errNone) Result = TestU_SRL_REG_ADDR(NativeCPC, 83);
-  if (Result == errNone) Result = TestU_SUB(NativeCPC, 84);
-  if (Result == errNone) Result = TestU_XOR(NativeCPC, 85);
-
-  // MathLib
-  if (Result == errNone) Result = TestU_math_fabs(NativeCPC, 100);
-  if (Result == errNone) Result = TestU_math_cos(NativeCPC, 101);
-
-  // PlayCity
-  if (Result == errNone) Result = TestU_PlayCity_YMZFreq(NativeCPC, 102);
-
-  //
-  // Z80 Instructions Cycle count
-  //
-  // Initialise motor conditions
-  NativeCPC->FirstInitToPerform = 0;
-  fdc_init(NativeCPC);
-  video_init(NativeCPC);
-  audio_init(NativeCPC);
-#ifdef __WIN32__
-  NativeCPC->Z80OUTHandlerPtr = z80_OUT_handler;
-  NativeCPC->SetAYRegisterPtr = (tSetAYRegisterPtr)audio_set_AY_Register;
-#endif /* __WIN32__ */
-
-
-  // All tests OK. Reset CPU */
-  if (Result == errNone)
-  {
-    // Reset Z80 registers (see Z80Reset)
-    MemSetByte((tUChar*)&Z80->Regs,
-               sizeof(tZ80Regs),
-               0); // clear result codes buffer
-
-    // clear all memory used for CPC RAM
-    MemSetByte((tUChar*)NativeCPC->pbRAM,
-               ((tULong)NativeCPC->ram_size*1024),
-               0);
-
-    _IX = _IY = 0xffff; // IX and IY are FFFF after a reset!
-    _F = Zflag; // set zero flag
-    Z80->Regs.breakpoint = 0xffffffff; // clear break point
-
-    NativeCPC->FirstInitToPerform = 1;
-  }
-
-  return (Result);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_MemSetByte_1(tNativeCPC* NativeCPC,
-                                  tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_MemSetByte_1
- *
- ***********************************************************************/
-{
-tUShort TestResult = errNone;
-tUChar ArrayA[100];
-tUChar Loop;
-
-  NOT_USED(NativeCPC);
-
-  // Prepare conditions
-  for (Loop=0; Loop<100; Loop++)
-    ArrayA[Loop] = 0x55;
-
-  // Perform operation
-  MemSetByte(ArrayA,
-             95,
-             0xAA);
-
-  // Check Result
-  for (Loop=0; Loop<95; Loop++)
-  {
-    if (ArrayA[Loop] != 0xAA)
-      TestResult=testUErrorClass+NoTest;
-  }
-  for (Loop=95; Loop<100; Loop++)
-  {
-    if (ArrayA[Loop] != 0x55)
-      TestResult=testUErrorClass+NoTest;
-  }
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_MemSetLong_1(tNativeCPC* NativeCPC,
-                                  tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_MemSetLong_1
- *
- ***********************************************************************/
-{
-tUShort TestResult = errNone;
-tULong ArrayA[100];
-tUChar Loop;
-
-  NOT_USED(NativeCPC);
-
-  // Prepare conditions
-  for (Loop=0; Loop<100; Loop++)
-    ArrayA[Loop] = 0x55;
-
-  // Perform operation
-  MemSetLong(ArrayA,
-             95,
-             0xAA);
-
-  // Check Result
-  for (Loop=0; Loop<95; Loop++)
-  {
-    if (ArrayA[Loop] != 0xAA)
-      TestResult=testUErrorClass+NoTest;
-  }
-  for (Loop=95; Loop<100; Loop++)
-  {
-    if (ArrayA[Loop] != 0x55)
-      TestResult=testUErrorClass+NoTest;
-  }
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_MemMoveByte_1(tNativeCPC* NativeCPC,
-                                   tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_MemMoveByte_1
- *
- ***********************************************************************/
-{
-tUShort TestResult = errNone;
-tUChar SrcArrayA[100];
-tUChar DstArrayA[100];
-tUChar Loop;
-
-  NOT_USED(NativeCPC);
-
-  // Prepare conditions
-  for (Loop=0; Loop<100; Loop++)
-  {
-    SrcArrayA[Loop] = 0x55;
-    DstArrayA[Loop] = 0xAA;
-  }
-
-  // Perform operation
-  MemMoveByte(DstArrayA,
-              SrcArrayA,
-              95);
-
-  // Check Result
-  for (Loop=0; Loop<100; Loop++)
-  {
-    if (SrcArrayA[Loop] != 0x55)
-      TestResult=testUErrorClass+NoTest;
-  }
-  for (Loop=0; Loop<95; Loop++)
-  {
-    if (DstArrayA[Loop] != 0x55)
-      TestResult=testUErrorClass+NoTest;
-  }
-  for (Loop=95; Loop<100; Loop++)
-  {
-    if (DstArrayA[Loop] != 0xAA)
-      TestResult=testUErrorClass+NoTest;
-  }
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_Compiler_1(tNativeCPC* NativeCPC,
-                                tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_Compiler_1
- *
- ***********************************************************************/
-{
-tUShort TestResult = errNone;
-tLong longValue;
-tChar charValue;
-
-  NOT_USED(NativeCPC);
-
-  // Test 1 : signed char => signed long
-
-  // Prepare conditions
-  charValue = -116;
-
-  // Perform operation
-  longValue = (tLong)charValue;
-
-  // Check Result
-  if (longValue != -116)
-  {
-    TestResult=testUErrorClass+NoTest;
-  }
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_Compiler_2(tNativeCPC* NativeCPC,
-                                tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_Compiler_2
- *
- ***********************************************************************/
-{
-tUShort TestResult = errNone;
-tULong ulongValue;
-tUChar ucharValue;
-
-  NOT_USED(NativeCPC);
-
-  // Test 2 : unsigned char => unsigned long
-
-  // Prepare conditions
-  ucharValue = 140;
-
-  // Perform operation
-  ulongValue = (tULong)ucharValue;
-
-  // Check Result
-  if (ulongValue != 140)
-  {
-    TestResult=testUErrorClass+NoTest;
-  }
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_Compiler_3(tNativeCPC* NativeCPC,
-                                tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_Compiler_3
- *
- ***********************************************************************/
-{
-tUShort TestResult = errNone;
-tLong longValue;
-tUChar ucharValue;
-
-  NOT_USED(NativeCPC);
-
-  // Test 3 : unsigned char => signed long
-  //
-  // ATTENTION : unsigned char <> signed long
-  //
-
-  // Prepare conditions
-  ucharValue = (tUChar)-116;
-
-  // Perform operation
-  longValue = (tLong)ucharValue;
-
-  // Check Result
-  if (longValue != 140)
-  {
-    TestResult=testUErrorClass+NoTest;
-  }
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_Compiler_4(tNativeCPC* NativeCPC,
-                                tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_Compiler_4
- *
- ***********************************************************************/
-{
-tUShort TestResult = errNone;
-tULong ulongValue;
-tChar charValue;
-
-  NOT_USED(NativeCPC);
-
-  // Test 4 : signed char => unsigned long
-  //
-  // ATTENTION : signed char <> unsigned long
-  //
-
-  // Prepare conditions
-  charValue = (tChar)0x8c;
-
-  // Perform operation
-  ulongValue = (tULong)charValue;
-
-  // Check Result
-  if (ulongValue != 0xffffff8c)
-  {
-    TestResult=testUErrorClass+NoTest;
-  }
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
 
 //
-// Z80 Instructions Unitary Tests
+//#ifdef _TESTU
 //
-// Flags:
-// ======
-// - Sflag : The  sign  flag is used to indicate whether  in  twos  complement
-//           notation  a number is negative or positive.  (see chapter 16  for
-//           more  about two's complement) Thus if the number is  negative  (-
-//           128 to -1)  then  the  sign flag is set to 1.  If the  number  is
-//           positive (0 to 127) then the sign flag is reset to 0.
-// - Zflag : The Z flag is set to 1 of the result of an operation is 0. If the
-//           result  is other than 0 then the Z flag is reset to 0.
-// - Hflag : Half carry. The H flag indicates a  carry  from  bit 3 in addition,
-//           and a borrow from  bit  4  in subtraction in 8 bit operations.
-//           A carry from bit 11 in addition and a borrow from bit 12 in
-//           16 bit operations. Only used by DAA
-// - Pflag : Parity.  The  parity of a byte is the number of 1's the byte  has
-//           when  it  is  represented  in binary.  43 decimal  in  binary  is
-//           00101011,  which  has  4  1's.  If  the number  of  1's  is  even
-//           (including 0) then the byte has even parity and the P flag is set
-//           to  1.  59  in binary is 00111110 which has 5 1's and thus the  P
-//           flag  is  set to 0.  The instructions which use the P flag  as  a
-//           parity flag are indicated in the table.
-// - Vflag : Overflow. This is the other major use for the P flag. Most of the
-//           arithmetic instructions use the P flag as an overflow  flag,  and
-//           this is why the flag is sometimes written as P/V. Overflow occurs
-//           when,  during  a  two's complement addition the result  in  two's
-//           complement is >127 or <-128. If this error condition occurs the
-//           P flag is set to 1, otherwise it is set to 0.
-// - Nflag : Negative. The N flag is 0 after an add and 1 after a subtract.
-// - Cflag : The  carry  flag  is used to indicate whether the  result  of  an
-//           operation (in decimal) was greater than 255 or less than 0.
+//// Prototypes of TestU fonctions
+//static tUShort TestU_MemSetByte_1(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_MemSetLong_1(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_MemMoveByte_1(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_Compiler_1(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_Compiler_2(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_Compiler_3(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_Compiler_4(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_ADC(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_ADC_MIX(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_ADC16(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_ADD(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_ADD16(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_AND(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_BIT(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_CALL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_CCF(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_CP(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_CPD(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_DEC(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_DEC_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_DEC_MIX(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_EX_SP(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_EXX(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_INC(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_INC_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_INC_MIX(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_JP(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_JR(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_LD16_MEM(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_LDMEM_16(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_OR(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_POP(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_PUSH(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RES(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RES_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RES_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RET(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RL_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RLA(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RLC(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RLC_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RLC_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RLCA(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RLD(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RR(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RR_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RRA(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RRC(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RRC_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RRC_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RRCA(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RRD(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_RST(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SBC(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SBC16(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SET(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SET_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SET_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SLA(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SLA_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SLA_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SLL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SLL_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SLL_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SRA(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SRA_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SRA_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SRL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SRL_MHL(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SRL_REG_ADDR(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_SUB(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_XOR(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_math_fabs(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_math_cos(tNativeCPC* NativeCPC, tUChar NoTest);
+//static tUShort TestU_PlayCity_YMZFreq(tNativeCPC* NativeCPC, tUChar NoTest);
 //
-// ----------------------------------------------------------------
-// | F        |-*01? |Flag unaffected/affected/reset/set/unknown  |
-// | S        |S     |Sign flag (Bit 7)                           |
-// | Z        | Z    |Zero flag (Bit 6)                           |
-// | HC       |  H   |Half Carry flag (Bit 4)                     |
-// | P/V      |   P  |Parity/Overflow flag (Bit 2, V=overflow)    |
-// | N        |    N |Add/Subtract flag (Bit 1)                   |
-// | CY       |     C|Carry flag (Bit 0)                          |
-// |----------+------+--------------------------------------------|
-// | n               |Immediate addressing                        |
-// | nn              |Immediate extended addressing               |
-// | e               |Relative addressing (PC=PC+2+offset)        |
-// | [nn]            |Extended addressing                         |
-// | [xx+d]          |Indexed addressing                          |
-// | r               |Register addressing                         |
-// | [rr]            |Register indirect addressing                |
-// |                 |Implied addressing                          |
-// | b               |Bit addressing                              |
-// | p               |Modified page zero addressing (see RST)     |
-// |-----------------+--------------------------------------------|
-// |DEFB n(,...)     |Define Byte(s)                              |
-// |DEFB 'str'(,...) |Define Byte ASCII string(s)                 |
-// |DEFS nn          |Define Storage Block                        |
-// |DEFW nn(,...)    |Define Word(s)                              |
-// |-----------------+--------------------------------------------|
-// | A  B  C  D  E   |Registers (8-bit)                           |
-// | AF  BC  DE  HL  |Register pairs (16-bit)                     |
-// | F               |Flag register (8-bit)                       |
-// | I               |Interrupt page address register (8-bit)     |
-// | IX IY           |Index registers (16-bit)                    |
-// | PC              |Program Counter register (16-bit)           |
-// | R               |Memory Refresh register                     |
-// | SP              |Stack Pointer register (16-bit)             |
-// |-----------------+--------------------------------------------|
-// | b               |One bit (0 to 7)                            |
-// | cc              |Condition (C,M,NC,NZ,P,PE,PO,Z)             |
-// | d               |One-byte expression (-128 to +127)          |
-// | dst             |Destination s, ss, [BC], [DE], [HL], [nn]   |
-// | e               |One-byte expression (-126 to +129)          |
-// | m               |Any register r, [HL] or [xx+d]              |
-// | n               |One-byte expression (0 to 255)              |
-// | nn              |Two-byte expression (0 to 65535)            |
-// | pp              |Register pair BC, DE, IX or SP              |
-// | qq              |Register pair AF, BC, DE or HL              |
-// | qq'             |Alternative register pair AF, BC, DE or HL  |
-// | r               |Register A, B, C, D, E, H or L              |
-// | rr              |Register pair BC, DE, IY or SP              |
-// | s               |Any register r, value n, [HL] or [xx+d]     |
-// | src             |Source s, ss, [BC], [DE], [HL], nn, [nn]    |
-// | ss              |Register pair BC, DE, HL or SP              |
-// | xx              |Index register IX or IY                     |
-// |-----------------+--------------------------------------------|
-// | +  -  *  /  ^   |Add/subtract/multiply/divide/exponent       |
-// | &  ~  v  x      |Logical AND/NOT/inclusive OR/exclusive OR   |
-// | <-  ->          |Rotate left/right                           |
-// | [ ]             |Indirect addressing                         |
-// | [ ]+  -[ ]      |Indirect addressing auto-increment/decrement|
-// | { }             |Combination of operands                     |
-// | #               |Also BC=BC-1,DE=DE-1                        |
-// | ##              |Only lower 4 bits of accumulator A used     |
-// ----------------------------------------------------------------
 //
-
-
-static tUShort TestU_ADC(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_ADC
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |ADC A,s   |***V0*|Add with Carry       |A=A+s+CY              |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _L = 1; // # test
-    _F = Cflag | Nflag;
-    _A = 0x18;
-    _BCdword = 0x0001A000;
-
-    // Perform operation
-    ADC(_B);
-
-    // Check Result
-    if ( (_A != 0xB9) ||
-         (_B != 0xA0) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 2; // # test
-    _F = 0;
-    _A = 0xfc;
-    _BCdword = 0x0001A000;
-
-    // Perform operation
-    ADC(_B);
-
-    // Check Result
-    if ( (_A != 0x9C) ||
-         (_B != 0xA0) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 3; // # test
-    _F = Cflag;
-    _A = 0xE0;
-    _BCdword = 0x00011F00;
-
-    // Perform operation
-    ADC(_B);
-
-    // Check Result
-    if ( (_A != 0x00) ||
-         (_B != 0x1F) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 4; // # test
-    _F = Cflag;
-    _A = 0x6f;
-    _BCdword = 0x00011000;
-
-    // Perform operation
-    ADC(_B);
-
-    // Check Result
-    if ( (_A != 0x80) ||
-         (_B != 0x10) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != Vflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_ADC_MIX(tNativeCPC* NativeCPC,
-                             tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_ADC_MIX
- *
- * ------------------------------------------------------------------
- * |Mnemonic    |SZHPNC|Description          |Notes                 |
- * |------------+------+---------------------+----------------------|
- * |ADC A,[IX+d]|***V0*|Add with Carry       |A=A+[IX+d]+CY         |
- * |ADC A,[IY+d]|***V0*|Add with Carry       |A=A+[IY+d]+CY         |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _L = 1; // # test
-    _F = 0;
-    _A = 0x00;
-    _IXdword = 0x00015000;
-    _PCdword = 0x00014000;
-    *(NativeCPC->pbRAM + _PC) = 0x40;
-    *(NativeCPC->pbRAM + _IX + 0x40) = 0x20;
-
-    // Perform operation
-    ADC_MIX;
-
-    // Check Result
-    if ( (_A != 0x20) ||
-         (_IX != 0x5000) ||
-         (_PC != 0x4001) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 2; // # test
-    _F = 0;
-    _A = 0x60;
-    _IYdword = 0x00015100;
-    _PCdword = 0x00014000;
-    *(NativeCPC->pbRAM + _PC) = 0xE0; /* 0xE0 = -20 */
-    *(NativeCPC->pbRAM + _IY - 0x20) = 0x40;
-
-    // Perform operation
-    ADC_MIY;
-
-    // Check Result
-    if ( (_A != 0xA0) ||
-         (_IY != 0x5100) ||
-         (_PC != 0x4001) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != Vflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_ADC16(tNativeCPC* NativeCPC,
-                           tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_ADC16
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |ADC HL,ss |***V0*|Add with Carry       |HL=HL+ss+CY           |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0;
-    _HLdword = 0x00010F00;
-    _DEdword = 0x0000A100;
-
-    // Perform operation
-    ADC16(DE);
-
-    // Check Result
-    if ( (_HL != 0xB000) ||
-         (_DE != 0xA100) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = Cflag;
-    _HLdword = 0x00016000;
-    _DEdword = 0x00019fff;
-
-    // Perform operation
-    ADC16(DE);
-
-    // Check Result
-    if ( (_HL != 0x0000) ||
-         (_DE != 0x9fff) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 3; // # test
-    _F = Nflag;
-    _HLdword = 0x00017000;
-    _DEdword = 0x00002000;
-
-    // Perform operation
-    ADC16(DE);
-
-    // Check Result
-    if ( (_HL != 0x9000) ||
-         (_DE != 0x2000) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != Vflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 4; // # test
-    _F = Cflag | Nflag;
-    _HLdword = 0x0000A000;
-    _DEdword = 0x0000A000;
-
-    // Perform operation
-    ADC16(DE);
-
-    // Check Result
-    if ( (_HL != 0x4001) ||
-         (_DE != 0xA000) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != Vflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_ADD(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_ADD
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |ADD A,s   |***V0*|Add                  |A=A+s                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _L = 1; // # test
-    _F = Nflag;
-    _A = 0x11;
-    _DEdword = 0x00012200;
-
-    // Perform operation
-    ADD(_D);
-
-    // Check Result
-    if ( (_A != 0x33) ||
-         (_D != 0x22) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 2; // # test
-    _F = Nflag;
-    _A = 0x80;
-    _DEdword = 0x00018000;
-
-    // Perform operation
-    ADD(_D);
-
-    // Check Result
-    if ( (_A != 0x00) ||
-         (_D != 0x80) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != Vflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 3; // # test
-    _F = Nflag;
-    _A = 0x7F;
-    _DEdword = 0x00010100;
-
-    // Perform operation
-    ADD(_D);
-
-    // Check Result
-    if ( (_A != 0x80) ||
-         (_D != 0x01) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != Vflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 4; // # test
-    _F = Nflag;
-    _A = 0xFF;
-    _DEdword = 0x00010100;
-
-    // Perform operation
-    ADD(_D);
-
-    // Check Result
-    if ( (_A != 0x00) ||
-         (_D != 0x01) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_ADD16(tNativeCPC* NativeCPC,
-                           tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_ADD16
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |ADD HL,ss |--*-0*|Add                  |HL=HL+ss              |
- * |ADD IX,pp |--*-0*|Add                  |IX=IX+pp              |
- * |ADD IY,rr |--*-0*|Add                  |IY=IY+rr              |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Nflag | Hflag;
-    _BCdword = 0x00010000;
-    _HLdword = 0x00008000;
-
-    // Perform operation
-    ADD16(HL, BC);
-
-    // Check Result
-    if ( (_HL != 0x8000) ||
-         (_BC != 0x0000) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = Sflag | Zflag | Pflag;
-    _BCdword = 0x00018000;
-    _HLdword = 0x00008000;
-
-    // Perform operation
-    ADD16(HL, BC);
-
-    // Check Result
-    if ( (_HL != 0x0000) ||
-         (_BC != 0x8000) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 3; // # test
-    _F = Nflag;
-    _BCdword = 0x00010800;
-    _HLdword = 0x00000800;
-
-    // Perform operation
-    ADD16(HL, BC);
-
-    // Check Result
-    if ( (_HL != 0x1000) ||
-         (_BC != 0x0800) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_AND(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_AND
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |AND s     |**1P00|Logical AND          |A=A&s                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _L = 1; // # test
-    _F = 0;
-    _A = 0xA5;
-    _BCdword = 0x0001A000;
-
-    // Perform operation
-    AND(_B);
-
-    // Check Result
-    if ( (_A != 0xA0) ||
-         (_B != 0xA0) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 2; // # test
-    _F = Nflag | Cflag;
-    _A = 0x5F;
-    _BCdword = 0x00011300;
-
-    // Perform operation
-    AND(_B);
-
-    // Check Result
-    if ( (_A != 0x13) ||
-         (_B != 0x13) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 3; // # test
-    _F = Nflag | Cflag;
-    _A = 0x00;
-    _BCdword = 0x00015300;
-
-    // Perform operation
-    AND(_B);
-
-    // Check Result
-    if ( (_A != 0x00) ||
-         (_B != 0x53) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_BIT(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_BIT
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |BIT b,m   |?*1?0-|Test Bit             |m&{2^b}               |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Zflag | Cflag;
-    _BCdword = 0x00014000;
-
-    // Perform operation
-    BIT(6, _B);
-
-    // Check Result
-    if ( (_B != 0x40) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0;
-    _BCdword = 0x00014000;
-
-    // Perform operation
-    BIT(5, _B);
-
-    // Check Result
-    if ( (_B != 0x40) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_CALL(tNativeCPC* NativeCPC,
-                          tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_CALL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |CALL nn   |------|Unconditional Call   |-[SP]=PC,PC=nn        |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xAA;
-    _PCdword = 0x00014000;
-    _SPdword = 0x00015800;
-    *(NativeCPC->pbRAM + _PC + 0) = 0xFF;
-    *(NativeCPC->pbRAM + _PC + 1) = 0x42;
-    *(NativeCPC->pbRAM + _SP - 1) = 0xAA;
-    *(NativeCPC->pbRAM + _SP - 2) = 0x55;
-
-    // Perform operation
-    CALL;
-
-    // Check Result
-    if ( (_PC != 0x42FF) ||
-         (_SP != 0x57FE) ||
-         (*(NativeCPC->pbRAM + _SP + 0) != 0x02) ||
-         (*(NativeCPC->pbRAM + _SP + 1) != 0x40) ||
-         (_F != 0xAA) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x55;
-    _PCdword = 0x00014001;
-    _SPdword = 0x00012FFF;
-    *(NativeCPC->pbRAM + _PC + 0) = 0xFF;
-    *(NativeCPC->pbRAM + _PC + 1) = 0x42;
-    *(NativeCPC->pbRAM + _SP - 1) = 0xAA;
-    *(NativeCPC->pbRAM + _SP - 2) = 0x55;
-
-    // Perform operation
-    CALL;
-
-    // Check Result
-    if ( (_PC != 0x42FF) ||
-         (_SP != 0x2FFD) ||
-         (*(NativeCPC->pbRAM + _SP + 0) != 0x03) ||
-         (*(NativeCPC->pbRAM + _SP + 1) != 0x40) ||
-         (_F != 0x55) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_CCF(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_CCF
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |CCF       |--?-0*|Complement Carry Flag|CY=~CY                |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Sflag | Zflag | Pflag | Nflag;
-
-    // Perform operation
-    CCF;
-
-    // Check Result
-    if ( ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = Nflag | Cflag;
-
-    // Perform operation
-    CCF;
-
-    // Check Result
-    if ( ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_CP(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_CP
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |CP s      |***V1*|Compare              |A-s                   |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _L = 1; // # test
-    _A = 0x00;
-    _BCdword = 0x0001A000;
-
-    // Perform operation
-    CP(_B);
-
-    // Check Result
-    if ( (_A != 0x00) ||
-         (_B != 0xA0) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 2; // # test
-    _A = 0xA0;
-    _BCdword = 0x0001A000;
-
-    // Perform operation
-    CP(_B);
-
-    // Check Result
-    if ( (_A != 0xA0) ||
-         (_B != 0xA0) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 3; // # test
-    _A = 0xA0;
-    _BCdword = 0x00018000;
-
-    // Perform operation
-    CP(_B);
-
-    // Check Result
-    if ( (_A != 0xA0) ||
-         (_B != 0x80) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 4; // # test
-    _A = 0xF0;
-    _BCdword = 0x00013800;
-
-    // Perform operation
-    CP(_B);
-
-    // Check Result
-    if ( (_A != 0xF0) ||
-         (_B != 0x38) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 5; // # test
-    _A = 0x90;
-    _BCdword = 0x00013000;
-
-    // Perform operation
-    CP(_B);
-
-    // Check Result
-    if ( (_A != 0x90) ||
-         (_B != 0x30) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != Vflag) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_CPD(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_CPD
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |CPD       |****1-|Compare and Decrement|A-[HL],HL=HL-1,BC=BC-1|
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _D = 1; // # test
-    _F = 0;
-    _A = 0xF0;
-    _BCdword = 0x00011000;
-    _HLdword = 0x00014200;
-    *(NativeCPC->pbRAM + _HL + 0) = 0xE1;
-
-    // Perform operation
-    CPD;
-
-    // Check Result
-    if ( (_A != 0xF0) ||
-         (_BC != 0x0FFF) ||
-         (_HL != 0x41FF) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != Vflag) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _D = 2; // # test
-    _F = Cflag;
-    _A = 0xAA;
-    _BCdword = 0x00010001;
-    _HLdword = 0x00014100;
-    *(NativeCPC->pbRAM + _HL + 0) = 0xAA;
-
-    // Perform operation
-    CPD;
-
-    // Check Result
-    if ( (_A != 0xAA) ||
-         (_BC != 0x0000) ||
-         (_HL != 0x40FF) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_DEC(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_DEC
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |DEC s     |***V1-|Decrement            |s=s-1                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0;
-    _BCdword = 0x00011000;
-
-    // Perform operation
-    DEC(_B);
-
-    // Check Result
-    if ( (_B != 0x0F) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = Cflag;
-    _BCdword = 0x00010000;
-
-    // Perform operation
-    DEC(_B);
-
-    // Check Result
-    if ( (_B != 0xFF) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 3; // # test
-    _F = 0;
-    _BCdword = 0x00010100;
-
-    // Perform operation
-    DEC(_B);
-
-    // Check Result
-    if ( (_B != 0x00) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 4; // # test
-    _F = Cflag;
-    _BCdword = 0x00018000;
-
-    // Perform operation
-    DEC(_B);
-
-    // Check Result
-    if ( (_B != 0x7F) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != Vflag) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_DEC_MHL(tNativeCPC* NativeCPC,
-                             tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_DEC_MHL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |DEC [HL]  |***V1-|Decrement            |[HL]=[HL]-1           |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0x0;
-    _HLdword = 0x00014455;
-    *(NativeCPC->pbRAM + _HL) = 0x11;
-
-    // Perform operation
-    DEC_MHL;
-
-    // Check Result
-    if ( (_HL != 0x4455) ||
-         (*(NativeCPC->pbRAM + _HL) != 0x10) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_DEC_MIX(tNativeCPC* NativeCPC,
-                             tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_DEC_MIX
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |DEC [IX+d]|***V1-|Decrement            |[IX+d]=[IX+d]-1       |
- * |DEC [IY+d]|***V1-|Decrement            |[IY+d]=[IY+d]-1       |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0x0;
-    _IXdword = 0x00015000;
-    _PCdword = 0x00014000;
-    *(NativeCPC->pbRAM + _PC) = 0x40;
-    *(NativeCPC->pbRAM + _IX + 0x40) = 0x20;
-
-    // Perform operation
-    DEC_MIX;
-
-    // Check Result
-    if ( (_PC != 0x4001) ||
-         (_IX != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IX + 0x40) != 0x1F) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x0;
-    _IYdword = 0x00015000;
-    _PCdword = 0x00014000;
-    *(NativeCPC->pbRAM + _PC) = 0xE0; /* 0xE0 = -20 */
-    *(NativeCPC->pbRAM + _IY - 0x20) = 0x20;
-
-    // Perform operation
-    DEC_MIY;
-
-    // Check Result
-    if ( (_PC != 0x4001) ||
-         (_IY != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IY - 0x20) != 0x1F) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_EX_SP(tNativeCPC* NativeCPC,
-                           tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_EX_SP
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |EX [SP],HL|------|Exchange             |[SP]<->HL             |
- * |EX [SP],xx|------|Exchange             |[SP]<->xx             |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xAA;
-    _SPdword = 0x000157FE;
-    _HLdword = 0x00014455;
-    *(NativeCPC->pbRAM + _SP + 0) = 0x11;
-    *(NativeCPC->pbRAM + _SP + 1) = 0x22;
-
-    // Perform operation
-    EX_SP(HL);
-
-    // Check Result
-    if ( (_SP != 0x57FE) ||
-         (_HL != 0x2211) ||
-         (*(NativeCPC->pbRAM + _SP + 0) != 0x55) ||
-         (*(NativeCPC->pbRAM + _SP + 1) != 0x44) ||
-         (_F != 0xAA) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x55;
-    _SPdword = 0x000157FF;
-    _HLdword = 0x00014455;
-    *(NativeCPC->pbRAM + _SP + 0) = 0x11;
-    *(NativeCPC->pbRAM + _SP + 1) = 0x22;
-
-    // Perform operation
-    EX_SP(HL);
-
-    // Check Result
-    if ( (_SP != 0x57FF) ||
-         (_HL != 0x2211) ||
-         (*(NativeCPC->pbRAM + _SP + 0) != 0x55) ||
-         (*(NativeCPC->pbRAM + _SP + 1) != 0x44) ||
-         (_F != 0x55) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_EXX(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_EXX
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |EXX       |------|Exchange             |qq<->qq'   (except AF)|
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _AFdword = 0x000155AA;
-    _BCdword = 0x00010123;
-    _DEdword = 0x00014567;
-    _HLdword = 0x000189AB;
-    Z80->Regs.AFx.w.l = 0x1111;
-    Z80->Regs.BCx.w.l = 0x2222;
-    Z80->Regs.DEx.w.l = 0x3333;
-    Z80->Regs.HLx.w.l = 0x4444;
-
-    // Perform operation
-    EXX;
-
-    // Check Result
-    if ( (_AF != 0x55AA) ||
-         (Z80->Regs.AFx.w.l != 0x1111) ||
-         (_BC != 0x2222) ||
-         (Z80->Regs.BCx.w.l != 0x0123) ||
-         (_DE != 0x3333) ||
-         (Z80->Regs.DEx.w.l != 0x4567) ||
-         (_HL != 0x4444) ||
-         (Z80->Regs.HLx.w.l != 0x89AB) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_INC(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_INC
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |INC r     |***V0-|Increment            |r=r+1                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0;
-    _BCdword = 0x00010F00;
-
-    // Perform operation
-    INC(_B);
-
-    // Check Result
-    if ( (_B != 0x10) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = Cflag;
-    _BCdword = 0x0001FF00;
-
-    // Perform operation
-    INC(_B);
-
-    // Check Result
-    if ( (_B != 0x00) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 3; // # test
-    _F = 0;
-    _BCdword = 0x00017F00;
-
-    // Perform operation
-    INC(_B);
-
-    // Check Result
-    if ( (_B != 0x80) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != Vflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 4; // # test
-    _F = Cflag;
-    _BCdword = 0x00010500;
-
-    // Perform operation
-    INC(_B);
-
-    // Check Result
-    if ( (_B != 0x06) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_INC_MHL(tNativeCPC* NativeCPC,
-                             tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_INC_MHL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |INC [HL]  |***V0-|Increment            |[HL]=[HL]+1           |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Nflag;
-    _HLdword = 0x00014455;
-    *(NativeCPC->pbRAM + _HL) = 0x11;
-
-    // Perform operation
-    INC_MHL;
-
-    // Check Result
-    if ( (_HL != 0x4455) ||
-         (*(NativeCPC->pbRAM + _HL) != 0x12) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_INC_MIX(tNativeCPC* NativeCPC,
-                             tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_INC_MIX
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |INC [IX+d]|***V0-|Decrement            |[IX+d]=[IX+d]+1       |
- * |INC [IY+d]|***V0-|Decrement            |[IY+d]=[IY+d]+1       |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Nflag;
-    _IXdword = 0x00015000;
-    _PCdword = 0x00014000;
-    *(NativeCPC->pbRAM + _PC) = 0x40;
-    *(NativeCPC->pbRAM + _IX + 0x40) = 0x20;
-
-    // Perform operation
-    INC_MIX;
-
-    // Check Result
-    if ( (_PC != 0x4001) ||
-         (_IX != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IX + 0x40) != 0x21) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = Nflag;
-    _IYdword = 0x00015000;
-    _PCdword = 0x00014000;
-    *(NativeCPC->pbRAM + _PC) = 0xE0; /* 0xE0 = -20 */
-    *(NativeCPC->pbRAM + _IY - 0x20) = 0x20;
-
-    // Perform operation
-    INC_MIY;
-
-    // Check Result
-    if ( (_PC != 0x4001) ||
-         (_IY != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IY - 0x20) != 0x21) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_JP(tNativeCPC* NativeCPC,
-                        tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_JP
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |JP nn     |------|Unconditional Jump   |PC=nn                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xAA;
-    _PCdword = 0x00014000;
-    *(NativeCPC->pbRAM + _PC + 0) = 0x10;
-    *(NativeCPC->pbRAM + _PC + 1) = 0x20;
-
-    // Perform operation
-    JP;
-
-    // Check Result
-    if ( (_PC != 0x2010) ||
-         (_F != 0xAA) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x55;
-    _PCdword = 0x00014001;
-    *(NativeCPC->pbRAM + _PC + 0) = 0x11;
-    *(NativeCPC->pbRAM + _PC + 1) = 0x22;
-
-    // Perform operation
-    JP;
-
-    // Check Result
-    if ( (_PC != 0x2211) ||
-         (_F != 0x55) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_JR(tNativeCPC* NativeCPC,
-                        tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_JR
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |JR e      |------|Unconditional Jump   |PC=PC+e               |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xAA;
-    _PCdword = 0x00014000;
-    *(NativeCPC->pbRAM + _PC + 0) = 0x10;
-
-    // Perform operation
-    JR;
-
-    // Check Result
-    if ( (_PC != 0x4011) ||
-         (_F != 0xAA) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x55;
-    _PCdword = 0x00014009;
-    *(NativeCPC->pbRAM + _PC + 0) = 0xF6;
-
-    // Perform operation
-    JR;
-
-    // Check Result
-    if ( (_PC != 0x4000) ||
-         (_F != 0x55) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 3; // # test
-    _F = 0xAA;
-    _PCdword = 0x00014000;
-    *(NativeCPC->pbRAM + _PC + 0) = 0x7F;
-
-    // Perform operation
-    JR;
-
-    // Check Result
-    if ( (_PC != 0x4080) ||
-         (_F != 0xAA) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 4; // # test
-    _F = 0x55;
-    _PCdword = 0x0001407F;
-    *(NativeCPC->pbRAM + _PC + 0) = 0x80;
-
-    // Perform operation
-    JR;
-
-    // Check Result
-    if ( (_PC != 0x4000) ||
-         (_F != 0x55) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_LD16_MEM(tNativeCPC* NativeCPC,
-                              tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_LD16_MEM
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |LD dst,src|------|Load                 |dst=src               |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xAA;
-    _PCdword = 0x00014000;
-    _BCdword = 0x00018899;
-    *(NativeCPC->pbRAM + _PC + 0) = 0x00;
-    *(NativeCPC->pbRAM + _PC + 1) = 0x42;
-    *(NativeCPC->pbRAM + 0x4200 + 0) = 0x55;
-    *(NativeCPC->pbRAM + 0x4200 + 1) = 0xAA;
-
-    // Perform operation
-    LD16_MEM(BC);
-
-    // Check Result
-    if ( (_PC != 0x4002) ||
-         (_BC != 0xAA55) ||
-         (_F != 0xAA) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x55;
-    _PCdword = 0x000141FF;
-    _DEdword = 0x00018899;
-    *(NativeCPC->pbRAM + _PC + 0) = 0xFF;
-    *(NativeCPC->pbRAM + _PC + 1) = 0x42;
-    *(NativeCPC->pbRAM + 0x42FF + 0) = 0x22;
-    *(NativeCPC->pbRAM + 0x42FF + 1) = 0x33;
-
-    // Perform operation
-    LD16_MEM(DE);
-
-    // Check Result
-    if ( (_PC != 0x4201) ||
-         (_DE != 0x3322) ||
-         (_F != 0x55) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_LDMEM_16(tNativeCPC* NativeCPC,
-                              tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_LDMEM_16
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |LD dst,src|------|Load                 |dst=src               |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xAA;
-    _PCdword = 0x00014000;
-    _BCdword = 0x00018899;
-    *(NativeCPC->pbRAM + _PC + 0) = 0x00;
-    *(NativeCPC->pbRAM + _PC + 1) = 0x42;
-    *(NativeCPC->pbRAM + 0x4200 + 0) = 0x55;
-    *(NativeCPC->pbRAM + 0x4200 + 1) = 0xAA;
-
-    // Perform operation
-    LDMEM_16(BC);
-
-    // Check Result
-    if ( (_PC != 0x4002) ||
-         (*(NativeCPC->pbRAM + 0x4200 + 0) != 0x99) ||
-         (*(NativeCPC->pbRAM + 0x4200 + 1) != 0x88) ||
-         (_F != 0xAA) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x55;
-    _PCdword = 0x000141FF;
-    _BCdword = 0x00018899;
-    *(NativeCPC->pbRAM + _PC + 0) = 0xFF;
-    *(NativeCPC->pbRAM + _PC + 1) = 0x43;
-    *(NativeCPC->pbRAM + 0x43FF + 0) = 0x55;
-    *(NativeCPC->pbRAM + 0x43FF + 1) = 0xAA;
-
-    // Perform operation
-    LDMEM_16(BC);
-
-    // Check Result
-    if ( (_PC != 0x4201) ||
-         (*(NativeCPC->pbRAM + 0x43FF + 0) != 0x99) ||
-         (*(NativeCPC->pbRAM + 0x43FF + 1) != 0x88) ||
-         (_F != 0x55) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_OR(tNativeCPC* NativeCPC,
-                        tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_OR
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |OR s      |**0P00|Logical inclusive OR |A=Avs                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _L = 1; // # test
-    _F = Nflag | Cflag;
-    _A = 0x25;
-    _BCdword = 0x00018800;
-
-    // Perform operation
-    OR(_B);
-
-    // Check Result
-    if ( (_A != 0xAD) ||
-         (_B != 0x88) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 2; // # test
-    _F = 0;
-    _A = 0x00;
-    _BCdword = 0x00010000;
-
-    // Perform operation
-    OR(_B);
-
-    // Check Result
-    if ( (_A != 0x00) ||
-         (_B != 0x00) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_POP(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_POP
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |POP xx    |------|Pop                  |xx=[SP]+              |
- * |POP qq    |------|Pop                  |qq=[SP]+              |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xAA;
-    _SPdword = 0x000157FE;
-    _BCdword = 0x00018899;
-    *(NativeCPC->pbRAM + _SP + 0) = 0x55;
-    *(NativeCPC->pbRAM + _SP + 1) = 0xAA;
-
-    // Perform operation
-    POP(BC);
-
-    // Check Result
-    if ( (_SP != 0x5800) ||
-         (_BC != 0xAA55) ||
-         (_F != 0xAA) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x55;
-    _SPdword = 0x000157FF;
-    _BCdword = 0x00018899;
-    *(NativeCPC->pbRAM + _SP + 0) = 0xAA;
-    *(NativeCPC->pbRAM + _SP + 1) = 0x55;
-
-    // Perform operation
-    POP(BC);
-
-    // Check Result
-    if ( (_SP != 0x5801) ||
-         (_BC != 0x55AA) ||
-         (*(NativeCPC->pbRAM + _SP - 2) != 0xAA) ||
-         (*(NativeCPC->pbRAM + _SP - 1) != 0x55) ||
-         (_F != 0x55) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_PUSH(tNativeCPC* NativeCPC,
-                          tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_PUSH
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |PUSH xx   |------|Push                 |-[SP]=xx              |
- * |PUSH qq   |------|Push                 |-[SP]=qq              |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xAA;
-    _SPdword = 0x00015800;
-    _BCdword = 0x00018899;
-    *(NativeCPC->pbRAM + _SP - 1) = 0x55;
-    *(NativeCPC->pbRAM + _SP - 2) = 0xAA;
-
-    // Perform operation
-    PUSH(BC);
-
-    // Check Result
-    if ( (_SP != 0x57FE) ||
-         (*(NativeCPC->pbRAM + _SP + 1) != 0x88) ||
-         (*(NativeCPC->pbRAM + _SP + 0) != 0x99) ||
-         (_F != 0xAA) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x55;
-    _SPdword = 0x00015801;
-    _BCdword = 0x00018899;
-    *(NativeCPC->pbRAM + _SP - 1) = 0xAA;
-    *(NativeCPC->pbRAM + _SP - 2) = 0x55;
-
-    // Perform operation
-    PUSH(BC);
-
-    // Check Result
-    if ( (_BC != 0x8899) ||
-         (_SP != 0x57FF) ||
-         (*(NativeCPC->pbRAM + _SP + 1) != 0x88) ||
-         (*(NativeCPC->pbRAM + _SP + 0) != 0x99) ||
-         (_F != 0x55) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RES(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RES
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RES b,m   |------|Reset bit            |m=m&{~2^b}            |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xAA;
-    _BCdword = 0x0001FFAA;
-
-    // Perform operation
-    _B = RES(1, _B);
-
-    // Check Result
-    if ( (_F != 0xAA) ||
-         (_B != 0xFD) ||
-         (_C != 0xAA) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x55;
-    _BCdword = 0x0001FFAA;
-
-    // Perform operation
-    _C = RES(1, _C);
-
-    // Check Result
-    if ( (_F != 0x55) ||
-         (_B != 0xFF) ||
-         (_C != 0xA8) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RES_MHL(tNativeCPC* NativeCPC,
-                             tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RES_MHL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RES b,[HL]|------|Reset bit            |[HL]=[HL]&{~2^b}      |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0;
-    _HLdword = 0x00014200;
-    *(NativeCPC->pbRAM + _HL) = 0xFF;
-
-    // Perform operation
-    RES_MHL(1);
-
-    // Check Result
-    if ( (_F != 0) ||
-         (_HL != 0x4200) ||
-         (*(NativeCPC->pbRAM + _HL) != 0xFD) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RES_REG_ADDR(tNativeCPC* NativeCPC,
-                                  tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RES_REG_ADDR
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RES b,m   |------|Reset bit            |m=m&{~2^b}            |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xAA;
-    _BCdword = 0x00014200;
-    _IXdword = 0x00015000;
-    *(NativeCPC->pbRAM + _IX) = 0xFF;
-
-    // Perform operation
-    RES_B_ADDR(_IX, 0);
-
-    // Check Result
-    if ( (_F != 0xAA) ||
-         (_B != 0xFE) ||
-         (_IX != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IX) != 0xFE) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x55;
-    _BCdword = 0x0001FF00;
-    _IYdword = 0x00015000;
-    *(NativeCPC->pbRAM + _IY) = 0xFF;
-
-    // Perform operation
-    RES_B_ADDR(_IY, 7);
-
-    // Check Result
-    if ( (_F != 0x55) ||
-         (_B != 0x7F) ||
-         (_IY != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IY) != 0x7F) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RET(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RET
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RET       |------|Return               |PC=[SP]+              |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xAA;
-    _PCdword = 0x00014000;
-    _SPdword = 0x000157FE;
-    *(NativeCPC->pbRAM + _SP + 0) = 0x55;
-    *(NativeCPC->pbRAM + _SP + 1) = 0x44;
-
-    // Perform operation
-    RET;
-
-    // Check Result
-    if ( (_SP != 0x5800) ||
-         (_PC != 0x4455) ||
-         (_F != 0xAA) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x55;
-    _PCdword = 0x0001FFFF;
-    _SPdword = 0x000157FF;
-    *(NativeCPC->pbRAM + _SP + 0) = 0x55;
-    *(NativeCPC->pbRAM + _SP + 1) = 0x44;
-
-    // Perform operation
-    RET;
-
-    // Check Result
-    if ( (_SP != 0x5801) ||
-         (_PC != 0x4455) ||
-         (_F != 0x55) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RL(tNativeCPC* NativeCPC,
-                        tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RL m      |**0P0*|Rotate Left          |m={CY,m}<-            |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag | Cflag;
-    _BCdword = 0x00013C00;
-
-    // Perform operation
-    _B = RL(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x79) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = Hflag | Nflag;
-    _DEdword = 0x0001C100;
-
-    // Perform operation
-    _D = RL(Z80, _D);
-
-    // Check Result
-    if ( (_D != 0x82) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RL_MHL(tNativeCPC* NativeCPC,
-                            tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RL_MHL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RL [HL]   |**0P0*|Rotate Left          |[HL]={CY,[HL]}<-      |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag | Cflag;
-    _HLdword = 0x00014200;
-    *(NativeCPC->pbRAM + _HL) = 0xAA;
-
-    // Perform operation
-    RL_MHL;
-
-    // Check Result
-    if ( (_HL != 0x4200) ||
-         (*(NativeCPC->pbRAM + _HL) != 0x55) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RL_REG_ADDR(tNativeCPC* NativeCPC,
-                                 tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RL_REG_ADDR
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RL m      |**0P0*|Rotate Left          |m={CY,m}<-            |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _BCdword = 0x00011122;
-    _IXdword = 0x00014200;
-    *(NativeCPC->pbRAM + _IX) = 0x44;
-
-    // Perform operation
-    RL_B_ADDR(_IX);
-
-    // Check Result
-    if ( (_B != 0x88) ||
-         (_C != 0x22) ||
-         (*(NativeCPC->pbRAM + _IX) != 0x44) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RLA(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RLA
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RLA       |--0-0*|Rotate Left Acc.     |A={CY,A}<-            |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _L = 1; // # test
-    _A = 0x80;
-    _F = Hflag | Nflag;
-
-    // Perform operation
-    RLA;
-
-    // Check Result
-    if ( (_A != 0x00) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 2; // # test
-    _A = 0x40;
-    _F = Sflag | Zflag | Pflag | Cflag;
-
-    // Perform operation
-    RLA;
-
-    // Check Result
-    if ( (_A != 0x81) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RLC(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RLC
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RLC m     |**0P0*|Rotate Left Circular |m=m<-                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _BCdword = 0x00018155;
-
-    // Perform operation
-    _B = RLC(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x03) ||
-         (_C != 0x55) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = Hflag | Nflag | Cflag;
-    _BCdword = 0x00014355;
-
-    // Perform operation
-    _B = RLC(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x86) ||
-         (_C != 0x55) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 3; // # test
-    _F = Hflag | Nflag | Cflag;
-    _BCdword = 0x00010055;
-
-    // Perform operation
-    _B = RLC(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x00) ||
-         (_C != 0x55) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RLC_MHL(tNativeCPC* NativeCPC,
-                             tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RLC_MHL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RLC m     |**0P0*|Rotate Left Circular |m=m<-                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _HLdword = 0x00014200;
-    *(NativeCPC->pbRAM + _HL) = 0xAA;
-
-    // Perform operation
-    RLC_MHL;
-
-    // Check Result
-    if ( (_HL != 0x4200) ||
-         (*(NativeCPC->pbRAM + _HL) != 0x55) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RLC_REG_ADDR(tNativeCPC* NativeCPC,
-                                  tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RLC_REG_ADDR
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RLC m     |**0P0*|Rotate Left Circular |m=m<-                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0;
-    _BCdword = 0x00015533;
-    _IXdword = 0x00015000;
-    *(NativeCPC->pbRAM + _IX) = 0x24;
-
-    // Perform operation
-    RLC_B_ADDR(_IX);
-
-    // Check Result
-    if ( (_B != 0x48) ||
-         (_C != 0x33) ||
-         (_IX != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IX) != 0x48) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RLCA(tNativeCPC* NativeCPC,
-                          tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RLCA
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RLCA      |--0-0*|Rotate Left Circular |A=A<-                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _L = 1; // # test
-    _A = 0x88;
-    _F = 0;
-
-    // Perform operation
-    RLCA;
-
-    // Check Result
-    if ( (_A != 0x11) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 2; // # test
-    _A = 0x11;
-    _F = Sflag | Zflag | Hflag | Pflag | Nflag | Cflag;
-
-    // Perform operation
-    RLCA;
-
-    // Check Result
-    if ( (_A != 0x22) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RLD(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RLD
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RLD       |**0P0-|Rotate Left 4 bits   |{A,[HL]}={A,[HL]}<- ##|
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _D = 1; // # test
-    _F = Hflag | Nflag;
-    _A = 0x12;
-    _HLdword = 0x00015000;
-    *(NativeCPC->pbRAM + _HL) = 0x34;
-
-    // Perform operation
-    RLD;
-
-    // Check Result
-    if ( (_A != 0x13) ||
-         (_HL != 0x5000) ||
-         (*(NativeCPC->pbRAM + _HL) != 0x42) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _D = 2; // # test
-    _F = Hflag | Nflag | Cflag;
-    _A = 0x0F;
-    _HLdword = 0x00015000;
-    *(NativeCPC->pbRAM + _HL) = 0x0F;
-
-    // Perform operation
-    RLD;
-
-    // Check Result
-    if ( (_A != 0x00) ||
-         (_HL != 0x5000) ||
-         (*(NativeCPC->pbRAM + _HL) != 0xFF) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _D = 3; // # test
-    _F = Hflag | Nflag | Cflag;
-    _A = 0x8F;
-    _HLdword = 0x00015000;
-    *(NativeCPC->pbRAM + _HL) = 0x0F;
-
-    // Perform operation
-    RLD;
-
-    // Check Result
-    if ( (_A != 0x80) ||
-         (_HL != 0x5000) ||
-         (*(NativeCPC->pbRAM + _HL) != 0xFF) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-    
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RR(tNativeCPC* NativeCPC,
-                        tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RR
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RR m      |**0P0*|Rotate Right         |m=->{CY,m}            |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _BCdword = 0x00018155;
-
-    // Perform operation
-    _B = RR(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x40) ||
-         (_C != 0x55) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = Hflag | Nflag | Cflag;
-    _BCdword = 0x00018255;
-
-    // Perform operation
-    _B = RR(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0xC1) ||
-         (_C != 0x55) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-    
-    // Prepare conditions
-    _A = 3; // # test
-    _F = Hflag | Nflag;
-    _BCdword = 0x00010155;
-
-    // Perform operation
-    _B = RR(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x00) ||
-         (_C != 0x55) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-    
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RR_MHL(tNativeCPC* NativeCPC,
-                            tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RR_MHL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RR m      |**0P0*|Rotate Right         |m=->{CY,m}            |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _HLdword = 0x00014200;
-    *(NativeCPC->pbRAM + _HL) = 0x12;
-
-    // Perform operation
-    RR_MHL;
-
-    // Check Result
-    if ( (_HL != 0x4200) ||
-         (*(NativeCPC->pbRAM + _HL) != 0x09) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RRA(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RRA
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RRA       |--0-0*|Rotate Right Acc.    |A=->{CY,A}            |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _L = 1; // # test
-    _A = 0x11;
-    _F = 0;
-
-    // Perform operation
-    RRA;
-
-    // Check Result
-    if ( (_A != 0x08) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 2; // # test
-    _A = 0x12;
-    _F = Sflag | Zflag | Hflag | Pflag | Nflag | Cflag;
-
-    // Perform operation
-    RRA;
-
-    // Check Result
-    if ( (_A != 0x89) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RRC(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RRC
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RRC m     |**0P0*|Rotate Right Circular|m=->m                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _BCdword = 0x00014155;
-
-    // Perform operation
-    _B = RRC(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0xA0) ||
-         (_C != 0x55) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0;
-    _BCdword = 0x00010055;
-
-    // Perform operation
-    _B = RRC(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x00) ||
-         (_C != 0x55) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-    
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RRC_MHL(tNativeCPC* NativeCPC,
-                             tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RRC_MHL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RRC m     |**0P0*|Rotate Right Circular|m=->m                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _HLdword = 0x00014200;
-    *(NativeCPC->pbRAM + _HL) = 0x11;
-
-    // Perform operation
-    RRC_MHL;
-
-    // Check Result
-    if ( (_HL != 0x4200) ||
-         (*(NativeCPC->pbRAM + _HL) != 0x88) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RRC_REG_ADDR(tNativeCPC* NativeCPC,
-                                  tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RRC_REG_ADDR
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RRC m     |**0P0*|Rotate Right Circular|m=->m                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0;
-    _BCdword = 0x00015533;
-    _IXdword = 0x00015000;
-    *(NativeCPC->pbRAM + _IX) = 0x11;
-
-    // Perform operation
-    RRC_B_ADDR(_IX);
-
-    // Check Result
-    if ( (_B != 0x88) ||
-         (_C != 0x33) ||
-         (_IX != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IX) != 0x88) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RRCA(tNativeCPC* NativeCPC,
-                          tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RRCA
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RRCA      |--0-0*|Rotate Right Circular|A=->A                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _L = 1; // # test
-    _A = 0x11;
-    _F = 0;
-
-    // Perform operation
-    RRCA;
-
-    // Check Result
-    if ( (_A != 0x88) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 2; // # test
-    _A = 0x22;
-    _F = Sflag | Zflag | Hflag | Pflag | Nflag | Cflag;
-
-    // Perform operation
-    RRCA;
-
-    // Check Result
-    if ( (_A != 0x11) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RRD(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RRD
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RRD       |**0P0-|Rotate Right 4 bits  |{A,[HL]}=->{A,[HL]} ##|
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _D = 1; // # test
-    _F = Hflag | Nflag;
-    _A = 0x92;
-    _HLdword = 0x00015000;
-    *(NativeCPC->pbRAM + _HL) = 0x34;
-
-    // Perform operation
-    RRD;
-
-    // Check Result
-    if ( (_A != 0x94) ||
-         (_HL != 0x5000) ||
-         (*(NativeCPC->pbRAM + _HL) != 0x23) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _D = 2; // # test
-    _F = Hflag | Nflag | Cflag;
-    _A = 0x02;
-    _HLdword = 0x00015000;
-    *(NativeCPC->pbRAM + _HL) = 0x30;
-
-    // Perform operation
-    RRD;
-
-    // Check Result
-    if ( (_A != 0x00) ||
-         (_HL != 0x5000) ||
-         (*(NativeCPC->pbRAM + _HL) != 0x23) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_RST(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_RST
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |RST p     |------|Restart              | (p=0H,8H,10H,...,38H)|
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xFF;
-    _PCdword = 0x00014321;
-    _SPdword = 0x00015800;
-    *(NativeCPC->pbRAM + _SP - 1) = 0xAA;
-    *(NativeCPC->pbRAM + _SP - 2) = 0x55;
-
-    // Perform operation
-    RST(0xABCD);
-
-    // Check Result
-    if ( (_PC != 0xABCD) ||
-         (_SP != 0x57FE) ||
-         (*(NativeCPC->pbRAM + _SP + 1) != 0x43) ||
-         (*(NativeCPC->pbRAM + _SP + 0) != 0x21) ||
-         (_F != 0xFF) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x00;
-    _PCdword = 0x00018765;
-    _SPdword = 0x000157FF;
-    *(NativeCPC->pbRAM + _SP - 1) = 0xAA;
-    *(NativeCPC->pbRAM + _SP - 2) = 0x55;
-
-    // Perform operation
-    RST(0x4321);
-
-    // Check Result
-    if ( (_PC != 0x4321) ||
-         (_SP != 0x57FD) ||
-         (*(NativeCPC->pbRAM + _SP + 1) != 0x87) ||
-         (*(NativeCPC->pbRAM + _SP + 0) != 0x65) ||
-         (_F != 0x00) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SBC(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SBC
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SBC A,s   |***V1*|Subtract with Carry  |A=A-s-CY              |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _L = 1; // # test
-    _F = Cflag;
-    _A = 0xF0;
-    _BCdword = 0x0001EF00;
-
-    // Perform operation
-    SBC(_B);
-
-    // Check Result
-    if ( (_A != 0x00) ||
-         (_B != 0xEF) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 2; // # test
-    _F = Cflag;
-    _A = 0x10;
-    _BCdword = 0x0001EF00;
-
-    // Perform operation
-    SBC(_B);
-
-    // Check Result
-    if ( (_A != 0x20) ||
-         (_B != 0xEF) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 3; // # test
-    _F = 0;
-    _A = 0xEF;
-    _BCdword = 0x00011000;
-
-    // Perform operation
-    SBC(_B);
-
-    // Check Result
-    if ( (_A != 0xDF) ||
-         (_B != 0x10) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 4; // # test
-    _F = 0;
-    _A = 0x80;
-    _BCdword = 0x00011000;
-
-    // Perform operation
-    SBC(_B);
-
-    // Check Result
-    if ( (_A != 0x70) ||
-         (_B != 0x10) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != Vflag) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SBC16(tNativeCPC* NativeCPC,
-                           tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SBC16
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SBC HL,ss |**?V1*|Subtract with Carry  |HL=HL-ss-CY           |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Cflag;
-    _HLdword = 0x0001F000;
-    _DEdword = 0x0001EFFF;
-
-    // Perform operation
-    SBC16(DE);
-
-    // Check Result
-    if ( (_HL != 0x0000) ||
-         (_DE != 0xEFFF) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0;
-    _HLdword = 0x00011000;
-    _DEdword = 0x0000A000;
-
-    // Perform operation
-    SBC16(DE);
-
-    // Check Result
-    if ( (_HL != 0x7000) ||
-         (_DE != 0xA000) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 3; // # test
-    _F = Cflag;
-    _HLdword = 0x0001F000;
-    _DEdword = 0x00008FFF;
-
-    // Perform operation
-    SBC16(DE);
-
-    // Check Result
-    if ( (_HL != 0x6000) ||
-         (_DE != 0x8FFF) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 4; // # test
-    _F = Cflag;
-    _HLdword = 0x00018000;
-    _DEdword = 0x00001FFF;
-
-    // Perform operation
-    SBC16(DE);
-
-    // Check Result
-    if ( (_HL != 0x6000) ||
-         (_DE != 0x1FFF) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != Vflag) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 5; // # test
-    _F = Cflag;
-    _HLdword = 0x0001F000;
-    _DEdword = 0x00001FFF;
-
-    // Perform operation
-    SBC16(DE);
-
-    // Check Result
-    if ( (_HL != 0xD000) ||
-         (_DE != 0x1FFF) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SET(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SET
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SET b,m   |------|Set bit              |m=mv{2^b}             |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xAA;
-    _BCdword = 0x00010000;
-
-    // Perform operation
-    _B = SET(0, _B);
-
-    // Check Result
-    if ( (_F != 0xAA) ||
-         (_B != 0x01) ||
-         (_C != 0x00) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x55;
-    _BCdword = 0x00010000;
-
-    // Perform operation
-    _B = SET(7, _B);
-
-    // Check Result
-    if ( (_F != 0x55) ||
-         (_B != 0x80) ||
-         (_C != 0x00) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SET_MHL(tNativeCPC* NativeCPC,
-                             tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SET_MHL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SET b,m   |------|Set bit              |m=mv{2^b}             |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0;
-    _HLdword = 0x00014200;
-    *(NativeCPC->pbRAM + _HL) = 0x00;
-
-    // Perform operation
-    SET_MHL(1);
-
-    // Check Result
-    if ( (_F != 0) ||
-         (_HL != 0x4200) ||
-         (*(NativeCPC->pbRAM + _HL) != 0x02) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SET_REG_ADDR(tNativeCPC* NativeCPC,
-                                  tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SET_REG_ADDR
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SET b,m   |------|Set bit              |m=mv{2^b}             |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0xAA;
-    _BCdword = 0x00014200;
-    _IXdword = 0x00015000;
-    *(NativeCPC->pbRAM + _IX) = 0x00;
-
-    // Perform operation
-    SET_B_ADDR(_IX, 0);
-
-    // Check Result
-    if ( (_F != 0xAA) ||
-         (_B != 0x01) ||
-         (_IX != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IX) != 0x01) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = 0x55;
-    _BCdword = 0x0001FF00;
-    _IYdword = 0x00015000;
-    *(NativeCPC->pbRAM + _IY) = 0x00;
-
-    // Perform operation
-    SET_B_ADDR(_IY, 7);
-
-    // Check Result
-    if ( (_F != 0x55) ||
-         (_B != 0x80) ||
-         (_IY != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IY) != 0x80) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SLA(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SLA
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SLA m     |**0P0*|Shift Left Arithmetic|m=m*2                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _BCdword = 0x00014211;
-
-    // Perform operation
-    _B = SLA(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x84) ||
-         (_C != 0x11) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = Hflag | Nflag;
-    _BCdword = 0x00018011;
-
-    // Perform operation
-    _B = SLA(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x00) ||
-         (_C != 0x11) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 3; // # test
-    _F = Hflag | Nflag;
-    _BCdword = 0x0001C011;
-
-    // Perform operation
-    _B = SLA(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x80) ||
-         (_C != 0x11) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SLA_MHL(tNativeCPC* NativeCPC,
-                             tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SLA_MHL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SLA m     |**0P0*|Shift Left Arithmetic|m=m*2                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _HLdword = 0x00014200;
-    *(NativeCPC->pbRAM + _HL) = 0x88;
-
-    // Perform operation
-    SLA_MHL;
-
-    // Check Result
-    if ( (_HL != 0x4200) ||
-         (*(NativeCPC->pbRAM + _HL) != 0x10) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SLA_REG_ADDR(tNativeCPC* NativeCPC,
-                                  tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SLA_REG_ADDR
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SLA m     |**0P0*|Shift Left Arithmetic|m=m*2                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0;
-    _BCdword = 0x00015533;
-    _IXdword = 0x00015000;
-    *(NativeCPC->pbRAM + _IX) = 0x88;
-
-    // Perform operation
-    SLA_B_ADDR(_IX);
-
-    // Check Result
-    if ( (_B != 0x10) ||
-         (_C != 0x33) ||
-         (_IX != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IX) != 0x10) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SLL(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SLL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SLL m     |**0P0*|Logical Shift Left   |m=m*2+1               |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _BCdword = 0x00018111;
-
-    // Perform operation
-    _B = SLL(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x03) ||
-         (_C != 0x11) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = Hflag | Nflag | Cflag;
-    _BCdword = 0x00014411;
-
-    // Perform operation
-    _B = SLL(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x89) ||
-         (_C != 0x11) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SLL_MHL(tNativeCPC* NativeCPC,
-                             tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SLL_MHL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SLL m     |**0P0*|Logical Shift Left   |m=m*2+1               |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _HLdword = 0x00014200;
-    *(NativeCPC->pbRAM + _HL) = 0x44;
-
-    // Perform operation
-    SLL_MHL;
-
-    // Check Result
-    if ( (_HL != 0x4200) ||
-         (*(NativeCPC->pbRAM + _HL) != 0x89) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SLL_REG_ADDR(tNativeCPC* NativeCPC,
-                                  tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SLL_REG_ADDR
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SLL m     |**0P0*|Logical Shift Left   |m=m*2+1               |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0;
-    _BCdword = 0x00015533;
-    _IXdword = 0x00015000;
-    *(NativeCPC->pbRAM + _IX) = 0x44;
-
-    // Perform operation
-    SLL_B_ADDR(_IX);
-
-    // Check Result
-    if ( (_B != 0x89) ||
-         (_C != 0x33) ||
-         (_IX != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IX) != 0x89) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SRA(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SRA
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SRA m     |**0P0*|Shift Right Arith.   |m=m/2                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _BCdword = 0x00018211;
-
-    // Perform operation
-    _B = SRA(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0xC1) ||
-         (_C != 0x11) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = Hflag | Nflag;
-    _BCdword = 0x00010111;
-
-    // Perform operation
-    _B = SRA(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x00) ||
-         (_C != 0x11) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-    
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SRA_MHL(tNativeCPC* NativeCPC,
-                             tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SRA_MHL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SRA m     |**0P0*|Shift Right Arith.   |m=m/2                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _HLdword = 0x00014200;
-    *(NativeCPC->pbRAM + _HL) = 0x88;
-
-    // Perform operation
-    SRA_MHL;
-
-    // Check Result
-    if ( (_HL != 0x4200) ||
-         (*(NativeCPC->pbRAM + _HL) != 0xC4) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SRA_REG_ADDR(tNativeCPC* NativeCPC,
-                                  tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SRA_REG_ADDR
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SRA m     |**0P0*|Shift Right Arith.   |m=m/2                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0;
-    _BCdword = 0x00015533;
-    _IXdword = 0x00015000;
-    *(NativeCPC->pbRAM + _IX) = 0x88;
-
-    // Perform operation
-    SRA_B_ADDR(_IX);
-
-    // Check Result
-    if ( (_B != 0xC4) ||
-         (_C != 0x33) ||
-         (_IX != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IX) != 0xC4) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SRL(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SRL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SRL m     |**0P0*|Shift Right Logical  |m=->{0,m,CY}          |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _BCdword = 0x00010111;
-
-    // Perform operation
-    _B = SRL(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x00) ||
-         (_C != 0x11) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _A = 2; // # test
-    _F = Hflag | Nflag | Cflag;
-    _BCdword = 0x00018611;
-
-    // Perform operation
-    _B = SRL(Z80, _B);
-
-    // Check Result
-    if ( (_B != 0x43) ||
-         (_C != 0x11) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SRL_MHL(tNativeCPC* NativeCPC,
-                             tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SRL_MHL
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SRL m     |**0P0*|Shift Right Logical  |m=->{0,m,CY}          |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = Hflag | Nflag;
-    _HLdword = 0x00014200;
-    *(NativeCPC->pbRAM + _HL) = 0x86;
-
-    // Perform operation
-    SRL_MHL;
-
-    // Check Result
-    if ( (_HL != 0x4200) ||
-         (*(NativeCPC->pbRAM + _HL) != 0x43) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SRL_REG_ADDR(tNativeCPC* NativeCPC,
-                                  tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SRL_REG_ADDR
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SRL m     |**0P0*|Shift Right Logical  |m=->{0,m,CY}          |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _A = 1; // # test
-    _F = 0;
-    _BCdword = 0x00015533;
-    _IXdword = 0x00015000;
-    *(NativeCPC->pbRAM + _IX) = 0x86;
-
-    // Perform operation
-    SRL_B_ADDR(_IX);
-
-    // Check Result
-    if ( (_B != 0x43) ||
-         (_C != 0x33) ||
-         (_IX != 0x5000) ||
-         (*(NativeCPC->pbRAM + _IX) != 0x43) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_SUB(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_SUB
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |SUB s     |***V1*|Subtract             |A=A-s                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _L = 1; // # test
-    _A = 0x00;
-    _BCdword = 0x0001A000;
-
-    // Perform operation
-    SUB(_B);
-
-    // Check Result
-    if ( (_A != 0x60) ||
-         (_B != 0xA0) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != Cflag) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 2; // # test
-    _A = 0x10;
-    _BCdword = 0x00010100;
-
-    // Perform operation
-    SUB(_B);
-
-    // Check Result
-    if ( (_A != 0x0F) ||
-         (_B != 0x01) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != Hflag) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 3; // # test
-    _A = 0xA0;
-    _BCdword = 0x00014000;
-
-    // Perform operation
-    SUB(_B);
-
-    // Check Result
-    if ( (_A != 0x60) ||
-         (_B != 0x40) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != Vflag) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 4; // # test
-    _A = 0xE0;
-    _BCdword = 0x00011000;
-
-    // Perform operation
-    SUB(_B);
-
-    // Check Result
-    if ( (_A != 0xD0) ||
-         (_B != 0x10) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 5; // # test
-    _A = 0x40;
-    _BCdword = 0x00014000;
-
-    // Perform operation
-    SUB(_B);
-
-    // Check Result
-    if ( (_A != 0x00) ||
-         (_B != 0x40) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Vflag) != 0) ||
-         ((_F & Nflag) != Nflag) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
-static tUShort TestU_XOR(tNativeCPC* NativeCPC,
-                         tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_XOR
- *
- * ----------------------------------------------------------------
- * |Mnemonic  |SZHPNC|Description          |Notes                 |
- * |----------+------+---------------------+----------------------|
- * |XOR s     |**0P00|Logical Exclusive OR |A=Axs                 |
- * ----------------------------------------------------------------
- *
- ***********************************************************************/
-{
-tZ80* Z80 = NativeCPC->Z80;
-tUShort TestResult = testUErrorClass+NoTest;
-
-  do
-  {
-    // Prepare conditions
-    _L = 1; // # test
-    _F = Nflag | Cflag;
-    _A = 0xE9;
-    _BCdword = 0x00017800;
-
-    // Perform operation
-    XOR(_B);
-
-    // Check Result
-    if ( (_A != 0x91) ||
-         (_B != 0x78) ||
-         ((_F & Sflag) != Sflag) ||
-         ((_F & Zflag) != 0) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != 0) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    _L = 2; // # test
-    _F = 0;
-    _A = 0x55;
-    _BCdword = 0x00015500;
-
-    // Perform operation
-    XOR(_B);
-
-    // Check Result
-    if ( (_A != 0x00) ||
-         (_B != 0x55) ||
-         ((_F & Sflag) != 0) ||
-         ((_F & Zflag) != Zflag) ||
-         ((_F & Hflag) != 0) ||
-         ((_F & Pflag) != Pflag) ||
-         ((_F & Nflag) != 0) ||
-         ((_F & Cflag) != 0) )
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-
+//static tUShort PerformTestU(tNativeCPC* NativeCPC)
+///***********************************************************************
+// *
+// *  PerformTestU
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort Result = errNone;
 //
-// Mathlib Unitary Tests
+//  if (Result == errNone) Result = TestU_MemSetByte_1(NativeCPC, 1);
+//  if (Result == errNone) Result = TestU_MemSetLong_1(NativeCPC, 2);
+//  if (Result == errNone) Result = TestU_MemMoveByte_1(NativeCPC, 3);
+//  if (Result == errNone) Result = TestU_Compiler_1(NativeCPC, 4);
+//  if (Result == errNone) Result = TestU_Compiler_2(NativeCPC, 5);
+//  if (Result == errNone) Result = TestU_Compiler_3(NativeCPC, 6);
+//  if (Result == errNone) Result = TestU_Compiler_4(NativeCPC, 7);
 //
-static tUShort TestU_math_fabs(tNativeCPC* NativeCPC, tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_math_fabs
- *
- ***********************************************************************/
-{
-tUShort TestResult = testUErrorClass+NoTest;
-tLong   VarLong;
-
-	NOT_USED(NativeCPC);
-
-  do
-  {
-    // Prepare conditions
-    VarLong = 1024;
-    // Perform operation
-    VarLong = (tLong)math_fabs(VarLong);
-    // Check Result
-    if (VarLong != 1024)
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    VarLong = -1024;
-    // Perform operation
-    VarLong = (tLong)math_fabs(VarLong);
-    // Check Result
-    if (VarLong != 1024)
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-static tUShort TestU_math_cos(tNativeCPC* NativeCPC, tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_math_cos
- *
- ***********************************************************************/
-{
-tUShort TestResult = testUErrorClass+NoTest;
-tDouble Angle;
-tLong VarLong;
-
-	NOT_USED(NativeCPC);
-
-  do
-  {
-    // Prepare conditions
-    Angle = 0.;
-    // Perform operation
-    VarLong = (tLong)(math_cos(Angle) * 1024.);
-    // Check Result
-    if (VarLong != 1024)
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    Angle = M_PI / 4;
-    // Perform operation
-    VarLong = (tLong)(math_cos(Angle) * 1024.);
-    // Check Result
-    if (VarLong != 724)
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    Angle = M_PI / 2;
-    // Perform operation
-    VarLong = (tLong)(math_cos(Angle) * 1024.);
-    // Check Result
-    if (VarLong != 0)
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    Angle = 3 * M_PI / 4;
-    // Perform operation
-    VarLong = (tLong)(math_cos(Angle) * 1024.);
-    // Check Result
-    if (VarLong != -724)
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    Angle = M_PI;
-    // Perform operation
-    VarLong = (tLong)(math_cos(Angle) * 1024.);
-    // Check Result
-    if (VarLong != -1024)
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    Angle = M_PI * 2;
-    // Perform operation
-    VarLong = (tLong)(math_cos(Angle) * 1024.);
-    // Check Result
-    if (VarLong != 1024)
-    {
-      continue;
-    }
-
-    // Prepare conditions
-    Angle = M_PI * 4;
-    // Perform operation
-    VarLong = (tLong)(math_cos(Angle) * 1024.);
-    // Check Result
-    if (VarLong != 1024)
-    {
-      continue;
-    }
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-#ifdef ENABLE_PLAYCITY
-
+//  /* Z80 Instructions */
+//  if (Result == errNone) Result = TestU_ADC(NativeCPC, 20);
+//  if (Result == errNone) Result = TestU_ADC_MIX(NativeCPC, 21);
+//  if (Result == errNone) Result = TestU_ADC16(NativeCPC, 22);
+//  if (Result == errNone) Result = TestU_ADD(NativeCPC, 23);
+//  if (Result == errNone) Result = TestU_ADD16(NativeCPC, 24);
+//  if (Result == errNone) Result = TestU_AND(NativeCPC, 25);
+//  if (Result == errNone) Result = TestU_BIT(NativeCPC, 26);
+//  if (Result == errNone) Result = TestU_CALL(NativeCPC, 27);
+//  if (Result == errNone) Result = TestU_CCF(NativeCPC, 28);
+//  if (Result == errNone) Result = TestU_CP(NativeCPC, 29);
+//  if (Result == errNone) Result = TestU_CPD(NativeCPC, 30);
+//  if (Result == errNone) Result = TestU_DEC(NativeCPC, 31);
+//  if (Result == errNone) Result = TestU_DEC_MHL(NativeCPC, 32);
+//  if (Result == errNone) Result = TestU_DEC_MIX(NativeCPC, 33);
+//  if (Result == errNone) Result = TestU_EX_SP(NativeCPC, 34);
+//  if (Result == errNone) Result = TestU_EXX(NativeCPC, 35);
+//  if (Result == errNone) Result = TestU_INC(NativeCPC, 36);
+//  if (Result == errNone) Result = TestU_INC_MHL(NativeCPC, 37);
+//  if (Result == errNone) Result = TestU_INC_MIX(NativeCPC, 38);
+//  if (Result == errNone) Result = TestU_JP(NativeCPC, 39);
+//  if (Result == errNone) Result = TestU_JR(NativeCPC, 40);
+//  if (Result == errNone) Result = TestU_LD16_MEM(NativeCPC, 41);
+//  if (Result == errNone) Result = TestU_LDMEM_16(NativeCPC, 42);
+//  if (Result == errNone) Result = TestU_OR(NativeCPC, 43);
+//  if (Result == errNone) Result = TestU_POP(NativeCPC, 44);
+//  if (Result == errNone) Result = TestU_PUSH(NativeCPC, 45);
+//  if (Result == errNone) Result = TestU_RES(NativeCPC, 46);
+//  if (Result == errNone) Result = TestU_RES_MHL(NativeCPC, 47);
+//  if (Result == errNone) Result = TestU_RES_REG_ADDR(NativeCPC, 48);
+//  if (Result == errNone) Result = TestU_RET(NativeCPC, 49);
+//  if (Result == errNone) Result = TestU_RL(NativeCPC, 50);
+//  if (Result == errNone) Result = TestU_RL_MHL(NativeCPC, 51);
+//  if (Result == errNone) Result = TestU_RLA(NativeCPC, 52);
+//  if (Result == errNone) Result = TestU_RLC(NativeCPC, 53);
+//  if (Result == errNone) Result = TestU_RLC_MHL(NativeCPC, 54);
+//  if (Result == errNone) Result = TestU_RLC_REG_ADDR(NativeCPC, 55);
+//  if (Result == errNone) Result = TestU_RLCA(NativeCPC, 56);
+//  if (Result == errNone) Result = TestU_RLD(NativeCPC, 57);
+//  if (Result == errNone) Result = TestU_RR(NativeCPC, 58);
+//  if (Result == errNone) Result = TestU_RR_MHL(NativeCPC, 59);
+//  if (Result == errNone) Result = TestU_RRA(NativeCPC, 60);
+//  if (Result == errNone) Result = TestU_RRC(NativeCPC, 61);
+//  if (Result == errNone) Result = TestU_RRC_MHL(NativeCPC, 62);
+//  if (Result == errNone) Result = TestU_RRC_REG_ADDR(NativeCPC, 63);
+//  if (Result == errNone) Result = TestU_RRCA(NativeCPC, 64);
+//  if (Result == errNone) Result = TestU_RRD(NativeCPC, 65);
+//  if (Result == errNone) Result = TestU_RST(NativeCPC, 66);
+//  if (Result == errNone) Result = TestU_SBC(NativeCPC, 67);
+//  if (Result == errNone) Result = TestU_SBC16(NativeCPC, 68);
+//  if (Result == errNone) Result = TestU_SET(NativeCPC, 69);
+//  if (Result == errNone) Result = TestU_SET_MHL(NativeCPC, 70);
+//  if (Result == errNone) Result = TestU_SET_REG_ADDR(NativeCPC, 71);
+//  if (Result == errNone) Result = TestU_SLA(NativeCPC, 72);
+//  if (Result == errNone) Result = TestU_SLA_MHL(NativeCPC, 73);
+//  if (Result == errNone) Result = TestU_SLA_REG_ADDR(NativeCPC, 74);
+//  if (Result == errNone) Result = TestU_SLL(NativeCPC, 75);
+//  if (Result == errNone) Result = TestU_SLL_MHL(NativeCPC, 76);
+//  if (Result == errNone) Result = TestU_SLL_REG_ADDR(NativeCPC, 77);
+//  if (Result == errNone) Result = TestU_SRA(NativeCPC, 78);
+//  if (Result == errNone) Result = TestU_SRA_MHL(NativeCPC, 79);
+//  if (Result == errNone) Result = TestU_SRA_REG_ADDR(NativeCPC, 80);
+//  if (Result == errNone) Result = TestU_SRL(NativeCPC, 81);
+//  if (Result == errNone) Result = TestU_SRL_MHL(NativeCPC, 82);
+//  if (Result == errNone) Result = TestU_SRL_REG_ADDR(NativeCPC, 83);
+//  if (Result == errNone) Result = TestU_SUB(NativeCPC, 84);
+//  if (Result == errNone) Result = TestU_XOR(NativeCPC, 85);
 //
-// PlayCity Unitary Tests
+//  // MathLib
+//  if (Result == errNone) Result = TestU_math_fabs(NativeCPC, 100);
+//  if (Result == errNone) Result = TestU_math_cos(NativeCPC, 101);
 //
-
-static const tULong PlayCity_Freq[16] =
-{
-  3992187, // 0
-  2000000, // 1
-  3000000, // 2
-  3333333, // 3
-  3500000, // 4
-  3600000, // 5
-  3666666, // 6
-  3714285, // 7
-  3750000, // 8
-  3777777, // 9
-  3800000, // A
-  3818181, // B
-  3833333, // C
-  3846153, // D
-  3857142, // E
-  3866666, // F
-};
-
-static tUShort TestU_PlayCity_YMZFreq(tNativeCPC* NativeCPC, tUChar NoTest)
-/***********************************************************************
- *
- *  TestU_PlayCity_YMZFreq
- *
- ***********************************************************************/
-{
-tUShort TestResult = testUErrorClass+NoTest;
-tUChar Loop;
-tULong TimeContant;
-tULong Freq;
-
-	NOT_USED(NativeCPC);
-
-  do
-  {
-    for (Loop=0; Loop < 0x10; Loop++)
-    {
-      TimeContant = !Loop ? 256 : Loop;
-
-      Freq = CLOCK_Z80 * ((TimeContant*2)-1) / (TimeContant*2);
-
-      if (Freq != PlayCity_Freq[Loop])
-        break;
-    }
-    if (Loop < 0x10) continue;
-
-    // Test is OK
-    TestResult = errNone;
-  }
-  while (0);
-
-  return (TestResult);
-}
-/*----------------------------------------------------------------------------*/
-
-#endif /* ENABLE_PLAYCITY */
-
-
-#endif /* _TESTU */
-//==============================================================================
-
+//  // PlayCity
+//  if (Result == errNone) Result = TestU_PlayCity_YMZFreq(NativeCPC, 102);
+//
+//  //
+//  // Z80 Instructions Cycle count
+//  //
+//  // Initialise motor conditions
+//  NativeCPC->FirstInitToPerform = 0;
+//  fdc_init(NativeCPC);
+//  video_init(NativeCPC);
+//  audio_init(NativeCPC);
+//#ifdef __WIN32__
+//  NativeCPC->Z80OUTHandlerPtr = z80_OUT_handler;
+//  NativeCPC->SetAYRegisterPtr = (tSetAYRegisterPtr)audio_set_AY_Register;
+//#endif /* __WIN32__ */
+//
+//
+//  // All tests OK. Reset CPU */
+//  if (Result == errNone)
+//  {
+//    // Reset Z80 registers (see Z80Reset)
+//    MemSetByte((tUChar*)&Z80->Regs,
+//               sizeof(tZ80Regs),
+//               0); // clear result codes buffer
+//
+//    // clear all memory used for CPC RAM
+//    MemSetByte((tUChar*)NativeCPC->pbRAM,
+//               ((tULong)NativeCPC->ram_size*1024),
+//               0);
+//
+//    _IX = _IY = 0xffff; // IX and IY are FFFF after a reset!
+//    _F = Zflag; // set zero flag
+//    Z80->Regs.breakpoint = 0xffffffff; // clear break point
+//
+//    NativeCPC->FirstInitToPerform = 1;
+//  }
+//
+//  return (Result);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_MemSetByte_1(tNativeCPC* NativeCPC,
+//                                  tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_MemSetByte_1
+// *
+// ***********************************************************************/
+//{
+//tUShort TestResult = errNone;
+//tUChar ArrayA[100];
+//tUChar Loop;
+//
+//  NOT_USED(NativeCPC);
+//
+//  // Prepare conditions
+//  for (Loop=0; Loop<100; Loop++)
+//    ArrayA[Loop] = 0x55;
+//
+//  // Perform operation
+//  MemSetByte(ArrayA,
+//             95,
+//             0xAA);
+//
+//  // Check Result
+//  for (Loop=0; Loop<95; Loop++)
+//  {
+//    if (ArrayA[Loop] != 0xAA)
+//      TestResult=testUErrorClass+NoTest;
+//  }
+//  for (Loop=95; Loop<100; Loop++)
+//  {
+//    if (ArrayA[Loop] != 0x55)
+//      TestResult=testUErrorClass+NoTest;
+//  }
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_MemSetLong_1(tNativeCPC* NativeCPC,
+//                                  tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_MemSetLong_1
+// *
+// ***********************************************************************/
+//{
+//tUShort TestResult = errNone;
+//tULong ArrayA[100];
+//tUChar Loop;
+//
+//  NOT_USED(NativeCPC);
+//
+//  // Prepare conditions
+//  for (Loop=0; Loop<100; Loop++)
+//    ArrayA[Loop] = 0x55;
+//
+//  // Perform operation
+//  MemSetLong(ArrayA,
+//             95,
+//             0xAA);
+//
+//  // Check Result
+//  for (Loop=0; Loop<95; Loop++)
+//  {
+//    if (ArrayA[Loop] != 0xAA)
+//      TestResult=testUErrorClass+NoTest;
+//  }
+//  for (Loop=95; Loop<100; Loop++)
+//  {
+//    if (ArrayA[Loop] != 0x55)
+//      TestResult=testUErrorClass+NoTest;
+//  }
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_MemMoveByte_1(tNativeCPC* NativeCPC,
+//                                   tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_MemMoveByte_1
+// *
+// ***********************************************************************/
+//{
+//tUShort TestResult = errNone;
+//tUChar SrcArrayA[100];
+//tUChar DstArrayA[100];
+//tUChar Loop;
+//
+//  NOT_USED(NativeCPC);
+//
+//  // Prepare conditions
+//  for (Loop=0; Loop<100; Loop++)
+//  {
+//    SrcArrayA[Loop] = 0x55;
+//    DstArrayA[Loop] = 0xAA;
+//  }
+//
+//  // Perform operation
+//  MemMoveByte(DstArrayA,
+//              SrcArrayA,
+//              95);
+//
+//  // Check Result
+//  for (Loop=0; Loop<100; Loop++)
+//  {
+//    if (SrcArrayA[Loop] != 0x55)
+//      TestResult=testUErrorClass+NoTest;
+//  }
+//  for (Loop=0; Loop<95; Loop++)
+//  {
+//    if (DstArrayA[Loop] != 0x55)
+//      TestResult=testUErrorClass+NoTest;
+//  }
+//  for (Loop=95; Loop<100; Loop++)
+//  {
+//    if (DstArrayA[Loop] != 0xAA)
+//      TestResult=testUErrorClass+NoTest;
+//  }
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_Compiler_1(tNativeCPC* NativeCPC,
+//                                tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_Compiler_1
+// *
+// ***********************************************************************/
+//{
+//tUShort TestResult = errNone;
+//tLong longValue;
+//tChar charValue;
+//
+//  NOT_USED(NativeCPC);
+//
+//  // Test 1 : signed char => signed long
+//
+//  // Prepare conditions
+//  charValue = -116;
+//
+//  // Perform operation
+//  longValue = (tLong)charValue;
+//
+//  // Check Result
+//  if (longValue != -116)
+//  {
+//    TestResult=testUErrorClass+NoTest;
+//  }
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_Compiler_2(tNativeCPC* NativeCPC,
+//                                tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_Compiler_2
+// *
+// ***********************************************************************/
+//{
+//tUShort TestResult = errNone;
+//tULong ulongValue;
+//tUChar ucharValue;
+//
+//  NOT_USED(NativeCPC);
+//
+//  // Test 2 : unsigned char => unsigned long
+//
+//  // Prepare conditions
+//  ucharValue = 140;
+//
+//  // Perform operation
+//  ulongValue = (tULong)ucharValue;
+//
+//  // Check Result
+//  if (ulongValue != 140)
+//  {
+//    TestResult=testUErrorClass+NoTest;
+//  }
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_Compiler_3(tNativeCPC* NativeCPC,
+//                                tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_Compiler_3
+// *
+// ***********************************************************************/
+//{
+//tUShort TestResult = errNone;
+//tLong longValue;
+//tUChar ucharValue;
+//
+//  NOT_USED(NativeCPC);
+//
+//  // Test 3 : unsigned char => signed long
+//  //
+//  // ATTENTION : unsigned char <> signed long
+//  //
+//
+//  // Prepare conditions
+//  ucharValue = (tUChar)-116;
+//
+//  // Perform operation
+//  longValue = (tLong)ucharValue;
+//
+//  // Check Result
+//  if (longValue != 140)
+//  {
+//    TestResult=testUErrorClass+NoTest;
+//  }
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_Compiler_4(tNativeCPC* NativeCPC,
+//                                tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_Compiler_4
+// *
+// ***********************************************************************/
+//{
+//tUShort TestResult = errNone;
+//tULong ulongValue;
+//tChar charValue;
+//
+//  NOT_USED(NativeCPC);
+//
+//  // Test 4 : signed char => unsigned long
+//  //
+//  // ATTENTION : signed char <> unsigned long
+//  //
+//
+//  // Prepare conditions
+//  charValue = (tChar)0x8c;
+//
+//  // Perform operation
+//  ulongValue = (tULong)charValue;
+//
+//  // Check Result
+//  if (ulongValue != 0xffffff8c)
+//  {
+//    TestResult=testUErrorClass+NoTest;
+//  }
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+////
+//// Z80 Instructions Unitary Tests
+////
+//// Flags:
+//// ======
+//// - Sflag : The  sign  flag is used to indicate whether  in  twos  complement
+////           notation  a number is negative or positive.  (see chapter 16  for
+////           more  about two's complement) Thus if the number is  negative  (-
+////           128 to -1)  then  the  sign flag is set to 1.  If the  number  is
+////           positive (0 to 127) then the sign flag is reset to 0.
+//// - Zflag : The Z flag is set to 1 of the result of an operation is 0. If the
+////           result  is other than 0 then the Z flag is reset to 0.
+//// - Hflag : Half carry. The H flag indicates a  carry  from  bit 3 in addition,
+////           and a borrow from  bit  4  in subtraction in 8 bit operations.
+////           A carry from bit 11 in addition and a borrow from bit 12 in
+////           16 bit operations. Only used by DAA
+//// - Pflag : Parity.  The  parity of a byte is the number of 1's the byte  has
+////           when  it  is  represented  in binary.  43 decimal  in  binary  is
+////           00101011,  which  has  4  1's.  If  the number  of  1's  is  even
+////           (including 0) then the byte has even parity and the P flag is set
+////           to  1.  59  in binary is 00111110 which has 5 1's and thus the  P
+////           flag  is  set to 0.  The instructions which use the P flag  as  a
+////           parity flag are indicated in the table.
+//// - Vflag : Overflow. This is the other major use for the P flag. Most of the
+////           arithmetic instructions use the P flag as an overflow  flag,  and
+////           this is why the flag is sometimes written as P/V. Overflow occurs
+////           when,  during  a  two's complement addition the result  in  two's
+////           complement is >127 or <-128. If this error condition occurs the
+////           P flag is set to 1, otherwise it is set to 0.
+//// - Nflag : Negative. The N flag is 0 after an add and 1 after a subtract.
+//// - Cflag : The  carry  flag  is used to indicate whether the  result  of  an
+////           operation (in decimal) was greater than 255 or less than 0.
+////
+//// ----------------------------------------------------------------
+//// | F        |-*01? |Flag unaffected/affected/reset/set/unknown  |
+//// | S        |S     |Sign flag (Bit 7)                           |
+//// | Z        | Z    |Zero flag (Bit 6)                           |
+//// | HC       |  H   |Half Carry flag (Bit 4)                     |
+//// | P/V      |   P  |Parity/Overflow flag (Bit 2, V=overflow)    |
+//// | N        |    N |Add/Subtract flag (Bit 1)                   |
+//// | CY       |     C|Carry flag (Bit 0)                          |
+//// |----------+------+--------------------------------------------|
+//// | n               |Immediate addressing                        |
+//// | nn              |Immediate extended addressing               |
+//// | e               |Relative addressing (PC=PC+2+offset)        |
+//// | [nn]            |Extended addressing                         |
+//// | [xx+d]          |Indexed addressing                          |
+//// | r               |Register addressing                         |
+//// | [rr]            |Register indirect addressing                |
+//// |                 |Implied addressing                          |
+//// | b               |Bit addressing                              |
+//// | p               |Modified page zero addressing (see RST)     |
+//// |-----------------+--------------------------------------------|
+//// |DEFB n(,...)     |Define Byte(s)                              |
+//// |DEFB 'str'(,...) |Define Byte ASCII string(s)                 |
+//// |DEFS nn          |Define Storage Block                        |
+//// |DEFW nn(,...)    |Define Word(s)                              |
+//// |-----------------+--------------------------------------------|
+//// | A  B  C  D  E   |Registers (8-bit)                           |
+//// | AF  BC  DE  HL  |Register pairs (16-bit)                     |
+//// | F               |Flag register (8-bit)                       |
+//// | I               |Interrupt page address register (8-bit)     |
+//// | IX IY           |Index registers (16-bit)                    |
+//// | PC              |Program Counter register (16-bit)           |
+//// | R               |Memory Refresh register                     |
+//// | SP              |Stack Pointer register (16-bit)             |
+//// |-----------------+--------------------------------------------|
+//// | b               |One bit (0 to 7)                            |
+//// | cc              |Condition (C,M,NC,NZ,P,PE,PO,Z)             |
+//// | d               |One-byte expression (-128 to +127)          |
+//// | dst             |Destination s, ss, [BC], [DE], [HL], [nn]   |
+//// | e               |One-byte expression (-126 to +129)          |
+//// | m               |Any register r, [HL] or [xx+d]              |
+//// | n               |One-byte expression (0 to 255)              |
+//// | nn              |Two-byte expression (0 to 65535)            |
+//// | pp              |Register pair BC, DE, IX or SP              |
+//// | qq              |Register pair AF, BC, DE or HL              |
+//// | qq'             |Alternative register pair AF, BC, DE or HL  |
+//// | r               |Register A, B, C, D, E, H or L              |
+//// | rr              |Register pair BC, DE, IY or SP              |
+//// | s               |Any register r, value n, [HL] or [xx+d]     |
+//// | src             |Source s, ss, [BC], [DE], [HL], nn, [nn]    |
+//// | ss              |Register pair BC, DE, HL or SP              |
+//// | xx              |Index register IX or IY                     |
+//// |-----------------+--------------------------------------------|
+//// | +  -  *  /  ^   |Add/subtract/multiply/divide/exponent       |
+//// | &  ~  v  x      |Logical AND/NOT/inclusive OR/exclusive OR   |
+//// | <-  ->          |Rotate left/right                           |
+//// | [ ]             |Indirect addressing                         |
+//// | [ ]+  -[ ]      |Indirect addressing auto-increment/decrement|
+//// | { }             |Combination of operands                     |
+//// | #               |Also BC=BC-1,DE=DE-1                        |
+//// | ##              |Only lower 4 bits of accumulator A used     |
+//// ----------------------------------------------------------------
+////
+//
+//
+//static tUShort TestU_ADC(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_ADC
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |ADC A,s   |***V0*|Add with Carry       |A=A+s+CY              |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _L = 1; // # test
+//    _F = Cflag | Nflag;
+//    _A = 0x18;
+//    _BCdword = 0x0001A000;
+//
+//    // Perform operation
+//    ADC(_B);
+//
+//    // Check Result
+//    if ( (_A != 0xB9) ||
+//         (_B != 0xA0) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 2; // # test
+//    _F = 0;
+//    _A = 0xfc;
+//    _BCdword = 0x0001A000;
+//
+//    // Perform operation
+//    ADC(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x9C) ||
+//         (_B != 0xA0) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 3; // # test
+//    _F = Cflag;
+//    _A = 0xE0;
+//    _BCdword = 0x00011F00;
+//
+//    // Perform operation
+//    ADC(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x00) ||
+//         (_B != 0x1F) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 4; // # test
+//    _F = Cflag;
+//    _A = 0x6f;
+//    _BCdword = 0x00011000;
+//
+//    // Perform operation
+//    ADC(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x80) ||
+//         (_B != 0x10) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != Vflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_ADC_MIX(tNativeCPC* NativeCPC,
+//                             tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_ADC_MIX
+// *
+// * ------------------------------------------------------------------
+// * |Mnemonic    |SZHPNC|Description          |Notes                 |
+// * |------------+------+---------------------+----------------------|
+// * |ADC A,[IX+d]|***V0*|Add with Carry       |A=A+[IX+d]+CY         |
+// * |ADC A,[IY+d]|***V0*|Add with Carry       |A=A+[IY+d]+CY         |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _L = 1; // # test
+//    _F = 0;
+//    _A = 0x00;
+//    _IXdword = 0x00015000;
+//    _PCdword = 0x00014000;
+//    *(NativeCPC->pbRAM + _PC) = 0x40;
+//    *(NativeCPC->pbRAM + _IX + 0x40) = 0x20;
+//
+//    // Perform operation
+//    ADC_MIX;
+//
+//    // Check Result
+//    if ( (_A != 0x20) ||
+//         (_IX != 0x5000) ||
+//         (_PC != 0x4001) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 2; // # test
+//    _F = 0;
+//    _A = 0x60;
+//    _IYdword = 0x00015100;
+//    _PCdword = 0x00014000;
+//    *(NativeCPC->pbRAM + _PC) = 0xE0; /* 0xE0 = -20 */
+//    *(NativeCPC->pbRAM + _IY - 0x20) = 0x40;
+//
+//    // Perform operation
+//    ADC_MIY;
+//
+//    // Check Result
+//    if ( (_A != 0xA0) ||
+//         (_IY != 0x5100) ||
+//         (_PC != 0x4001) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != Vflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_ADC16(tNativeCPC* NativeCPC,
+//                           tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_ADC16
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |ADC HL,ss |***V0*|Add with Carry       |HL=HL+ss+CY           |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0;
+//    _HLdword = 0x00010F00;
+//    _DEdword = 0x0000A100;
+//
+//    // Perform operation
+//    ADC16(DE);
+//
+//    // Check Result
+//    if ( (_HL != 0xB000) ||
+//         (_DE != 0xA100) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = Cflag;
+//    _HLdword = 0x00016000;
+//    _DEdword = 0x00019fff;
+//
+//    // Perform operation
+//    ADC16(DE);
+//
+//    // Check Result
+//    if ( (_HL != 0x0000) ||
+//         (_DE != 0x9fff) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 3; // # test
+//    _F = Nflag;
+//    _HLdword = 0x00017000;
+//    _DEdword = 0x00002000;
+//
+//    // Perform operation
+//    ADC16(DE);
+//
+//    // Check Result
+//    if ( (_HL != 0x9000) ||
+//         (_DE != 0x2000) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != Vflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 4; // # test
+//    _F = Cflag | Nflag;
+//    _HLdword = 0x0000A000;
+//    _DEdword = 0x0000A000;
+//
+//    // Perform operation
+//    ADC16(DE);
+//
+//    // Check Result
+//    if ( (_HL != 0x4001) ||
+//         (_DE != 0xA000) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != Vflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_ADD(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_ADD
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |ADD A,s   |***V0*|Add                  |A=A+s                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _L = 1; // # test
+//    _F = Nflag;
+//    _A = 0x11;
+//    _DEdword = 0x00012200;
+//
+//    // Perform operation
+//    ADD(_D);
+//
+//    // Check Result
+//    if ( (_A != 0x33) ||
+//         (_D != 0x22) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 2; // # test
+//    _F = Nflag;
+//    _A = 0x80;
+//    _DEdword = 0x00018000;
+//
+//    // Perform operation
+//    ADD(_D);
+//
+//    // Check Result
+//    if ( (_A != 0x00) ||
+//         (_D != 0x80) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != Vflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 3; // # test
+//    _F = Nflag;
+//    _A = 0x7F;
+//    _DEdword = 0x00010100;
+//
+//    // Perform operation
+//    ADD(_D);
+//
+//    // Check Result
+//    if ( (_A != 0x80) ||
+//         (_D != 0x01) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != Vflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 4; // # test
+//    _F = Nflag;
+//    _A = 0xFF;
+//    _DEdword = 0x00010100;
+//
+//    // Perform operation
+//    ADD(_D);
+//
+//    // Check Result
+//    if ( (_A != 0x00) ||
+//         (_D != 0x01) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_ADD16(tNativeCPC* NativeCPC,
+//                           tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_ADD16
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |ADD HL,ss |--*-0*|Add                  |HL=HL+ss              |
+// * |ADD IX,pp |--*-0*|Add                  |IX=IX+pp              |
+// * |ADD IY,rr |--*-0*|Add                  |IY=IY+rr              |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Nflag | Hflag;
+//    _BCdword = 0x00010000;
+//    _HLdword = 0x00008000;
+//
+//    // Perform operation
+//    ADD16(HL, BC);
+//
+//    // Check Result
+//    if ( (_HL != 0x8000) ||
+//         (_BC != 0x0000) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = Sflag | Zflag | Pflag;
+//    _BCdword = 0x00018000;
+//    _HLdword = 0x00008000;
+//
+//    // Perform operation
+//    ADD16(HL, BC);
+//
+//    // Check Result
+//    if ( (_HL != 0x0000) ||
+//         (_BC != 0x8000) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 3; // # test
+//    _F = Nflag;
+//    _BCdword = 0x00010800;
+//    _HLdword = 0x00000800;
+//
+//    // Perform operation
+//    ADD16(HL, BC);
+//
+//    // Check Result
+//    if ( (_HL != 0x1000) ||
+//         (_BC != 0x0800) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_AND(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_AND
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |AND s     |**1P00|Logical AND          |A=A&s                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _L = 1; // # test
+//    _F = 0;
+//    _A = 0xA5;
+//    _BCdword = 0x0001A000;
+//
+//    // Perform operation
+//    AND(_B);
+//
+//    // Check Result
+//    if ( (_A != 0xA0) ||
+//         (_B != 0xA0) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 2; // # test
+//    _F = Nflag | Cflag;
+//    _A = 0x5F;
+//    _BCdword = 0x00011300;
+//
+//    // Perform operation
+//    AND(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x13) ||
+//         (_B != 0x13) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 3; // # test
+//    _F = Nflag | Cflag;
+//    _A = 0x00;
+//    _BCdword = 0x00015300;
+//
+//    // Perform operation
+//    AND(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x00) ||
+//         (_B != 0x53) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_BIT(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_BIT
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |BIT b,m   |?*1?0-|Test Bit             |m&{2^b}               |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Zflag | Cflag;
+//    _BCdword = 0x00014000;
+//
+//    // Perform operation
+//    BIT(6, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x40) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0;
+//    _BCdword = 0x00014000;
+//
+//    // Perform operation
+//    BIT(5, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x40) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_CALL(tNativeCPC* NativeCPC,
+//                          tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_CALL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |CALL nn   |------|Unconditional Call   |-[SP]=PC,PC=nn        |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xAA;
+//    _PCdword = 0x00014000;
+//    _SPdword = 0x00015800;
+//    *(NativeCPC->pbRAM + _PC + 0) = 0xFF;
+//    *(NativeCPC->pbRAM + _PC + 1) = 0x42;
+//    *(NativeCPC->pbRAM + _SP - 1) = 0xAA;
+//    *(NativeCPC->pbRAM + _SP - 2) = 0x55;
+//
+//    // Perform operation
+//    CALL;
+//
+//    // Check Result
+//    if ( (_PC != 0x42FF) ||
+//         (_SP != 0x57FE) ||
+//         (*(NativeCPC->pbRAM + _SP + 0) != 0x02) ||
+//         (*(NativeCPC->pbRAM + _SP + 1) != 0x40) ||
+//         (_F != 0xAA) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x55;
+//    _PCdword = 0x00014001;
+//    _SPdword = 0x00012FFF;
+//    *(NativeCPC->pbRAM + _PC + 0) = 0xFF;
+//    *(NativeCPC->pbRAM + _PC + 1) = 0x42;
+//    *(NativeCPC->pbRAM + _SP - 1) = 0xAA;
+//    *(NativeCPC->pbRAM + _SP - 2) = 0x55;
+//
+//    // Perform operation
+//    CALL;
+//
+//    // Check Result
+//    if ( (_PC != 0x42FF) ||
+//         (_SP != 0x2FFD) ||
+//         (*(NativeCPC->pbRAM + _SP + 0) != 0x03) ||
+//         (*(NativeCPC->pbRAM + _SP + 1) != 0x40) ||
+//         (_F != 0x55) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_CCF(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_CCF
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |CCF       |--?-0*|Complement Carry Flag|CY=~CY                |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Sflag | Zflag | Pflag | Nflag;
+//
+//    // Perform operation
+//    CCF;
+//
+//    // Check Result
+//    if ( ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = Nflag | Cflag;
+//
+//    // Perform operation
+//    CCF;
+//
+//    // Check Result
+//    if ( ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_CP(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_CP
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |CP s      |***V1*|Compare              |A-s                   |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _L = 1; // # test
+//    _A = 0x00;
+//    _BCdword = 0x0001A000;
+//
+//    // Perform operation
+//    CP(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x00) ||
+//         (_B != 0xA0) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 2; // # test
+//    _A = 0xA0;
+//    _BCdword = 0x0001A000;
+//
+//    // Perform operation
+//    CP(_B);
+//
+//    // Check Result
+//    if ( (_A != 0xA0) ||
+//         (_B != 0xA0) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 3; // # test
+//    _A = 0xA0;
+//    _BCdword = 0x00018000;
+//
+//    // Perform operation
+//    CP(_B);
+//
+//    // Check Result
+//    if ( (_A != 0xA0) ||
+//         (_B != 0x80) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 4; // # test
+//    _A = 0xF0;
+//    _BCdword = 0x00013800;
+//
+//    // Perform operation
+//    CP(_B);
+//
+//    // Check Result
+//    if ( (_A != 0xF0) ||
+//         (_B != 0x38) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 5; // # test
+//    _A = 0x90;
+//    _BCdword = 0x00013000;
+//
+//    // Perform operation
+//    CP(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x90) ||
+//         (_B != 0x30) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != Vflag) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_CPD(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_CPD
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |CPD       |****1-|Compare and Decrement|A-[HL],HL=HL-1,BC=BC-1|
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _D = 1; // # test
+//    _F = 0;
+//    _A = 0xF0;
+//    _BCdword = 0x00011000;
+//    _HLdword = 0x00014200;
+//    *(NativeCPC->pbRAM + _HL + 0) = 0xE1;
+//
+//    // Perform operation
+//    CPD;
+//
+//    // Check Result
+//    if ( (_A != 0xF0) ||
+//         (_BC != 0x0FFF) ||
+//         (_HL != 0x41FF) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != Vflag) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _D = 2; // # test
+//    _F = Cflag;
+//    _A = 0xAA;
+//    _BCdword = 0x00010001;
+//    _HLdword = 0x00014100;
+//    *(NativeCPC->pbRAM + _HL + 0) = 0xAA;
+//
+//    // Perform operation
+//    CPD;
+//
+//    // Check Result
+//    if ( (_A != 0xAA) ||
+//         (_BC != 0x0000) ||
+//         (_HL != 0x40FF) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_DEC(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_DEC
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |DEC s     |***V1-|Decrement            |s=s-1                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0;
+//    _BCdword = 0x00011000;
+//
+//    // Perform operation
+//    DEC(_B);
+//
+//    // Check Result
+//    if ( (_B != 0x0F) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = Cflag;
+//    _BCdword = 0x00010000;
+//
+//    // Perform operation
+//    DEC(_B);
+//
+//    // Check Result
+//    if ( (_B != 0xFF) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 3; // # test
+//    _F = 0;
+//    _BCdword = 0x00010100;
+//
+//    // Perform operation
+//    DEC(_B);
+//
+//    // Check Result
+//    if ( (_B != 0x00) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 4; // # test
+//    _F = Cflag;
+//    _BCdword = 0x00018000;
+//
+//    // Perform operation
+//    DEC(_B);
+//
+//    // Check Result
+//    if ( (_B != 0x7F) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != Vflag) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_DEC_MHL(tNativeCPC* NativeCPC,
+//                             tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_DEC_MHL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |DEC [HL]  |***V1-|Decrement            |[HL]=[HL]-1           |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0x0;
+//    _HLdword = 0x00014455;
+//    *(NativeCPC->pbRAM + _HL) = 0x11;
+//
+//    // Perform operation
+//    DEC_MHL;
+//
+//    // Check Result
+//    if ( (_HL != 0x4455) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0x10) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_DEC_MIX(tNativeCPC* NativeCPC,
+//                             tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_DEC_MIX
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |DEC [IX+d]|***V1-|Decrement            |[IX+d]=[IX+d]-1       |
+// * |DEC [IY+d]|***V1-|Decrement            |[IY+d]=[IY+d]-1       |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0x0;
+//    _IXdword = 0x00015000;
+//    _PCdword = 0x00014000;
+//    *(NativeCPC->pbRAM + _PC) = 0x40;
+//    *(NativeCPC->pbRAM + _IX + 0x40) = 0x20;
+//
+//    // Perform operation
+//    DEC_MIX;
+//
+//    // Check Result
+//    if ( (_PC != 0x4001) ||
+//         (_IX != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IX + 0x40) != 0x1F) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x0;
+//    _IYdword = 0x00015000;
+//    _PCdword = 0x00014000;
+//    *(NativeCPC->pbRAM + _PC) = 0xE0; /* 0xE0 = -20 */
+//    *(NativeCPC->pbRAM + _IY - 0x20) = 0x20;
+//
+//    // Perform operation
+//    DEC_MIY;
+//
+//    // Check Result
+//    if ( (_PC != 0x4001) ||
+//         (_IY != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IY - 0x20) != 0x1F) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_EX_SP(tNativeCPC* NativeCPC,
+//                           tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_EX_SP
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |EX [SP],HL|------|Exchange             |[SP]<->HL             |
+// * |EX [SP],xx|------|Exchange             |[SP]<->xx             |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xAA;
+//    _SPdword = 0x000157FE;
+//    _HLdword = 0x00014455;
+//    *(NativeCPC->pbRAM + _SP + 0) = 0x11;
+//    *(NativeCPC->pbRAM + _SP + 1) = 0x22;
+//
+//    // Perform operation
+//    EX_SP(HL);
+//
+//    // Check Result
+//    if ( (_SP != 0x57FE) ||
+//         (_HL != 0x2211) ||
+//         (*(NativeCPC->pbRAM + _SP + 0) != 0x55) ||
+//         (*(NativeCPC->pbRAM + _SP + 1) != 0x44) ||
+//         (_F != 0xAA) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x55;
+//    _SPdword = 0x000157FF;
+//    _HLdword = 0x00014455;
+//    *(NativeCPC->pbRAM + _SP + 0) = 0x11;
+//    *(NativeCPC->pbRAM + _SP + 1) = 0x22;
+//
+//    // Perform operation
+//    EX_SP(HL);
+//
+//    // Check Result
+//    if ( (_SP != 0x57FF) ||
+//         (_HL != 0x2211) ||
+//         (*(NativeCPC->pbRAM + _SP + 0) != 0x55) ||
+//         (*(NativeCPC->pbRAM + _SP + 1) != 0x44) ||
+//         (_F != 0x55) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_EXX(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_EXX
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |EXX       |------|Exchange             |qq<->qq'   (except AF)|
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _AFdword = 0x000155AA;
+//    _BCdword = 0x00010123;
+//    _DEdword = 0x00014567;
+//    _HLdword = 0x000189AB;
+//    Z80->Regs.AFx.w.l = 0x1111;
+//    Z80->Regs.BCx.w.l = 0x2222;
+//    Z80->Regs.DEx.w.l = 0x3333;
+//    Z80->Regs.HLx.w.l = 0x4444;
+//
+//    // Perform operation
+//    EXX;
+//
+//    // Check Result
+//    if ( (_AF != 0x55AA) ||
+//         (Z80->Regs.AFx.w.l != 0x1111) ||
+//         (_BC != 0x2222) ||
+//         (Z80->Regs.BCx.w.l != 0x0123) ||
+//         (_DE != 0x3333) ||
+//         (Z80->Regs.DEx.w.l != 0x4567) ||
+//         (_HL != 0x4444) ||
+//         (Z80->Regs.HLx.w.l != 0x89AB) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_INC(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_INC
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |INC r     |***V0-|Increment            |r=r+1                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0;
+//    _BCdword = 0x00010F00;
+//
+//    // Perform operation
+//    INC(_B);
+//
+//    // Check Result
+//    if ( (_B != 0x10) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = Cflag;
+//    _BCdword = 0x0001FF00;
+//
+//    // Perform operation
+//    INC(_B);
+//
+//    // Check Result
+//    if ( (_B != 0x00) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 3; // # test
+//    _F = 0;
+//    _BCdword = 0x00017F00;
+//
+//    // Perform operation
+//    INC(_B);
+//
+//    // Check Result
+//    if ( (_B != 0x80) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != Vflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 4; // # test
+//    _F = Cflag;
+//    _BCdword = 0x00010500;
+//
+//    // Perform operation
+//    INC(_B);
+//
+//    // Check Result
+//    if ( (_B != 0x06) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_INC_MHL(tNativeCPC* NativeCPC,
+//                             tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_INC_MHL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |INC [HL]  |***V0-|Increment            |[HL]=[HL]+1           |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Nflag;
+//    _HLdword = 0x00014455;
+//    *(NativeCPC->pbRAM + _HL) = 0x11;
+//
+//    // Perform operation
+//    INC_MHL;
+//
+//    // Check Result
+//    if ( (_HL != 0x4455) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0x12) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_INC_MIX(tNativeCPC* NativeCPC,
+//                             tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_INC_MIX
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |INC [IX+d]|***V0-|Decrement            |[IX+d]=[IX+d]+1       |
+// * |INC [IY+d]|***V0-|Decrement            |[IY+d]=[IY+d]+1       |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Nflag;
+//    _IXdword = 0x00015000;
+//    _PCdword = 0x00014000;
+//    *(NativeCPC->pbRAM + _PC) = 0x40;
+//    *(NativeCPC->pbRAM + _IX + 0x40) = 0x20;
+//
+//    // Perform operation
+//    INC_MIX;
+//
+//    // Check Result
+//    if ( (_PC != 0x4001) ||
+//         (_IX != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IX + 0x40) != 0x21) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = Nflag;
+//    _IYdword = 0x00015000;
+//    _PCdword = 0x00014000;
+//    *(NativeCPC->pbRAM + _PC) = 0xE0; /* 0xE0 = -20 */
+//    *(NativeCPC->pbRAM + _IY - 0x20) = 0x20;
+//
+//    // Perform operation
+//    INC_MIY;
+//
+//    // Check Result
+//    if ( (_PC != 0x4001) ||
+//         (_IY != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IY - 0x20) != 0x21) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_JP(tNativeCPC* NativeCPC,
+//                        tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_JP
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |JP nn     |------|Unconditional Jump   |PC=nn                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xAA;
+//    _PCdword = 0x00014000;
+//    *(NativeCPC->pbRAM + _PC + 0) = 0x10;
+//    *(NativeCPC->pbRAM + _PC + 1) = 0x20;
+//
+//    // Perform operation
+//    JP;
+//
+//    // Check Result
+//    if ( (_PC != 0x2010) ||
+//         (_F != 0xAA) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x55;
+//    _PCdword = 0x00014001;
+//    *(NativeCPC->pbRAM + _PC + 0) = 0x11;
+//    *(NativeCPC->pbRAM + _PC + 1) = 0x22;
+//
+//    // Perform operation
+//    JP;
+//
+//    // Check Result
+//    if ( (_PC != 0x2211) ||
+//         (_F != 0x55) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_JR(tNativeCPC* NativeCPC,
+//                        tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_JR
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |JR e      |------|Unconditional Jump   |PC=PC+e               |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xAA;
+//    _PCdword = 0x00014000;
+//    *(NativeCPC->pbRAM + _PC + 0) = 0x10;
+//
+//    // Perform operation
+//    JR;
+//
+//    // Check Result
+//    if ( (_PC != 0x4011) ||
+//         (_F != 0xAA) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x55;
+//    _PCdword = 0x00014009;
+//    *(NativeCPC->pbRAM + _PC + 0) = 0xF6;
+//
+//    // Perform operation
+//    JR;
+//
+//    // Check Result
+//    if ( (_PC != 0x4000) ||
+//         (_F != 0x55) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 3; // # test
+//    _F = 0xAA;
+//    _PCdword = 0x00014000;
+//    *(NativeCPC->pbRAM + _PC + 0) = 0x7F;
+//
+//    // Perform operation
+//    JR;
+//
+//    // Check Result
+//    if ( (_PC != 0x4080) ||
+//         (_F != 0xAA) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 4; // # test
+//    _F = 0x55;
+//    _PCdword = 0x0001407F;
+//    *(NativeCPC->pbRAM + _PC + 0) = 0x80;
+//
+//    // Perform operation
+//    JR;
+//
+//    // Check Result
+//    if ( (_PC != 0x4000) ||
+//         (_F != 0x55) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_LD16_MEM(tNativeCPC* NativeCPC,
+//                              tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_LD16_MEM
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |LD dst,src|------|Load                 |dst=src               |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xAA;
+//    _PCdword = 0x00014000;
+//    _BCdword = 0x00018899;
+//    *(NativeCPC->pbRAM + _PC + 0) = 0x00;
+//    *(NativeCPC->pbRAM + _PC + 1) = 0x42;
+//    *(NativeCPC->pbRAM + 0x4200 + 0) = 0x55;
+//    *(NativeCPC->pbRAM + 0x4200 + 1) = 0xAA;
+//
+//    // Perform operation
+//    LD16_MEM(BC);
+//
+//    // Check Result
+//    if ( (_PC != 0x4002) ||
+//         (_BC != 0xAA55) ||
+//         (_F != 0xAA) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x55;
+//    _PCdword = 0x000141FF;
+//    _DEdword = 0x00018899;
+//    *(NativeCPC->pbRAM + _PC + 0) = 0xFF;
+//    *(NativeCPC->pbRAM + _PC + 1) = 0x42;
+//    *(NativeCPC->pbRAM + 0x42FF + 0) = 0x22;
+//    *(NativeCPC->pbRAM + 0x42FF + 1) = 0x33;
+//
+//    // Perform operation
+//    LD16_MEM(DE);
+//
+//    // Check Result
+//    if ( (_PC != 0x4201) ||
+//         (_DE != 0x3322) ||
+//         (_F != 0x55) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_LDMEM_16(tNativeCPC* NativeCPC,
+//                              tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_LDMEM_16
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |LD dst,src|------|Load                 |dst=src               |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xAA;
+//    _PCdword = 0x00014000;
+//    _BCdword = 0x00018899;
+//    *(NativeCPC->pbRAM + _PC + 0) = 0x00;
+//    *(NativeCPC->pbRAM + _PC + 1) = 0x42;
+//    *(NativeCPC->pbRAM + 0x4200 + 0) = 0x55;
+//    *(NativeCPC->pbRAM + 0x4200 + 1) = 0xAA;
+//
+//    // Perform operation
+//    LDMEM_16(BC);
+//
+//    // Check Result
+//    if ( (_PC != 0x4002) ||
+//         (*(NativeCPC->pbRAM + 0x4200 + 0) != 0x99) ||
+//         (*(NativeCPC->pbRAM + 0x4200 + 1) != 0x88) ||
+//         (_F != 0xAA) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x55;
+//    _PCdword = 0x000141FF;
+//    _BCdword = 0x00018899;
+//    *(NativeCPC->pbRAM + _PC + 0) = 0xFF;
+//    *(NativeCPC->pbRAM + _PC + 1) = 0x43;
+//    *(NativeCPC->pbRAM + 0x43FF + 0) = 0x55;
+//    *(NativeCPC->pbRAM + 0x43FF + 1) = 0xAA;
+//
+//    // Perform operation
+//    LDMEM_16(BC);
+//
+//    // Check Result
+//    if ( (_PC != 0x4201) ||
+//         (*(NativeCPC->pbRAM + 0x43FF + 0) != 0x99) ||
+//         (*(NativeCPC->pbRAM + 0x43FF + 1) != 0x88) ||
+//         (_F != 0x55) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_OR(tNativeCPC* NativeCPC,
+//                        tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_OR
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |OR s      |**0P00|Logical inclusive OR |A=Avs                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _L = 1; // # test
+//    _F = Nflag | Cflag;
+//    _A = 0x25;
+//    _BCdword = 0x00018800;
+//
+//    // Perform operation
+//    OR(_B);
+//
+//    // Check Result
+//    if ( (_A != 0xAD) ||
+//         (_B != 0x88) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 2; // # test
+//    _F = 0;
+//    _A = 0x00;
+//    _BCdword = 0x00010000;
+//
+//    // Perform operation
+//    OR(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x00) ||
+//         (_B != 0x00) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_POP(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_POP
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |POP xx    |------|Pop                  |xx=[SP]+              |
+// * |POP qq    |------|Pop                  |qq=[SP]+              |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xAA;
+//    _SPdword = 0x000157FE;
+//    _BCdword = 0x00018899;
+//    *(NativeCPC->pbRAM + _SP + 0) = 0x55;
+//    *(NativeCPC->pbRAM + _SP + 1) = 0xAA;
+//
+//    // Perform operation
+//    POP(BC);
+//
+//    // Check Result
+//    if ( (_SP != 0x5800) ||
+//         (_BC != 0xAA55) ||
+//         (_F != 0xAA) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x55;
+//    _SPdword = 0x000157FF;
+//    _BCdword = 0x00018899;
+//    *(NativeCPC->pbRAM + _SP + 0) = 0xAA;
+//    *(NativeCPC->pbRAM + _SP + 1) = 0x55;
+//
+//    // Perform operation
+//    POP(BC);
+//
+//    // Check Result
+//    if ( (_SP != 0x5801) ||
+//         (_BC != 0x55AA) ||
+//         (*(NativeCPC->pbRAM + _SP - 2) != 0xAA) ||
+//         (*(NativeCPC->pbRAM + _SP - 1) != 0x55) ||
+//         (_F != 0x55) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_PUSH(tNativeCPC* NativeCPC,
+//                          tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_PUSH
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |PUSH xx   |------|Push                 |-[SP]=xx              |
+// * |PUSH qq   |------|Push                 |-[SP]=qq              |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xAA;
+//    _SPdword = 0x00015800;
+//    _BCdword = 0x00018899;
+//    *(NativeCPC->pbRAM + _SP - 1) = 0x55;
+//    *(NativeCPC->pbRAM + _SP - 2) = 0xAA;
+//
+//    // Perform operation
+//    PUSH(BC);
+//
+//    // Check Result
+//    if ( (_SP != 0x57FE) ||
+//         (*(NativeCPC->pbRAM + _SP + 1) != 0x88) ||
+//         (*(NativeCPC->pbRAM + _SP + 0) != 0x99) ||
+//         (_F != 0xAA) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x55;
+//    _SPdword = 0x00015801;
+//    _BCdword = 0x00018899;
+//    *(NativeCPC->pbRAM + _SP - 1) = 0xAA;
+//    *(NativeCPC->pbRAM + _SP - 2) = 0x55;
+//
+//    // Perform operation
+//    PUSH(BC);
+//
+//    // Check Result
+//    if ( (_BC != 0x8899) ||
+//         (_SP != 0x57FF) ||
+//         (*(NativeCPC->pbRAM + _SP + 1) != 0x88) ||
+//         (*(NativeCPC->pbRAM + _SP + 0) != 0x99) ||
+//         (_F != 0x55) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RES(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RES
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RES b,m   |------|Reset bit            |m=m&{~2^b}            |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xAA;
+//    _BCdword = 0x0001FFAA;
+//
+//    // Perform operation
+//    _B = RES(1, _B);
+//
+//    // Check Result
+//    if ( (_F != 0xAA) ||
+//         (_B != 0xFD) ||
+//         (_C != 0xAA) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x55;
+//    _BCdword = 0x0001FFAA;
+//
+//    // Perform operation
+//    _C = RES(1, _C);
+//
+//    // Check Result
+//    if ( (_F != 0x55) ||
+//         (_B != 0xFF) ||
+//         (_C != 0xA8) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RES_MHL(tNativeCPC* NativeCPC,
+//                             tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RES_MHL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RES b,[HL]|------|Reset bit            |[HL]=[HL]&{~2^b}      |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0;
+//    _HLdword = 0x00014200;
+//    *(NativeCPC->pbRAM + _HL) = 0xFF;
+//
+//    // Perform operation
+//    RES_MHL(1);
+//
+//    // Check Result
+//    if ( (_F != 0) ||
+//         (_HL != 0x4200) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0xFD) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RES_REG_ADDR(tNativeCPC* NativeCPC,
+//                                  tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RES_REG_ADDR
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RES b,m   |------|Reset bit            |m=m&{~2^b}            |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xAA;
+//    _BCdword = 0x00014200;
+//    _IXdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _IX) = 0xFF;
+//
+//    // Perform operation
+//    RES_B_ADDR(_IX, 0);
+//
+//    // Check Result
+//    if ( (_F != 0xAA) ||
+//         (_B != 0xFE) ||
+//         (_IX != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IX) != 0xFE) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x55;
+//    _BCdword = 0x0001FF00;
+//    _IYdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _IY) = 0xFF;
+//
+//    // Perform operation
+//    RES_B_ADDR(_IY, 7);
+//
+//    // Check Result
+//    if ( (_F != 0x55) ||
+//         (_B != 0x7F) ||
+//         (_IY != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IY) != 0x7F) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RET(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RET
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RET       |------|Return               |PC=[SP]+              |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xAA;
+//    _PCdword = 0x00014000;
+//    _SPdword = 0x000157FE;
+//    *(NativeCPC->pbRAM + _SP + 0) = 0x55;
+//    *(NativeCPC->pbRAM + _SP + 1) = 0x44;
+//
+//    // Perform operation
+//    RET;
+//
+//    // Check Result
+//    if ( (_SP != 0x5800) ||
+//         (_PC != 0x4455) ||
+//         (_F != 0xAA) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x55;
+//    _PCdword = 0x0001FFFF;
+//    _SPdword = 0x000157FF;
+//    *(NativeCPC->pbRAM + _SP + 0) = 0x55;
+//    *(NativeCPC->pbRAM + _SP + 1) = 0x44;
+//
+//    // Perform operation
+//    RET;
+//
+//    // Check Result
+//    if ( (_SP != 0x5801) ||
+//         (_PC != 0x4455) ||
+//         (_F != 0x55) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RL(tNativeCPC* NativeCPC,
+//                        tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RL m      |**0P0*|Rotate Left          |m={CY,m}<-            |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag | Cflag;
+//    _BCdword = 0x00013C00;
+//
+//    // Perform operation
+//    _B = RL(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x79) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = Hflag | Nflag;
+//    _DEdword = 0x0001C100;
+//
+//    // Perform operation
+//    _D = RL(Z80, _D);
+//
+//    // Check Result
+//    if ( (_D != 0x82) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RL_MHL(tNativeCPC* NativeCPC,
+//                            tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RL_MHL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RL [HL]   |**0P0*|Rotate Left          |[HL]={CY,[HL]}<-      |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag | Cflag;
+//    _HLdword = 0x00014200;
+//    *(NativeCPC->pbRAM + _HL) = 0xAA;
+//
+//    // Perform operation
+//    RL_MHL;
+//
+//    // Check Result
+//    if ( (_HL != 0x4200) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0x55) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RL_REG_ADDR(tNativeCPC* NativeCPC,
+//                                 tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RL_REG_ADDR
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RL m      |**0P0*|Rotate Left          |m={CY,m}<-            |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _BCdword = 0x00011122;
+//    _IXdword = 0x00014200;
+//    *(NativeCPC->pbRAM + _IX) = 0x44;
+//
+//    // Perform operation
+//    RL_B_ADDR(_IX);
+//
+//    // Check Result
+//    if ( (_B != 0x88) ||
+//         (_C != 0x22) ||
+//         (*(NativeCPC->pbRAM + _IX) != 0x44) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RLA(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RLA
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RLA       |--0-0*|Rotate Left Acc.     |A={CY,A}<-            |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _L = 1; // # test
+//    _A = 0x80;
+//    _F = Hflag | Nflag;
+//
+//    // Perform operation
+//    RLA;
+//
+//    // Check Result
+//    if ( (_A != 0x00) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 2; // # test
+//    _A = 0x40;
+//    _F = Sflag | Zflag | Pflag | Cflag;
+//
+//    // Perform operation
+//    RLA;
+//
+//    // Check Result
+//    if ( (_A != 0x81) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RLC(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RLC
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RLC m     |**0P0*|Rotate Left Circular |m=m<-                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _BCdword = 0x00018155;
+//
+//    // Perform operation
+//    _B = RLC(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x03) ||
+//         (_C != 0x55) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = Hflag | Nflag | Cflag;
+//    _BCdword = 0x00014355;
+//
+//    // Perform operation
+//    _B = RLC(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x86) ||
+//         (_C != 0x55) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 3; // # test
+//    _F = Hflag | Nflag | Cflag;
+//    _BCdword = 0x00010055;
+//
+//    // Perform operation
+//    _B = RLC(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x00) ||
+//         (_C != 0x55) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RLC_MHL(tNativeCPC* NativeCPC,
+//                             tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RLC_MHL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RLC m     |**0P0*|Rotate Left Circular |m=m<-                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _HLdword = 0x00014200;
+//    *(NativeCPC->pbRAM + _HL) = 0xAA;
+//
+//    // Perform operation
+//    RLC_MHL;
+//
+//    // Check Result
+//    if ( (_HL != 0x4200) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0x55) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RLC_REG_ADDR(tNativeCPC* NativeCPC,
+//                                  tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RLC_REG_ADDR
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RLC m     |**0P0*|Rotate Left Circular |m=m<-                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0;
+//    _BCdword = 0x00015533;
+//    _IXdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _IX) = 0x24;
+//
+//    // Perform operation
+//    RLC_B_ADDR(_IX);
+//
+//    // Check Result
+//    if ( (_B != 0x48) ||
+//         (_C != 0x33) ||
+//         (_IX != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IX) != 0x48) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RLCA(tNativeCPC* NativeCPC,
+//                          tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RLCA
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RLCA      |--0-0*|Rotate Left Circular |A=A<-                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _L = 1; // # test
+//    _A = 0x88;
+//    _F = 0;
+//
+//    // Perform operation
+//    RLCA;
+//
+//    // Check Result
+//    if ( (_A != 0x11) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 2; // # test
+//    _A = 0x11;
+//    _F = Sflag | Zflag | Hflag | Pflag | Nflag | Cflag;
+//
+//    // Perform operation
+//    RLCA;
+//
+//    // Check Result
+//    if ( (_A != 0x22) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RLD(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RLD
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RLD       |**0P0-|Rotate Left 4 bits   |{A,[HL]}={A,[HL]}<- ##|
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _D = 1; // # test
+//    _F = Hflag | Nflag;
+//    _A = 0x12;
+//    _HLdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _HL) = 0x34;
+//
+//    // Perform operation
+//    RLD;
+//
+//    // Check Result
+//    if ( (_A != 0x13) ||
+//         (_HL != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0x42) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _D = 2; // # test
+//    _F = Hflag | Nflag | Cflag;
+//    _A = 0x0F;
+//    _HLdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _HL) = 0x0F;
+//
+//    // Perform operation
+//    RLD;
+//
+//    // Check Result
+//    if ( (_A != 0x00) ||
+//         (_HL != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0xFF) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _D = 3; // # test
+//    _F = Hflag | Nflag | Cflag;
+//    _A = 0x8F;
+//    _HLdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _HL) = 0x0F;
+//
+//    // Perform operation
+//    RLD;
+//
+//    // Check Result
+//    if ( (_A != 0x80) ||
+//         (_HL != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0xFF) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RR(tNativeCPC* NativeCPC,
+//                        tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RR
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RR m      |**0P0*|Rotate Right         |m=->{CY,m}            |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _BCdword = 0x00018155;
+//
+//    // Perform operation
+//    _B = RR(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x40) ||
+//         (_C != 0x55) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = Hflag | Nflag | Cflag;
+//    _BCdword = 0x00018255;
+//
+//    // Perform operation
+//    _B = RR(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0xC1) ||
+//         (_C != 0x55) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 3; // # test
+//    _F = Hflag | Nflag;
+//    _BCdword = 0x00010155;
+//
+//    // Perform operation
+//    _B = RR(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x00) ||
+//         (_C != 0x55) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RR_MHL(tNativeCPC* NativeCPC,
+//                            tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RR_MHL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RR m      |**0P0*|Rotate Right         |m=->{CY,m}            |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _HLdword = 0x00014200;
+//    *(NativeCPC->pbRAM + _HL) = 0x12;
+//
+//    // Perform operation
+//    RR_MHL;
+//
+//    // Check Result
+//    if ( (_HL != 0x4200) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0x09) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RRA(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RRA
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RRA       |--0-0*|Rotate Right Acc.    |A=->{CY,A}            |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _L = 1; // # test
+//    _A = 0x11;
+//    _F = 0;
+//
+//    // Perform operation
+//    RRA;
+//
+//    // Check Result
+//    if ( (_A != 0x08) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 2; // # test
+//    _A = 0x12;
+//    _F = Sflag | Zflag | Hflag | Pflag | Nflag | Cflag;
+//
+//    // Perform operation
+//    RRA;
+//
+//    // Check Result
+//    if ( (_A != 0x89) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RRC(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RRC
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RRC m     |**0P0*|Rotate Right Circular|m=->m                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _BCdword = 0x00014155;
+//
+//    // Perform operation
+//    _B = RRC(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0xA0) ||
+//         (_C != 0x55) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0;
+//    _BCdword = 0x00010055;
+//
+//    // Perform operation
+//    _B = RRC(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x00) ||
+//         (_C != 0x55) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RRC_MHL(tNativeCPC* NativeCPC,
+//                             tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RRC_MHL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RRC m     |**0P0*|Rotate Right Circular|m=->m                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _HLdword = 0x00014200;
+//    *(NativeCPC->pbRAM + _HL) = 0x11;
+//
+//    // Perform operation
+//    RRC_MHL;
+//
+//    // Check Result
+//    if ( (_HL != 0x4200) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0x88) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RRC_REG_ADDR(tNativeCPC* NativeCPC,
+//                                  tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RRC_REG_ADDR
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RRC m     |**0P0*|Rotate Right Circular|m=->m                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0;
+//    _BCdword = 0x00015533;
+//    _IXdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _IX) = 0x11;
+//
+//    // Perform operation
+//    RRC_B_ADDR(_IX);
+//
+//    // Check Result
+//    if ( (_B != 0x88) ||
+//         (_C != 0x33) ||
+//         (_IX != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IX) != 0x88) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RRCA(tNativeCPC* NativeCPC,
+//                          tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RRCA
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RRCA      |--0-0*|Rotate Right Circular|A=->A                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _L = 1; // # test
+//    _A = 0x11;
+//    _F = 0;
+//
+//    // Perform operation
+//    RRCA;
+//
+//    // Check Result
+//    if ( (_A != 0x88) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 2; // # test
+//    _A = 0x22;
+//    _F = Sflag | Zflag | Hflag | Pflag | Nflag | Cflag;
+//
+//    // Perform operation
+//    RRCA;
+//
+//    // Check Result
+//    if ( (_A != 0x11) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RRD(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RRD
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RRD       |**0P0-|Rotate Right 4 bits  |{A,[HL]}=->{A,[HL]} ##|
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _D = 1; // # test
+//    _F = Hflag | Nflag;
+//    _A = 0x92;
+//    _HLdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _HL) = 0x34;
+//
+//    // Perform operation
+//    RRD;
+//
+//    // Check Result
+//    if ( (_A != 0x94) ||
+//         (_HL != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0x23) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _D = 2; // # test
+//    _F = Hflag | Nflag | Cflag;
+//    _A = 0x02;
+//    _HLdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _HL) = 0x30;
+//
+//    // Perform operation
+//    RRD;
+//
+//    // Check Result
+//    if ( (_A != 0x00) ||
+//         (_HL != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0x23) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_RST(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_RST
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |RST p     |------|Restart              | (p=0H,8H,10H,...,38H)|
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xFF;
+//    _PCdword = 0x00014321;
+//    _SPdword = 0x00015800;
+//    *(NativeCPC->pbRAM + _SP - 1) = 0xAA;
+//    *(NativeCPC->pbRAM + _SP - 2) = 0x55;
+//
+//    // Perform operation
+//    RST(0xABCD);
+//
+//    // Check Result
+//    if ( (_PC != 0xABCD) ||
+//         (_SP != 0x57FE) ||
+//         (*(NativeCPC->pbRAM + _SP + 1) != 0x43) ||
+//         (*(NativeCPC->pbRAM + _SP + 0) != 0x21) ||
+//         (_F != 0xFF) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x00;
+//    _PCdword = 0x00018765;
+//    _SPdword = 0x000157FF;
+//    *(NativeCPC->pbRAM + _SP - 1) = 0xAA;
+//    *(NativeCPC->pbRAM + _SP - 2) = 0x55;
+//
+//    // Perform operation
+//    RST(0x4321);
+//
+//    // Check Result
+//    if ( (_PC != 0x4321) ||
+//         (_SP != 0x57FD) ||
+//         (*(NativeCPC->pbRAM + _SP + 1) != 0x87) ||
+//         (*(NativeCPC->pbRAM + _SP + 0) != 0x65) ||
+//         (_F != 0x00) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SBC(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SBC
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SBC A,s   |***V1*|Subtract with Carry  |A=A-s-CY              |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _L = 1; // # test
+//    _F = Cflag;
+//    _A = 0xF0;
+//    _BCdword = 0x0001EF00;
+//
+//    // Perform operation
+//    SBC(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x00) ||
+//         (_B != 0xEF) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 2; // # test
+//    _F = Cflag;
+//    _A = 0x10;
+//    _BCdword = 0x0001EF00;
+//
+//    // Perform operation
+//    SBC(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x20) ||
+//         (_B != 0xEF) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 3; // # test
+//    _F = 0;
+//    _A = 0xEF;
+//    _BCdword = 0x00011000;
+//
+//    // Perform operation
+//    SBC(_B);
+//
+//    // Check Result
+//    if ( (_A != 0xDF) ||
+//         (_B != 0x10) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 4; // # test
+//    _F = 0;
+//    _A = 0x80;
+//    _BCdword = 0x00011000;
+//
+//    // Perform operation
+//    SBC(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x70) ||
+//         (_B != 0x10) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != Vflag) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SBC16(tNativeCPC* NativeCPC,
+//                           tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SBC16
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SBC HL,ss |**?V1*|Subtract with Carry  |HL=HL-ss-CY           |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Cflag;
+//    _HLdword = 0x0001F000;
+//    _DEdword = 0x0001EFFF;
+//
+//    // Perform operation
+//    SBC16(DE);
+//
+//    // Check Result
+//    if ( (_HL != 0x0000) ||
+//         (_DE != 0xEFFF) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0;
+//    _HLdword = 0x00011000;
+//    _DEdword = 0x0000A000;
+//
+//    // Perform operation
+//    SBC16(DE);
+//
+//    // Check Result
+//    if ( (_HL != 0x7000) ||
+//         (_DE != 0xA000) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 3; // # test
+//    _F = Cflag;
+//    _HLdword = 0x0001F000;
+//    _DEdword = 0x00008FFF;
+//
+//    // Perform operation
+//    SBC16(DE);
+//
+//    // Check Result
+//    if ( (_HL != 0x6000) ||
+//         (_DE != 0x8FFF) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 4; // # test
+//    _F = Cflag;
+//    _HLdword = 0x00018000;
+//    _DEdword = 0x00001FFF;
+//
+//    // Perform operation
+//    SBC16(DE);
+//
+//    // Check Result
+//    if ( (_HL != 0x6000) ||
+//         (_DE != 0x1FFF) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != Vflag) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 5; // # test
+//    _F = Cflag;
+//    _HLdword = 0x0001F000;
+//    _DEdword = 0x00001FFF;
+//
+//    // Perform operation
+//    SBC16(DE);
+//
+//    // Check Result
+//    if ( (_HL != 0xD000) ||
+//         (_DE != 0x1FFF) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SET(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SET
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SET b,m   |------|Set bit              |m=mv{2^b}             |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xAA;
+//    _BCdword = 0x00010000;
+//
+//    // Perform operation
+//    _B = SET(0, _B);
+//
+//    // Check Result
+//    if ( (_F != 0xAA) ||
+//         (_B != 0x01) ||
+//         (_C != 0x00) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x55;
+//    _BCdword = 0x00010000;
+//
+//    // Perform operation
+//    _B = SET(7, _B);
+//
+//    // Check Result
+//    if ( (_F != 0x55) ||
+//         (_B != 0x80) ||
+//         (_C != 0x00) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SET_MHL(tNativeCPC* NativeCPC,
+//                             tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SET_MHL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SET b,m   |------|Set bit              |m=mv{2^b}             |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0;
+//    _HLdword = 0x00014200;
+//    *(NativeCPC->pbRAM + _HL) = 0x00;
+//
+//    // Perform operation
+//    SET_MHL(1);
+//
+//    // Check Result
+//    if ( (_F != 0) ||
+//         (_HL != 0x4200) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0x02) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SET_REG_ADDR(tNativeCPC* NativeCPC,
+//                                  tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SET_REG_ADDR
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SET b,m   |------|Set bit              |m=mv{2^b}             |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0xAA;
+//    _BCdword = 0x00014200;
+//    _IXdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _IX) = 0x00;
+//
+//    // Perform operation
+//    SET_B_ADDR(_IX, 0);
+//
+//    // Check Result
+//    if ( (_F != 0xAA) ||
+//         (_B != 0x01) ||
+//         (_IX != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IX) != 0x01) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = 0x55;
+//    _BCdword = 0x0001FF00;
+//    _IYdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _IY) = 0x00;
+//
+//    // Perform operation
+//    SET_B_ADDR(_IY, 7);
+//
+//    // Check Result
+//    if ( (_F != 0x55) ||
+//         (_B != 0x80) ||
+//         (_IY != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IY) != 0x80) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SLA(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SLA
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SLA m     |**0P0*|Shift Left Arithmetic|m=m*2                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _BCdword = 0x00014211;
+//
+//    // Perform operation
+//    _B = SLA(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x84) ||
+//         (_C != 0x11) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = Hflag | Nflag;
+//    _BCdword = 0x00018011;
+//
+//    // Perform operation
+//    _B = SLA(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x00) ||
+//         (_C != 0x11) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 3; // # test
+//    _F = Hflag | Nflag;
+//    _BCdword = 0x0001C011;
+//
+//    // Perform operation
+//    _B = SLA(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x80) ||
+//         (_C != 0x11) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SLA_MHL(tNativeCPC* NativeCPC,
+//                             tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SLA_MHL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SLA m     |**0P0*|Shift Left Arithmetic|m=m*2                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _HLdword = 0x00014200;
+//    *(NativeCPC->pbRAM + _HL) = 0x88;
+//
+//    // Perform operation
+//    SLA_MHL;
+//
+//    // Check Result
+//    if ( (_HL != 0x4200) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0x10) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SLA_REG_ADDR(tNativeCPC* NativeCPC,
+//                                  tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SLA_REG_ADDR
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SLA m     |**0P0*|Shift Left Arithmetic|m=m*2                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0;
+//    _BCdword = 0x00015533;
+//    _IXdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _IX) = 0x88;
+//
+//    // Perform operation
+//    SLA_B_ADDR(_IX);
+//
+//    // Check Result
+//    if ( (_B != 0x10) ||
+//         (_C != 0x33) ||
+//         (_IX != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IX) != 0x10) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SLL(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SLL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SLL m     |**0P0*|Logical Shift Left   |m=m*2+1               |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _BCdword = 0x00018111;
+//
+//    // Perform operation
+//    _B = SLL(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x03) ||
+//         (_C != 0x11) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = Hflag | Nflag | Cflag;
+//    _BCdword = 0x00014411;
+//
+//    // Perform operation
+//    _B = SLL(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x89) ||
+//         (_C != 0x11) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SLL_MHL(tNativeCPC* NativeCPC,
+//                             tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SLL_MHL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SLL m     |**0P0*|Logical Shift Left   |m=m*2+1               |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _HLdword = 0x00014200;
+//    *(NativeCPC->pbRAM + _HL) = 0x44;
+//
+//    // Perform operation
+//    SLL_MHL;
+//
+//    // Check Result
+//    if ( (_HL != 0x4200) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0x89) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SLL_REG_ADDR(tNativeCPC* NativeCPC,
+//                                  tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SLL_REG_ADDR
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SLL m     |**0P0*|Logical Shift Left   |m=m*2+1               |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0;
+//    _BCdword = 0x00015533;
+//    _IXdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _IX) = 0x44;
+//
+//    // Perform operation
+//    SLL_B_ADDR(_IX);
+//
+//    // Check Result
+//    if ( (_B != 0x89) ||
+//         (_C != 0x33) ||
+//         (_IX != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IX) != 0x89) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SRA(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SRA
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SRA m     |**0P0*|Shift Right Arith.   |m=m/2                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _BCdword = 0x00018211;
+//
+//    // Perform operation
+//    _B = SRA(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0xC1) ||
+//         (_C != 0x11) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = Hflag | Nflag;
+//    _BCdword = 0x00010111;
+//
+//    // Perform operation
+//    _B = SRA(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x00) ||
+//         (_C != 0x11) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SRA_MHL(tNativeCPC* NativeCPC,
+//                             tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SRA_MHL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SRA m     |**0P0*|Shift Right Arith.   |m=m/2                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _HLdword = 0x00014200;
+//    *(NativeCPC->pbRAM + _HL) = 0x88;
+//
+//    // Perform operation
+//    SRA_MHL;
+//
+//    // Check Result
+//    if ( (_HL != 0x4200) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0xC4) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SRA_REG_ADDR(tNativeCPC* NativeCPC,
+//                                  tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SRA_REG_ADDR
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SRA m     |**0P0*|Shift Right Arith.   |m=m/2                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0;
+//    _BCdword = 0x00015533;
+//    _IXdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _IX) = 0x88;
+//
+//    // Perform operation
+//    SRA_B_ADDR(_IX);
+//
+//    // Check Result
+//    if ( (_B != 0xC4) ||
+//         (_C != 0x33) ||
+//         (_IX != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IX) != 0xC4) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SRL(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SRL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SRL m     |**0P0*|Shift Right Logical  |m=->{0,m,CY}          |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _BCdword = 0x00010111;
+//
+//    // Perform operation
+//    _B = SRL(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x00) ||
+//         (_C != 0x11) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _A = 2; // # test
+//    _F = Hflag | Nflag | Cflag;
+//    _BCdword = 0x00018611;
+//
+//    // Perform operation
+//    _B = SRL(Z80, _B);
+//
+//    // Check Result
+//    if ( (_B != 0x43) ||
+//         (_C != 0x11) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SRL_MHL(tNativeCPC* NativeCPC,
+//                             tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SRL_MHL
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SRL m     |**0P0*|Shift Right Logical  |m=->{0,m,CY}          |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = Hflag | Nflag;
+//    _HLdword = 0x00014200;
+//    *(NativeCPC->pbRAM + _HL) = 0x86;
+//
+//    // Perform operation
+//    SRL_MHL;
+//
+//    // Check Result
+//    if ( (_HL != 0x4200) ||
+//         (*(NativeCPC->pbRAM + _HL) != 0x43) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SRL_REG_ADDR(tNativeCPC* NativeCPC,
+//                                  tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SRL_REG_ADDR
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SRL m     |**0P0*|Shift Right Logical  |m=->{0,m,CY}          |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _A = 1; // # test
+//    _F = 0;
+//    _BCdword = 0x00015533;
+//    _IXdword = 0x00015000;
+//    *(NativeCPC->pbRAM + _IX) = 0x86;
+//
+//    // Perform operation
+//    SRL_B_ADDR(_IX);
+//
+//    // Check Result
+//    if ( (_B != 0x43) ||
+//         (_C != 0x33) ||
+//         (_IX != 0x5000) ||
+//         (*(NativeCPC->pbRAM + _IX) != 0x43) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_SUB(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_SUB
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |SUB s     |***V1*|Subtract             |A=A-s                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _L = 1; // # test
+//    _A = 0x00;
+//    _BCdword = 0x0001A000;
+//
+//    // Perform operation
+//    SUB(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x60) ||
+//         (_B != 0xA0) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != Cflag) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 2; // # test
+//    _A = 0x10;
+//    _BCdword = 0x00010100;
+//
+//    // Perform operation
+//    SUB(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x0F) ||
+//         (_B != 0x01) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != Hflag) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 3; // # test
+//    _A = 0xA0;
+//    _BCdword = 0x00014000;
+//
+//    // Perform operation
+//    SUB(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x60) ||
+//         (_B != 0x40) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != Vflag) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 4; // # test
+//    _A = 0xE0;
+//    _BCdword = 0x00011000;
+//
+//    // Perform operation
+//    SUB(_B);
+//
+//    // Check Result
+//    if ( (_A != 0xD0) ||
+//         (_B != 0x10) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 5; // # test
+//    _A = 0x40;
+//    _BCdword = 0x00014000;
+//
+//    // Perform operation
+//    SUB(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x00) ||
+//         (_B != 0x40) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Vflag) != 0) ||
+//         ((_F & Nflag) != Nflag) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+//static tUShort TestU_XOR(tNativeCPC* NativeCPC,
+//                         tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_XOR
+// *
+// * ----------------------------------------------------------------
+// * |Mnemonic  |SZHPNC|Description          |Notes                 |
+// * |----------+------+---------------------+----------------------|
+// * |XOR s     |**0P00|Logical Exclusive OR |A=Axs                 |
+// * ----------------------------------------------------------------
+// *
+// ***********************************************************************/
+//{
+//tZ80* Z80 = NativeCPC->Z80;
+//tUShort TestResult = testUErrorClass+NoTest;
+//
+//  do
+//  {
+//    // Prepare conditions
+//    _L = 1; // # test
+//    _F = Nflag | Cflag;
+//    _A = 0xE9;
+//    _BCdword = 0x00017800;
+//
+//    // Perform operation
+//    XOR(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x91) ||
+//         (_B != 0x78) ||
+//         ((_F & Sflag) != Sflag) ||
+//         ((_F & Zflag) != 0) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != 0) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    _L = 2; // # test
+//    _F = 0;
+//    _A = 0x55;
+//    _BCdword = 0x00015500;
+//
+//    // Perform operation
+//    XOR(_B);
+//
+//    // Check Result
+//    if ( (_A != 0x00) ||
+//         (_B != 0x55) ||
+//         ((_F & Sflag) != 0) ||
+//         ((_F & Zflag) != Zflag) ||
+//         ((_F & Hflag) != 0) ||
+//         ((_F & Pflag) != Pflag) ||
+//         ((_F & Nflag) != 0) ||
+//         ((_F & Cflag) != 0) )
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//
+////
+//// Mathlib Unitary Tests
+////
+//static tUShort TestU_math_fabs(tNativeCPC* NativeCPC, tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_math_fabs
+// *
+// ***********************************************************************/
+//{
+//tUShort TestResult = testUErrorClass+NoTest;
+//tLong   VarLong;
+//
+//	NOT_USED(NativeCPC);
+//
+//  do
+//  {
+//    // Prepare conditions
+//    VarLong = 1024;
+//    // Perform operation
+//    VarLong = (tLong)math_fabs(VarLong);
+//    // Check Result
+//    if (VarLong != 1024)
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    VarLong = -1024;
+//    // Perform operation
+//    VarLong = (tLong)math_fabs(VarLong);
+//    // Check Result
+//    if (VarLong != 1024)
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//static tUShort TestU_math_cos(tNativeCPC* NativeCPC, tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_math_cos
+// *
+// ***********************************************************************/
+//{
+//tUShort TestResult = testUErrorClass+NoTest;
+//tDouble Angle;
+//tLong VarLong;
+//
+//	NOT_USED(NativeCPC);
+//
+//  do
+//  {
+//    // Prepare conditions
+//    Angle = 0.;
+//    // Perform operation
+//    VarLong = (tLong)(math_cos(Angle) * 1024.);
+//    // Check Result
+//    if (VarLong != 1024)
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    Angle = M_PI / 4;
+//    // Perform operation
+//    VarLong = (tLong)(math_cos(Angle) * 1024.);
+//    // Check Result
+//    if (VarLong != 724)
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    Angle = M_PI / 2;
+//    // Perform operation
+//    VarLong = (tLong)(math_cos(Angle) * 1024.);
+//    // Check Result
+//    if (VarLong != 0)
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    Angle = 3 * M_PI / 4;
+//    // Perform operation
+//    VarLong = (tLong)(math_cos(Angle) * 1024.);
+//    // Check Result
+//    if (VarLong != -724)
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    Angle = M_PI;
+//    // Perform operation
+//    VarLong = (tLong)(math_cos(Angle) * 1024.);
+//    // Check Result
+//    if (VarLong != -1024)
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    Angle = M_PI * 2;
+//    // Perform operation
+//    VarLong = (tLong)(math_cos(Angle) * 1024.);
+//    // Check Result
+//    if (VarLong != 1024)
+//    {
+//      continue;
+//    }
+//
+//    // Prepare conditions
+//    Angle = M_PI * 4;
+//    // Perform operation
+//    VarLong = (tLong)(math_cos(Angle) * 1024.);
+//    // Check Result
+//    if (VarLong != 1024)
+//    {
+//      continue;
+//    }
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//#ifdef ENABLE_PLAYCITY
+//
+////
+//// PlayCity Unitary Tests
+////
+//
+//static const tULong PlayCity_Freq[16] =
+//{
+//  3992187, // 0
+//  2000000, // 1
+//  3000000, // 2
+//  3333333, // 3
+//  3500000, // 4
+//  3600000, // 5
+//  3666666, // 6
+//  3714285, // 7
+//  3750000, // 8
+//  3777777, // 9
+//  3800000, // A
+//  3818181, // B
+//  3833333, // C
+//  3846153, // D
+//  3857142, // E
+//  3866666, // F
+//};
+//
+//static tUShort TestU_PlayCity_YMZFreq(tNativeCPC* NativeCPC, tUChar NoTest)
+///***********************************************************************
+// *
+// *  TestU_PlayCity_YMZFreq
+// *
+// ***********************************************************************/
+//{
+//tUShort TestResult = testUErrorClass+NoTest;
+//tUChar Loop;
+//tULong TimeContant;
+//tULong Freq;
+//
+//	NOT_USED(NativeCPC);
+//
+//  do
+//  {
+//    for (Loop=0; Loop < 0x10; Loop++)
+//    {
+//      TimeContant = !Loop ? 256 : Loop;
+//
+//      Freq = CLOCK_Z80 * ((TimeContant*2)-1) / (TimeContant*2);
+//
+//      if (Freq != PlayCity_Freq[Loop])
+//        break;
+//    }
+//    if (Loop < 0x10) continue;
+//
+//    // Test is OK
+//    TestResult = errNone;
+//  }
+//  while (0);
+//
+//  return (TestResult);
+//}
+///*----------------------------------------------------------------------------*/
+//
+//#endif /* ENABLE_PLAYCITY */
+//
+//
+//#endif /* _TESTU */
+////==============================================================================
+//
 
 #ifdef __cplusplus
 }  /* End of the 'extern "C"' block */
 #endif
+
 
 

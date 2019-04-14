@@ -36,7 +36,7 @@
 #define __HI32(x) *((tULong*)&x + 1)  // return second tULong
 #define __LO32(x) *((tULong*)&x)			// return first tULong
 #else
-  #error Need endianness definition
+  // commented in order to be able to compile to x64 #error Need endianness definition
 #endif 
 
 

@@ -201,6 +201,8 @@ static const AnsiString DriveBString = "Drive B";
 #pragma resource "*.dfm"
 TFormMain *FormMain;
 //---------------------------------------------------------------------------
+
+
 __fastcall TFormMain::TFormMain(TComponent* Owner)
         : TForm(Owner)
 {
@@ -226,14 +228,6 @@ __fastcall TFormMain::TFormMain(TComponent* Owner)
   AnsiString SettingsFilename = ExtractFilePath(Application->ExeName) + SETTINGS_FILENAME;
   mSettingsP = new TSettings(SettingsFilename);
 
-  //
-  // Check Settings override
-  //
-
-  // just testing
-  int dummy;
-  dummy=1;
-
   TStringList* ParamList = new TStringList;
   int ParamCount = GetCommandParamList(ParamList);
   if (ParamCount > 1)
@@ -241,6 +235,7 @@ __fastcall TFormMain::TFormMain(TComponent* Owner)
 #ifdef SHOW_PARAMLIST
 	// Display parameters list
 	String Message = String(CmdLine) + "\r\n\r\n";
+
 	for (int Loop=1; Loop < Count; Loop++)
 	{
 	  Message += AnsiString(Loop) + " " + ParamList->Strings[Loop] + "\r\n";

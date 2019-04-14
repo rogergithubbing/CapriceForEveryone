@@ -8,7 +8,7 @@
         <FrameworkType>VCL</FrameworkType>
         <ProjectVersion>18.5</ProjectVersion>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
-        <TargetedPlatforms>1</TargetedPlatforms>
+        <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
@@ -127,6 +127,10 @@
         <TASM_Defines>_USE_OPENGL _USE_OPENAL _USE_DIRECTINPUT8 NO_ENGINE_PERF _TESTU _PATCH_ENABLE _DEBUG;$(TASM_Defines)</TASM_Defines>
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
+        <BT_BuildType>Debug</BT_BuildType>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <BCC_MonitorInlinePtrAccess>true</BCC_MonitorInlinePtrAccess>
@@ -156,6 +160,9 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <BCC_Defines>$(BCC_Defines);$(BCC_Defines)</BCC_Defines>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <LinkPackageStatics>rtl.lib;vcl.lib;vclx.lib;tee.lib;vcltouch.lib;xmlrtl.lib;vclimg.lib</LinkPackageStatics>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <ILINK_FullDebugInfo>false</ILINK_FullDebugInfo>
@@ -183,6 +190,8 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <BCC_Defines>NDEBUG;$(BCC_Defines);$(BCC_Defines)</BCC_Defines>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="Caprice.cpp">
@@ -841,38 +850,38 @@
         <CppCompile Include="Sources\Windows\ZLib\zutil.c">
             <BuildOrder>24</BuildOrder>
         </CppCompile>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormPrinter.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormZIPCatalog.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormEmulatorSettings.dfm"/>
         <FormResources Include="Sources\Windows\Forms_XE3\TFormGameControllerSettings.dfm"/>
         <FormResources Include="Sources\Windows\Forms_XE3\TFormHints.dfm"/>
         <FormResources Include="Sources\Windows\Forms_XE3\TFormKeyboardMapping.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormMain.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugGraphicsExplorer.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugMEA8000.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugMemoryEditor.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugPSG.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugGameController.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugGateArray.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugger.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugGraphicsEditor.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDisplaySettings.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDragDropDrives.dfm"/>
         <FormResources Include="Sources\Windows\Forms_XE3\TFormEditKeycode.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormEmulatorSettings.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugTapeAudioWorkshop.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugTextCapture.dfm"/>
         <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugZ80Editor.dfm"/>
         <FormResources Include="Sources\Windows\Forms_XE3\TFormDiskCatalog.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugFDC.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormAbout.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugCDTViewer.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugCRTC.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDisplaySettings.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDragDropDrives.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormMain.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormPrinter.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormZIPCatalog.dfm"/>
         <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugDSKViewer.dfm"/>
         <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugEditValue.dfm"/>
-        <FormResources Include="Sources\Windows\Forms_XE3\TFormAudioSettings.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugFDC.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugGameController.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugCRTC.dfm"/>
         <FormResources Include="Sources\Windows\Forms_XE3\TFormCheatScripts.dfm"/>
         <FormResources Include="Sources\Windows\Forms_XE3\TFormCustomSpeed.dfm"/>
         <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugBASICColors.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugCDTViewer.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugMemoryEditor.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugPSG.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugTapeAudioWorkshop.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugTextCapture.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugMEA8000.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugGateArray.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugger.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugGraphicsEditor.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormDebugGraphicsExplorer.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormAudioSettings.dfm"/>
+        <FormResources Include="Sources\Windows\Forms_XE3\TFormAbout.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -1020,19 +1029,20 @@
                     <ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
                     <ProjectProperties Name="ManagePaths">True</ProjectProperties>
                     <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
-                    <ProjectProperties Name="IndexFiles">False</ProjectProperties>
+                    <ProjectProperties Name="IndexFiles">True</ProjectProperties>
                 </ProjectProperties>
                 <Source>
                     <Source Name="MainSource">Caprice.cpp</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k200.bpl">Package Serveurs Office 2000 Embarcadero C++Builder</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp200.bpl">Package Serveurs Office XP Embarcadero C++Builder</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\DataExplorerDBXPluginEnt260.bpl">DBExpress Enterprise Data Explorer Integration</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k260.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp260.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Platforms>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">False</Platform>
+                <Platform value="Win64">True</Platform>
             </Platforms>
             <ModelSupport>True</ModelSupport>
             <Deployment Version="3">
@@ -1230,6 +1240,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Resources\Amstrad ROMs\ROMCPC464_UK.bin" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Resources\Amstrad ROMs\ROMCPC6128_SP.bin" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
@@ -1242,12 +1258,6 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Sources\Windows\LibPNG\pngwrite.c" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Resources\Amstrad ROMs\ROMCPC464_UK.bin" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>

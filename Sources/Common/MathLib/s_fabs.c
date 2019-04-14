@@ -23,13 +23,13 @@
 extern "C" {
 #endif
 
-tDouble math_fabs(tDouble x)
-{
-	tULong high;
-	GET_HIGH_WORD(high,x);
-	SET_HIGH_WORD(x,high&0x7fffffff);
-        return x;
-}
+//tDouble math_fabs(tDouble x)
+//{
+//	tULong high;
+//	GET_HIGH_WORD(high,x);
+//	SET_HIGH_WORD(x,high&0x7fffffff);
+//        return x;
+//}
 
 #ifdef __cplusplus
 }  /* End of the 'extern "C"' block */

@@ -19,75 +19,78 @@
  *	Inexact flag raised if x not equal to ceil(x).
  */
 
-#include "..\Math.h"
 
+//#include "..\Math.h"
 
-static const tDouble huge = 1.0e300;
+//
+//static const tDouble huge = 1.0e300;
+//
+//
+//tDouble math_ceil(tDouble x)
+//{
+//  tLong i0, i1, j0, j;
+//  tULong i;
+//
+//  EXTRACT_WORDS (i0, i1, x);
+//
+//  j0 = ((i0 >> 20) & 0x7ff) - 0x3ff;
+//  if (j0 < 20)
+//  {
+//	if (j0 < 0)       /* raise inexact if x != 0 */
+//	{
+//	  //math_force_eval (huge + x);
+//	  // return 0*sign(x) if |x|<1
+//	  if (i0 < 0)
+//		{
+//		  i0 = 0x80000000; i1 = 0;
+//		}
+//	  else if ((i0 | i1) != 0)
+//		{
+//		  i0 = 0x3ff00000; i1 = 0;
+//		}
+//	}
+//	else
+//	{
+//	  i = (0x000fffff) >> j0;
+//	  if (((i0 & i) | i1) == 0)
+//		return x;                        /* x is integral */
+//	  //math_force_eval (huge + x);           /* raise inexact flag */
+//	  if (i0 > 0)
+//        i0 += (0x00100000) >> j0;
+//      i0 &= (~i); i1 = 0;
+//    }
+//  }
+//  else if (j0 > 51)
+//  {
+//    if (j0 == 0x400)
+//	  return x + x;                   /* inf or NaN */
+//	else
+//	  return x;                       /* x is integral */
+//  }
+//  else
+//  {
+//	i = ((tULong) (0xffffffff)) >> (j0 - 20);
+//	if ((i1 & i) == 0)
+//	  return x;                       /* x is integral */
+//	//math_force_eval (huge + x);               /* raise inexact flag */
+//	if (i0 > 0)
+//	{
+//	  if (j0 == 20)
+//		i0 += 1;
+//	  else
+//		{
+//		  j = i1 + (1 << (52 - j0));
+//		  if (j < i1)
+//		  i0 += 1;                /* got a carry */
+//		  i1 = j;
+//		}
+//	}
+//	i1 &= (~i);
+//  }
+//
+//  INSERT_WORDS (x, i0, i1);
+//
+//  return x;
+//}
+//
 
-
-tDouble math_ceil(tDouble x)
-{
-  tLong i0, i1, j0, j;
-  tULong i;
-  
-  EXTRACT_WORDS (i0, i1, x);
-  
-  j0 = ((i0 >> 20) & 0x7ff) - 0x3ff;
-  if (j0 < 20)
-  {
-    if (j0 < 0)       /* raise inexact if x != 0 */
-    {
-      //math_force_eval (huge + x);
-      /* return 0*sign(x) if |x|<1 */
-      if (i0 < 0)
-	    {
-	      i0 = 0x80000000; i1 = 0;
-	    }
-      else if ((i0 | i1) != 0)
-	    {
-	      i0 = 0x3ff00000; i1 = 0;
-	    }
-    }
-    else
-    {
-      i = (0x000fffff) >> j0;
-      if (((i0 & i) | i1) == 0)
-        return x;                        /* x is integral */
-      //math_force_eval (huge + x);           /* raise inexact flag */
-      if (i0 > 0)
-        i0 += (0x00100000) >> j0;
-      i0 &= (~i); i1 = 0;
-    }
-  }
-  else if (j0 > 51)
-  {
-    if (j0 == 0x400)
-      return x + x;                   /* inf or NaN */
-    else
-      return x;                       /* x is integral */
-  }
-  else
-  {
-    i = ((tULong) (0xffffffff)) >> (j0 - 20);
-    if ((i1 & i) == 0)
-      return x;                       /* x is integral */
-    //math_force_eval (huge + x);               /* raise inexact flag */
-    if (i0 > 0)
-    {
-      if (j0 == 20)
-        i0 += 1;
-      else
-	    {
-	      j = i1 + (1 << (52 - j0));
-	      if (j < i1)
-          i0 += 1;                /* got a carry */
-	      i1 = j;
-	    }
-    }
-    i1 &= (~i);
-  }
-  
-  INSERT_WORDS (x, i0, i1);
-  
-  return x;
-}

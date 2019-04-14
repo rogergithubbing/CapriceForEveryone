@@ -26,14 +26,14 @@
 extern "C" {
 #endif
 
-tDouble kernel_copysign(tDouble x, tDouble y)
-{
-	tULong hx,hy;
-	GET_HIGH_WORD(hx,x);
-	GET_HIGH_WORD(hy,y);
-	SET_HIGH_WORD(x,(hx&0x7fffffff)|(hy&0x80000000));
-        return x;
-}
+//tDouble kernel_copysign(tDouble x, tDouble y)
+//{
+//	tULong hx,hy;
+//	GET_HIGH_WORD(hx,x);
+//	GET_HIGH_WORD(hy,y);
+//	SET_HIGH_WORD(x,(hx&0x7fffffff)|(hy&0x80000000));
+//        return x;
+//}
 
 #ifdef __cplusplus
 }  /* End of the 'extern "C"' block */

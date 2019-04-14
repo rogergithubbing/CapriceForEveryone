@@ -393,17 +393,27 @@ typedef unsigned char  Byte;  /* 8 bits */
 typedef unsigned int   uInt;  /* 16 bits or more */
 typedef unsigned long  uLong; /* 32 bits or more */
 
-#ifdef SMALL_MEDIUM
-   /* Borland C/C++ and some old MSC versions ignore FAR inside typedef */
-#  define Bytef Byte FAR
-#else
+//#ifdef SMALL_MEDIUM
+//   /* Borland C/C++ and some old MSC versions ignore FAR inside typedef */
+//#  define Bytef Byte FAR
+//#else
+
+//
+//
+//
+//#endif
+
+
+
+
 // roger change Byte to ::Byte to avoid ambiguity between 'Byte' and 'System::Byte' error
-   typedef ::Byte  FAR Bytef;
-#endif
+
+
 typedef char  FAR charf;
 typedef int   FAR intf;
 typedef uInt  FAR uIntf;
 typedef uLong FAR uLongf;
+typedef ::Byte FAR Bytef;
 
 #ifdef STDC
    typedef void const *voidpc;
